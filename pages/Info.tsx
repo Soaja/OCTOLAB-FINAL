@@ -285,7 +285,7 @@ const ExpandedArticle: React.FC<ExpandedArticleProps> = ({ article, onClose }) =
                  layoutId={`icon-${article.id}`}
                  className={`w-16 h-16 rounded-3xl ${article.color} flex items-center justify-center mb-6 relative z-10`}
                >
-                  {React.isValidElement(article.icon) ? React.cloneElement(article.icon as React.ReactElement, { size: 32 }) : article.icon}
+                  {React.isValidElement(article.icon) ? React.cloneElement(article.icon as React.ReactElement<any>, { size: 32 }) : article.icon}
                </motion.div>
               
               <div className="flex items-center gap-3 mb-4 relative z-10">
