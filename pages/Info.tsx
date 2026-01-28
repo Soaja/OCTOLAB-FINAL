@@ -63,7 +63,7 @@ const ARTICLES: Article[] = [
           <strong>Area Under Curve (AUC):</strong> The area under the main peak represents the purity. If the main peak is 99.8% of the total area, the purity is 99.8%. Small bumps near the baseline are impurities.
         </p>
         <div className="bg-neutral-100 p-6 rounded-2xl mb-6">
-           <h4 className="font-bold mb-2">Why >99% Matters</h4>
+           <h4 className="font-bold mb-2">Why &gt;99% Matters</h4>
            <p className="text-sm text-neutral-600">In metabolic research, even 1% impurity (often trifluoroacetic acid salts or truncated sequences) can introduce statistical noise or immunogenic reactions in test subjects.</p>
         </div>
       </>
