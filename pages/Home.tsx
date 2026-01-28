@@ -71,7 +71,7 @@ const ResearchInterface = () => {
   };
 
   return (
-    <div className="relative perspective-1000 w-full max-w-md aspect-[4/5] flex items-center justify-center">
+    <div className="relative perspective-1000 w-full max-w-md aspect-[4/5] flex items-center justify-center transform scale-90 md:scale-100">
       <motion.div
         ref={cardRef}
         onMouseMove={handleMouseMove}
@@ -190,7 +190,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       
       {/* HERO SECTION - CENTERED LAYOUT */}
       <section 
-        className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 pb-12 overflow-hidden"
+        className="relative min-h-[90vh] flex flex-col justify-center items-center pt-32 pb-48 overflow-hidden"
         ref={heroRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -261,7 +261,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="text-6xl sm:text-7xl lg:text-[8.5rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8"
+            className="text-5xl sm:text-7xl lg:text-[8.5rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8"
           >
             CLARITY<br/>
             IN EVERY<br/>
@@ -282,7 +282,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex w-full justify-center"
+            className="flex w-full justify-center mb-12"
           >
              <Button onClick={() => onNavigate(PageView.SHOP)} size="lg" className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-12 h-16 text-lg rounded-full shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
                 Shop Catalog
@@ -291,6 +291,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* FLOATING TRUST DOCK (Centered at bottom) */}
+        {/* Hidden on small mobile to avoid clutter, visible on lg */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-[95%] max-w-[1000px] hidden lg:block">
            <motion.div 
              initial={{ y: 50, opacity: 0 }}
@@ -470,14 +471,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* 3. HOW IT WORKS (REDESIGNED) */}
-      <section className="py-32 bg-white relative z-10 overflow-hidden">
+      <section className="py-24 md:py-32 bg-white relative z-10 overflow-hidden">
         {/* Technical Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto px-6 relative">
           
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
              <motion.span 
                initial={{ opacity: 0, y: 10 }}
                whileInView={{ opacity: 1, y: 0 }}
@@ -580,9 +581,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* 4. NEW: PREMIUM RESEARCH INTERFACE (NO BOX/TETRAPAK) */}
       <section 
-        className="relative py-40 bg-[#FBFBFD] overflow-hidden border-t border-neutral-100"
+        className="relative py-24 md:py-40 bg-[#FBFBFD] overflow-hidden border-t border-neutral-100"
       >
-         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-24">
+         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-24">
             
             {/* TEXT SIDE (Left) */}
             <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
@@ -602,7 +603,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                    initial={{ opacity: 0, x: -20 }}
                    whileInView={{ opacity: 1, x: 0 }}
                    viewport={{ once: true }}
-                   className="text-6xl md:text-8xl font-bold tracking-tighter text-[#1d1d1f] mb-8 leading-[0.9]"
+                   className="text-5xl md:text-8xl font-bold tracking-tighter text-[#1d1d1f] mb-8 leading-[0.9]"
                 >
                   Analyze.<br/>
                   Optimize.<br/>
@@ -614,7 +615,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: 0.1 }}
-                   className="text-xl text-neutral-500 font-light mb-12 max-w-md leading-relaxed"
+                   className="text-lg md:text-xl text-neutral-500 font-light mb-12 max-w-md leading-relaxed"
                 >
                   Access our complete spectral database and verify batch consistency in real-time.
                 </motion.p>
@@ -636,7 +637,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                       </div>
                       <div className="flex flex-col items-start flex-1">
                          <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">Database Search</span>
-                         <span className="text-neutral-900 font-medium">Find compound by CAS or Name...</span>
+                         <span className="text-neutral-900 font-medium text-sm md:text-base">Find compound by CAS or Name...</span>
                       </div>
                       <div className="pr-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
                          <ArrowRight size={20} className="text-neutral-400" />

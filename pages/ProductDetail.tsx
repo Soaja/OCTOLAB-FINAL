@@ -45,7 +45,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
   };
 
   return (
-    <div className="pt-28 min-h-screen bg-transparent relative">
+    <div className="pt-24 md:pt-28 min-h-screen bg-transparent relative">
       <ModernBackground />
       
       {/* NAVIGATION HEADER */}
@@ -65,12 +65,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
           {/* LEFT: PRODUCT IMAGE & VISUALS (5 Cols) */}
-          <div className="lg:col-span-5 relative sticky top-32">
+          <div className="lg:col-span-5 relative lg:sticky lg:top-32">
              <motion.div 
                initial={{ opacity: 0, scale: 0.95 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 0.6 }}
-               className="aspect-square w-full rounded-[3rem] bg-[#F5F5F7] overflow-hidden relative flex items-center justify-center p-12 shadow-inner"
+               className="aspect-square w-full rounded-[2.5rem] md:rounded-[3rem] bg-[#F5F5F7] overflow-hidden relative flex items-center justify-center p-12 shadow-inner"
              >
                 {/* Background Glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white,transparent_70%)] opacity-70" />
@@ -146,13 +146,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                className="bg-white border border-neutral-100 rounded-[2rem] p-6 shadow-xl shadow-neutral-100/50 mb-12"
              >
                 <div className="flex flex-col md:flex-row items-center gap-6">
-                   <div className="flex flex-col items-start mr-auto">
+                   <div className="flex flex-col items-start mr-auto w-full md:w-auto">
                       <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Price per unit</span>
                       <span className="text-4xl font-bold text-[#0B0B0C] tracking-tight">${product.price.toFixed(2)}</span>
                    </div>
 
                    {/* Quantity */}
-                   <div className="flex items-center bg-[#F5F5F7] rounded-full p-1.5 h-16 w-full md:w-auto">
+                   <div className="flex items-center bg-[#F5F5F7] rounded-full p-1.5 h-16 w-full md:w-auto justify-between md:justify-start">
                       <button 
                         onClick={() => handleQuantity(-1)}
                         className="w-12 h-full rounded-full bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
@@ -218,17 +218,17 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                animate={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.5 }}
              >
-                <div className="flex items-center gap-8 border-b border-neutral-100 mb-6">
+                <div className="flex items-center gap-8 border-b border-neutral-100 mb-6 overflow-x-auto no-scrollbar">
                    <button 
                      onClick={() => setActiveTab('overview')}
-                     className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative ${activeTab === 'overview' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
+                     className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
                    >
                      Compound Overview
                      {activeTab === 'overview' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                    </button>
                    <button 
                      onClick={() => setActiveTab('handling')}
-                     className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative ${activeTab === 'handling' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
+                     className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
                    >
                      Storage & Protocol
                      {activeTab === 'handling' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
@@ -244,7 +244,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                       <p>
                         Each batch is lyophilized (freeze-dried) under controlled conditions to maximize stability and shelf-life, resulting in a crystalline white powder that is readily soluble in bacteriostatic water or sterile saline.
                       </p>
-                      <div className="flex gap-4 pt-4">
+                      <div className="flex gap-4 pt-4 flex-wrap">
                          <Button variant="outline" size="sm" icon={<FileText size={14}/>}>Download COA</Button>
                          <Button variant="outline" size="sm" icon={<FileText size={14}/>}>MS Analysis</Button>
                       </div>

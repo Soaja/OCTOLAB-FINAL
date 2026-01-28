@@ -20,28 +20,32 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
     { label: 'Contact Us', page: PageView.CONTACT },
   ];
 
+  const handleMobileNavigate = (page: PageView) => {
+    onNavigate(page);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       {/* 
         STATIC FLOATING HEADER 
         Fixed position, glassmorphic background, capsule shape.
-        No scroll animations on width/color.
       */}
-      <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <nav className="pointer-events-auto w-full max-w-[1000px] bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-6 py-4 flex items-center justify-between transition-all">
+      <div className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <nav className="pointer-events-auto w-full max-w-[1000px] bg-white/80 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between transition-all">
             
-            {/* LOGO: Modern, typographic, minimal */}
+            {/* LOGO */}
             <button 
                 onClick={() => onNavigate(PageView.HOME)} 
                 className="flex items-center gap-2.5 group shrink-0"
             >
                 <div className="relative flex items-center justify-center">
-                    {/* Abstract Aperture Logo */}
                     <Aperture className="w-6 h-6 text-neutral-900 stroke-[1.5px] group-hover:rotate-90 transition-transform duration-700 ease-in-out" />
                     <div className="absolute w-1 h-1 bg-black rounded-full" />
                 </div>
-                <div className="flex flex-col items-start leading-none md:hidden lg:flex">
-                  <span className="text-lg font-bold tracking-tight text-[#0B0B0C] group-hover:text-black transition-colors font-manrope">
+                {/* Mobile: Hide text to save space if needed, or keep small. kept visible here for branding */}
+                <div className="flex flex-col items-start leading-none flex">
+                  <span className="text-lg font-bold tracking-tight text-[#0B0B0C] font-manrope">
                     OCTOLAB
                   </span>
                 </div>
@@ -68,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
             <div className="flex items-center gap-2 shrink-0">
                 <button 
                     onClick={() => onNavigate(PageView.CART)}
-                    className="relative group bg-neutral-100/50 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 transition-all p-2.5 rounded-full"
+                    className="relative group bg-neutral-100/50 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 transition-all p-2.5 rounded-full active:scale-95"
                 >
                     <ShoppingBag size={18} strokeWidth={1.5} className="text-neutral-700 group-hover:text-black transition-colors" />
                     {cartCount > 0 && (
@@ -78,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
                     )}
                 </button>
                 <button 
-                    className="md:hidden text-[#1C1C1E] p-2"
+                    className="md:hidden text-[#1C1C1E] p-2.5 bg-neutral-100/50 rounded-full active:scale-95 transition-transform"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                     {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -95,28 +99,33 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-3xl pt-32 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-3xl px-6 md:hidden flex flex-col justify-center"
           >
-            <nav className="flex flex-col gap-8 items-center">
-              {navLinks.map((link) => (
-                <button
+            <nav className="flex flex-col gap-6 items-center">
+              {navLinks.map((link, i) => (
+                <motion.button
                   key={link.label}
-                  onClick={() => {
-                    onNavigate(link.page);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="text-4xl font-light tracking-tight text-[#0B0B0C]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + (i * 0.05) }}
+                  onClick={() => handleMobileNavigate(link.page)}
+                  className={`text-4xl font-light tracking-tight ${currentPage === link.page ? 'text-black font-medium' : 'text-neutral-500'}`}
                 >
                   {link.label}
-                </button>
+                </motion.button>
               ))}
             </nav>
-            <button 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-10 right-6 p-4 text-neutral-500"
+            
+            {/* Mobile Footer Links */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="absolute bottom-12 left-0 right-0 flex justify-center gap-6 text-xs text-neutral-400 font-bold uppercase tracking-widest"
             >
-                <X size={24} />
-            </button>
+                <button>Login</button>
+                <button>Support</button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
