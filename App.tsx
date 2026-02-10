@@ -118,8 +118,8 @@ const App: React.FC = () => {
             {/* Legacy Quality Page Fallback */}
             {currentPage === PageView.QUALITY && (
                <div className="pt-32 text-center h-[60vh]">
-                 <h1 className="text-3xl font-bold">Quality Control</h1>
-                 <p className="mt-4 text-neutral-500">Redirecting to Info...</p>
+                 <h1 className="text-3xl font-bold">Kontrola Kvaliteta</h1>
+                 <p className="mt-4 text-neutral-500">Preusmeravanje na Info...</p>
                </div>
             )}
           </AnimatePresence>
@@ -148,8 +148,8 @@ const App: React.FC = () => {
                 {/* Header */}
                 <div className="p-8 pb-4 flex justify-between items-center bg-white z-10">
                   <div className="flex items-baseline gap-3">
-                     <h2 className="text-3xl font-bold tracking-tight text-[#0B0B0C] leading-none">Selection</h2>
-                     <span className="text-neutral-400 font-mono text-sm">({cart.reduce((a,c) => a + c.quantity, 0)} Items)</span>
+                     <h2 className="text-3xl font-bold tracking-tight text-[#0B0B0C] leading-none">Izbor</h2>
+                     <span className="text-neutral-400 font-mono text-sm">({cart.reduce((a,c) => a + c.quantity, 0)} Stavki)</span>
                   </div>
                   <button 
                      onClick={() => setIsCartOpen(false)} 
@@ -164,8 +164,8 @@ const App: React.FC = () => {
                   {cart.length === 0 ? (
                      <div className="h-full flex flex-col items-center justify-center text-center opacity-40">
                         <ShoppingBag size={48} className="mb-4" strokeWidth={1} />
-                        <p className="text-lg font-medium">Your cart is empty.</p>
-                        <p className="text-sm">Start your research library.</p>
+                        <p className="text-lg font-medium">Vaša korpa je prazna.</p>
+                        <p className="text-sm">Započnite svoju istraživačku biblioteku.</p>
                      </div>
                   ) : (
                     cart.map(item => (
@@ -214,7 +214,7 @@ const App: React.FC = () => {
                                 onClick={() => removeFromCart(item.id)} 
                                 className="text-neutral-400 hover:text-red-500 transition-colors text-xs font-bold uppercase tracking-widest flex items-center gap-1"
                              >
-                                <Trash2 size={12} /> Remove
+                                <Trash2 size={12} /> Ukloni
                              </button>
                           </div>
                         </div>
@@ -228,30 +228,30 @@ const App: React.FC = () => {
                    {cart.length > 0 && (
                      <div className="space-y-2 mb-6">
                         <div className="flex justify-between text-sm text-neutral-500">
-                           <span>Subtotal</span>
+                           <span>Međuzbir</span>
                            <span>${cartTotal.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-sm text-neutral-500">
-                           <span>Shipping (Cold Chain)</span>
-                           <span>Calculated next</span>
+                           <span>Dostava (Hladni Lanac)</span>
+                           <span>Obračunava se sledeće</span>
                         </div>
                      </div>
                    )}
                    
                    <div className="flex justify-between items-end mb-6">
                       <div>
-                          <span className="block text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Total Estimated</span>
+                          <span className="block text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Ukupno Procenjeno</span>
                           <div className="text-3xl font-bold text-[#0B0B0C]">${cartTotal.toFixed(2)}</div>
                       </div>
                    </div>
 
                    <button className="w-full bg-[#0B0B0C] text-white h-16 rounded-full font-bold text-lg hover:bg-neutral-800 transition-all shadow-xl shadow-neutral-200 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 group">
-                      <span>Secure Checkout</span>
+                      <span>Bezbedno Plaćanje</span>
                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                    </button>
                    
                    <p className="text-center text-[10px] text-neutral-400 uppercase tracking-widest mt-4">
-                      Research Use Only • Not for Human Consumption
+                      Samo Za Istraživačku Upotrebu • Nije Za Ljudsku Upotrebu
                    </p>
                 </div>
               </motion.div>

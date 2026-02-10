@@ -57,7 +57,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
            <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center group-hover:border-black transition-colors bg-white">
              <ChevronLeft size={14} />
            </div>
-           Return to Library
+           Nazad u Biblioteku
          </button>
       </div>
 
@@ -93,7 +93,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                 {/* Floating Badge */}
                 <div className="absolute bottom-8 left-8 flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-white/50">
                    <ShieldCheck size={16} className="text-blue-600" />
-                   <span className="text-xs font-bold text-neutral-700 uppercase tracking-wider">Lab Verified</span>
+                   <span className="text-xs font-bold text-neutral-700 uppercase tracking-wider">Lab Verifikovano</span>
                 </div>
              </motion.div>
 
@@ -118,15 +118,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
              >
                 <div className="flex items-center gap-3 mb-6">
                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold tracking-widest uppercase rounded-full border border-blue-100">
-                     {product.category} Series
+                     {product.category} Serija
                    </span>
                    {product.inStock ? (
                       <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-green-600">
                         <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                        In Stock & Ready
+                        Na Stanju i Spremno
                       </span>
                    ) : (
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Out of Stock</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Rasprodato</span>
                    )}
                 </div>
 
@@ -147,7 +147,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
              >
                 <div className="flex flex-col md:flex-row items-center gap-6">
                    <div className="flex flex-col items-start mr-auto w-full md:w-auto">
-                      <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Price per unit</span>
+                      <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Cena po jedinici</span>
                       <span className="text-4xl font-bold text-[#0B0B0C] tracking-tight">${product.price.toFixed(2)}</span>
                    </div>
 
@@ -174,7 +174,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                      className="w-full md:w-auto h-16 px-10 bg-[#0B0B0C] text-white rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3"
                      disabled={!product.inStock}
                    >
-                     <span>Add to Cart</span>
+                     <span>Dodaj u Korpu</span>
                      <span className="w-px h-4 bg-white/20"></span>
                      <span>${(product.price * quantity).toFixed(2)}</span>
                    </Button>
@@ -189,19 +189,19 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                className="mb-12"
              >
                <h3 className="text-sm font-bold text-[#0B0B0C] uppercase tracking-widest mb-6 flex items-center gap-2">
-                 <Activity size={16} /> Technical Specifications
+                 <Activity size={16} /> Tehničke Specifikacije
                </h3>
                
                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     { label: "Format", value: product.volume, icon: <Dna size={16}/> },
-                    { label: "Dosage", value: product.dosage, icon: <Scale size={16}/> },
-                    { label: "Purity", value: ">99.8%", icon: <ShieldCheck size={16}/> },
-                    { label: "Storage", value: "-20°C", icon: <Thermometer size={16}/> },
-                    { label: "Sequence", value: "15 AA", icon: <Zap size={16}/> },
-                    { label: "Molar Mass", value: "1419 g/mol", icon: <Scale size={16}/> },
-                    { label: "Solubility", value: "Water", icon: <Activity size={16}/> },
-                    { label: "CAS No.", value: "137-00-1", icon: <FileText size={16}/> },
+                    { label: "Doza", value: product.dosage, icon: <Scale size={16}/> },
+                    { label: "Čistoća", value: ">99.8%", icon: <ShieldCheck size={16}/> },
+                    { label: "Skladištenje", value: "-20°C", icon: <Thermometer size={16}/> },
+                    { label: "Sekvenca", value: "15 AA", icon: <Zap size={16}/> },
+                    { label: "Molarna Masa", value: "1419 g/mol", icon: <Scale size={16}/> },
+                    { label: "Rastvorljivost", value: "Voda", icon: <Activity size={16}/> },
+                    { label: "CAS Br.", value: "137-00-1", icon: <FileText size={16}/> },
                   ].map((spec, i) => (
                     <div key={i} className="bg-[#F9F9FB] rounded-2xl p-4 border border-transparent hover:border-neutral-200 transition-colors">
                        <div className="text-neutral-400 mb-2">{spec.icon}</div>
@@ -223,14 +223,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                      onClick={() => setActiveTab('overview')}
                      className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
                    >
-                     Compound Overview
+                     Pregled Jedinjenja
                      {activeTab === 'overview' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                    </button>
                    <button 
                      onClick={() => setActiveTab('handling')}
                      className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
                    >
-                     Storage & Protocol
+                     Skladištenje i Protokol
                      {activeTab === 'handling' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                    </button>
                 </div>
@@ -239,32 +239,32 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                   {activeTab === 'overview' ? (
                     <div className="space-y-4">
                       <p>
-                        This compound is synthesized using advanced solid-phase peptide synthesis (SPPS) protocols, ensuring precise sequence alignment and minimal impurity formation. Following synthesis, the product undergoes rigorous purification via preparative High-Performance Liquid Chromatography (HPLC).
+                        Ovo jedinjenje je sintetizovano koristeći napredne protokole sinteze peptida na čvrstoj fazi (SPPS), obezbeđujući precizno poravnanje sekvenci i minimalno formiranje nečistoća. Nakon sinteze, proizvod prolazi kroz rigorozno prečišćavanje putem preparativne Tečne Hromatografije Visokih Performansi (HPLC).
                       </p>
                       <p>
-                        Each batch is lyophilized (freeze-dried) under controlled conditions to maximize stability and shelf-life, resulting in a crystalline white powder that is readily soluble in bacteriostatic water or sterile saline.
+                        Svaka serija se liofilizuje (suši smrzavanjem) pod kontrolisanim uslovima kako bi se maksimizirala stabilnost i rok trajanja, što rezultira kristalnim belim prahom koji je lako rastvorljiv u bakteriostatskoj vodi ili sterilnom fiziološkom rastvoru.
                       </p>
                       <div className="flex gap-4 pt-4 flex-wrap">
-                         <Button variant="outline" size="sm" icon={<FileText size={14}/>}>Download COA</Button>
-                         <Button variant="outline" size="sm" icon={<FileText size={14}/>}>MS Analysis</Button>
+                         <Button variant="outline" size="sm" icon={<FileText size={14}/>}>Preuzmi COA</Button>
+                         <Button variant="outline" size="sm" icon={<FileText size={14}/>}>MS Analiza</Button>
                       </div>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <CheckCircle2 size={18} className="text-green-600 mt-1 shrink-0" />
-                        <p>Store lyophilized powder at -20°C for up to 24 months.</p>
+                        <p>Čuvajte liofilizovani prah na -20°C do 24 meseca.</p>
                       </div>
                       <div className="flex items-start gap-3">
                         <CheckCircle2 size={18} className="text-green-600 mt-1 shrink-0" />
-                        <p>Once reconstituted, store at 4°C and use within 21 days.</p>
+                        <p>Nakon rekonstitucije, čuvajte na 4°C i upotrebite u roku od 21 dana.</p>
                       </div>
                       <div className="flex items-start gap-3">
                         <CheckCircle2 size={18} className="text-green-600 mt-1 shrink-0" />
-                        <p>Avoid repeated freeze-thaw cycles to maintain peptide integrity.</p>
+                        <p>Izbegavajte ponovljene cikluse smrzavanja i odmrzavanja kako biste održali integritet peptida.</p>
                       </div>
                       <div className="p-4 bg-yellow-50 rounded-xl border border-yellow-100 mt-4 text-sm text-yellow-800">
-                         <strong>Research Use Only:</strong> This product is intended for laboratory research use only and is not approved for human consumption.
+                         <strong>Samo Za Istraživačku Upotrebu:</strong> Ovaj proizvod je namenjen isključivo za laboratorijska istraživanja i nije odobren za ljudsku upotrebu.
                       </div>
                     </div>
                   )}

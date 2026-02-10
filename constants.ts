@@ -16,12 +16,12 @@ export const PRODUCTS: Product[] = [
     price: 55.00,
     volume: '5mL',
     dosage: '10mg',
-    category: 'Recovery',
+    category: 'Oporavak',
     image: 'https://images.unsplash.com/photo-1624638765416-faed240b9049?q=80&w=1000&auto=format&fit=crop', // Lab vial vibe
-    description: 'A synthetic peptide consisting of 15 amino acids. Renowned for its potential regenerative properties in tendon, ligament, and gut health research. Formulated for high stability.',
+    description: 'Sintetički peptid koji se sastoji od 15 aminokiselina. Poznat po svom potencijalu u istraživanju regeneracije tetiva, ligamenata i zdravlja creva. Formulisan za visoku stabilnost.',
     coaAvailable: true,
     inStock: true,
-    tags: ['Recovery', 'Gut Health', 'Joints']
+    tags: ['Oporavak', 'Zdravlje Creva', 'Zglobovi']
   },
   {
     id: 'p2',
@@ -30,63 +30,63 @@ export const PRODUCTS: Product[] = [
     price: 65.00,
     volume: '2mL',
     dosage: '5mg',
-    category: 'Recovery',
+    category: 'Oporavak',
     image: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1000&auto=format&fit=crop',
-    description: 'Synthesized Thymosin Beta-4. Often researched for its role in cellular migration and potential to support tissue repair and reduced inflammation.',
+    description: 'Sintetizovani Timozin Beta-4. Često se istražuje zbog njegove uloge u ćelijskoj migraciji i potencijala da podrži popravku tkiva i smanjenje upale.',
     coaAvailable: true,
     inStock: true,
-    tags: ['Mobility', 'Inflammation', 'Repair']
+    tags: ['Mobilnost', 'Upala', 'Popravka']
   },
   {
     id: 'p3',
     name: 'GHK-Cu',
-    subtitle: 'Copper Tripeptide-1',
+    subtitle: 'Bakar Tripeptid-1',
     price: 45.00,
     volume: '10mL',
     dosage: '50mg',
-    category: 'Cosmetic',
+    category: 'Kozmetika',
     image: 'https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=1000&auto=format&fit=crop',
-    description: 'A naturally occurring copper complex. Extensively studied for its ability to stimulate collagen and elastin production in dermal research models.',
+    description: 'Prirodni kompleks bakra. Opsežno proučavan zbog sposobnosti da stimuliše proizvodnju kolagena i elastina u modelima istraživanja kože.',
     coaAvailable: true,
     inStock: true,
-    tags: ['Skin', 'Hair', 'Anti-Aging']
+    tags: ['Koža', 'Kosa', 'Anti-Aging']
   },
   {
     id: 'p4',
     name: 'CJC-1295',
-    subtitle: 'GHRH Analog (No DAC)',
+    subtitle: 'GHRH Analog (Bez DAC)',
     price: 58.00,
     volume: '2mL',
     dosage: '2mg',
-    category: 'Performance',
+    category: 'Performanse',
     image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1000&auto=format&fit=crop',
-    description: 'A tetrasubstituted 30-amino acid peptide hormone, primarily functioning as a GHRH analog. Modified for research stability.',
+    description: 'Tetrasupstituisani peptidni hormon od 30 aminokiselina, primarno funkcioniše kao GHRH analog. Modifikovan za istraživačku stabilnost.',
     coaAvailable: true,
     inStock: false,
-    tags: ['Performance', 'Growth', 'Metabolism']
+    tags: ['Performanse', 'Rast', 'Metabolizam']
   },
 ];
 
 export const GUIDES: Guide[] = [
   {
     id: 'g1',
-    title: 'Understanding Peptide Purity Analysis',
-    category: 'Education',
-    readTime: '4 min read',
+    title: 'Razumevanje Analize Čistoće Peptida',
+    category: 'Edukacija',
+    readTime: '4 min čitanja',
     image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1000&auto=format&fit=crop'
   },
   {
     id: 'g2',
-    title: 'Proper Reconstitution Protocols',
-    category: 'Handling',
-    readTime: '3 min read',
+    title: 'Protokoli Pravilne Rekonstitucije',
+    category: 'Rukovanje',
+    readTime: '3 min čitanja',
     image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1000&auto=format&fit=crop'
   },
   {
     id: 'g3',
-    title: 'The Cold Chain Logistics Standard',
-    category: 'Quality',
-    readTime: '5 min read',
+    title: 'Standard Logistike Hladnog Lanca',
+    category: 'Kvalitet',
+    readTime: '5 min čitanja',
     image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1000&auto=format&fit=crop'
   }
 ];
@@ -94,31 +94,31 @@ export const GUIDES: Guide[] = [
 export const QUIZ_QUESTIONS = [
   {
     id: 1,
-    question: "What is the primary focus of your research?",
+    question: "Koji je primarni fokus vašeg istraživanja?",
     options: [
-      { value: 'recovery', label: 'Tissue Regeneration & Recovery' },
-      { value: 'anti-aging', label: 'Anti-Aging & Cosmetic' },
-      { value: 'performance', label: 'Physical Performance & Metabolism' },
-      { value: 'cognitive', label: 'Cognitive Function' }
+      { value: 'recovery', label: 'Regeneracija Tkiva i Oporavak' },
+      { value: 'anti-aging', label: 'Anti-Aging i Kozmetika' },
+      { value: 'performance', label: 'Fizičke Performanse i Metabolizam' },
+      { value: 'cognitive', label: 'Kognitivne Funkcije' }
     ]
   },
   {
     id: 2,
-    question: "Which biological mechanism are you investigating?",
+    question: "Koji biološki mehanizam istražujete?",
     options: [
-      { value: 'inflammation', label: 'Inflammation Reduction' },
-      { value: 'collagen', label: 'Collagen Synthesis' },
-      { value: 'gh', label: 'Growth Hormone Secretion' },
-      { value: 'mitochondria', label: 'Mitochondrial Health' }
+      { value: 'inflammation', label: 'Smanjenje Upale' },
+      { value: 'collagen', label: 'Sinteza Kolagena' },
+      { value: 'gh', label: 'Lučenje Hormona Rasta' },
+      { value: 'mitochondria', label: 'Zdravlje Mitohondrija' }
     ]
   },
   {
     id: 3,
-    question: "What is your preferred research format?",
+    question: "Koji je vaš preferirani format istraživanja?",
     options: [
-      { value: 'vial', label: 'Lyophilized Vial (Reconstitution Required)' },
-      { value: 'topical', label: 'Topical Solution' },
-      { value: 'capsule', label: 'Oral Capsule' }
+      { value: 'vial', label: 'Liofilizovana Bočica (Potrebna Rekonstitucija)' },
+      { value: 'topical', label: 'Topikalni Rastvor' },
+      { value: 'capsule', label: 'Oralna Kapsula' }
     ]
   }
 ];

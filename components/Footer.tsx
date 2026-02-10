@@ -89,24 +89,24 @@ export const Footer: React.FC = () => {
                         className="flex items-center gap-3 mb-6"
                     >
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
-                        <span className="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">System Ready</span>
+                        <span className="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">Sistem Spreman</span>
                     </motion.div>
                     
                     <h2 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8">
-                        Equip your <br/>
-                        <span className="text-neutral-500">laboratory.</span>
+                        Opremite svoju <br/>
+                        <span className="text-neutral-500">laboratoriju.</span>
                     </h2>
                     
                     <div className="flex flex-col sm:flex-row gap-6">
                         <Magnetic>
                             <button className="group relative px-8 py-4 bg-white text-black rounded-full font-bold text-lg overflow-hidden flex items-center gap-3">
-                                <span className="relative z-10">Initialize Order</span>
+                                <span className="relative z-10">Započni Porudžbinu</span>
                                 <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                                 <div className="absolute inset-0 bg-neutral-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                             </button>
                         </Magnetic>
                         <button className="px-8 py-4 border border-white/20 rounded-full font-medium hover:bg-white/5 transition-colors text-neutral-300">
-                            Contact Sales
+                            Kontaktirajte Prodaju
                         </button>
                     </div>
                 </div>
@@ -140,20 +140,20 @@ export const Footer: React.FC = () => {
                             <span className="text-xl font-bold tracking-tight">OCTOLAB</span>
                         </div>
                         <p className="text-neutral-400 font-light leading-relaxed max-w-sm">
-                            Advancing biochemical research through absolute transparency and precision engineering.
+                            Unapređenje biohemijskih istraživanja kroz apsolutnu transparentnost i precizni inženjering.
                         </p>
                     </div>
 
                     {/* Terminal Style Input */}
                     <div className="w-full">
                         <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3 block">
-                            Subscribe to Data Feed
+                            Prijavite se na Data Feed
                         </label>
                         <div className="relative group">
                             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-green-500 font-mono text-sm">{'>'}</span>
                             <input 
                                 type="email" 
-                                placeholder="enter_email_address" 
+                                placeholder="unesite_email_adresu" 
                                 className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-8 pr-12 text-sm font-mono text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/30 transition-all"
                             />
                             <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-neutral-500 hover:text-white transition-colors">
@@ -166,9 +166,9 @@ export const Footer: React.FC = () => {
                 {/* Links (7 Cols) */}
                 <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
                     {[
-                        { title: "Index", links: ["Catalog", "New Arrivals", "Best Sellers", "Equipment"] },
-                        { title: "Protocol", links: ["Quality Control", "Methodology", "Storage Data", "Safety Sheets"] },
-                        { title: "Network", links: ["About Octolab", "Careers", "Global Partners", "Contact"] },
+                        { title: "Indeks", links: ["Katalog", "Novi Proizvodi", "Najprodavanije", "Oprema"] },
+                        { title: "Protokol", links: ["Kontrola Kvaliteta", "Metodologija", "Podaci o Skladištenju", "Bezbednosni Listovi"] },
+                        { title: "Mreža", links: ["O Octolabu", "Karijera", "Globalni Partneri", "Kontakt"] },
                     ].map((col, i) => (
                         <div key={i}>
                             <h4 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-6">{col.title}</h4>
@@ -193,7 +193,7 @@ export const Footer: React.FC = () => {
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-12">
                     <div className="flex items-center gap-2">
                         <Globe size={12} />
-                        <span>San Francisco, CA</span>
+                        <span>Beograd, SRB</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <Clock size={12} />
@@ -201,15 +201,15 @@ export const Footer: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-2 text-green-500/80">
                         <Activity size={12} />
-                        <span>Lab Operational</span>
+                        <span>Laboratorija Aktivna</span>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-6">
-                     <a href="#" className="hover:text-white transition-colors">Privacy</a>
-                     <a href="#" className="hover:text-white transition-colors">Terms</a>
+                     <a href="#" className="hover:text-white transition-colors">Privatnost</a>
+                     <a href="#" className="hover:text-white transition-colors">Uslovi</a>
                      <button onClick={scrollToTop} className="flex items-center gap-2 hover:text-white transition-colors group">
-                        Top <ArrowUp size={10} className="group-hover:-translate-y-0.5 transition-transform" />
+                        Vrh <ArrowUp size={10} className="group-hover:-translate-y-0.5 transition-transform" />
                      </button>
                 </div>
             </div>

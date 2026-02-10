@@ -45,18 +45,18 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
         >
            {/* Minimal Badge */}
            <span className="mb-8 px-5 py-2 rounded-full border border-neutral-200 bg-white/50 backdrop-blur-md text-xs font-mono font-medium uppercase tracking-widest text-neutral-500 shadow-sm">
-              The Collection
+              Kolekcija
            </span>
 
            {/* Massive Editorial Title */}
            <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85]">
-             Research <br/>
-             <span className="text-neutral-300">Library.</span>
+             Istraživačka <br/>
+             <span className="text-neutral-300">Biblioteka.</span>
            </h1>
            
            <p className="text-lg md:text-2xl text-neutral-500 font-light max-w-xl leading-relaxed mt-4">
-             Precision-engineered compounds. <br/>
-             Verified for biological consistency.
+             Precizno inženjerska jedinjenja. <br/>
+             Verifikovana za biološku doslednost.
            </p>
         </motion.div>
       </div>
@@ -96,7 +96,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                          {/* Minimal Floating Category Tag */}
                          <div className="absolute top-6 left-6 md:top-10 md:left-10">
                             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400">
-                               {product.category} Series
+                               {product.category} Serija
                             </span>
                          </div>
                       </div>
@@ -110,13 +110,13 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                         <div className={`px-3 py-1 rounded-full border ${product.inStock ? 'border-green-200 bg-green-50 text-green-700' : 'border-neutral-200 bg-neutral-50 text-neutral-500'} flex items-center gap-2`}>
                             <div className={`w-1.5 h-1.5 rounded-full ${product.inStock ? 'bg-green-600 animate-pulse' : 'bg-neutral-400'}`} />
                             <span className="text-[10px] font-bold uppercase tracking-widest">
-                                {product.inStock ? 'In Stock' : 'Sold Out'}
+                                {product.inStock ? 'Na Stanju' : 'Rasprodato'}
                             </span>
                         </div>
                         {product.coaAvailable && (
                             <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-600">
                                 <Sparkles size={12} />
-                                <span>COA Verified</span>
+                                <span>COA Verifikovano</span>
                             </div>
                         )}
                       </div>
@@ -142,15 +142,15 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                       {/* Specs Grid - Minimalist */}
                       <div className="grid grid-cols-2 gap-y-6 gap-x-8 md:gap-y-8 md:gap-x-12 mb-10 md:mb-14 w-full max-w-md border-t border-neutral-100 pt-8">
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Volume</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Zapremina</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">{product.volume}</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Purity (HPLC)</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Čistoća (HPLC)</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">&gt;99.9%</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Dosage</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Doza</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">{product.dosage}</span>
                          </div>
                          <div className="flex flex-col gap-2">
@@ -162,7 +162,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                       {/* Action Area - Beautiful Price + Button */}
                       <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8 w-full">
                          <div className="flex flex-col">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-1">Price</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-1">Cena</span>
                             <span className="text-4xl md:text-5xl font-light tracking-tight text-[#0B0B0C]">
                                 ${product.price.toFixed(2)}
                             </span>
@@ -175,7 +175,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                            className="flex-1 bg-[#0B0B0C] text-white hover:bg-neutral-800 h-14 md:h-16 rounded-full text-lg shadow-2xl shadow-neutral-200 group relative overflow-hidden"
                          >
                            <span className="relative z-10 flex items-center gap-2">
-                             Analysis & Purchase <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
+                             Analiza i Kupovina <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
                            </span>
                          </Button>
                       </div>

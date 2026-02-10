@@ -32,18 +32,18 @@ export const About = () => {
            >
              <div className="flex items-center justify-center gap-3 mb-8">
                 <div className="h-[1px] w-8 bg-neutral-300"></div>
-                <span className="text-xs font-bold tracking-[0.2em] uppercase text-neutral-400">Est. 2020</span>
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-neutral-400">Osn. 2020</span>
                 <div className="h-[1px] w-8 bg-neutral-300"></div>
              </div>
              
              <h1 className="text-7xl md:text-[9rem] font-bold tracking-tighter text-black mb-8 leading-[0.85]">
-               Beyond <br/>
-               <span className="text-transparent bg-clip-text bg-gradient-to-b from-neutral-300 to-neutral-100">Analysis.</span>
+               Izvan <br/>
+               <span className="text-transparent bg-clip-text bg-gradient-to-b from-neutral-300 to-neutral-100">Analize.</span>
              </h1>
              
              <p className="text-xl md:text-2xl text-neutral-600 font-light max-w-2xl mx-auto leading-relaxed">
-               We founded Octolab to solve a crisis of confidence. <br/>
-               <span className="text-black font-medium">We don't just supply peptides; we supply data.</span>
+               Osnovali smo Octolab da bismo rešili krizu poverenja. <br/>
+               <span className="text-black font-medium">Ne isporučujemo samo peptide; mi isporučujemo podatke.</span>
              </p>
            </motion.div>
 
@@ -114,9 +114,9 @@ export const About = () => {
              transition={{ delay: 1.5 }}
              className="absolute top-[40%] left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 rounded-xl text-center shadow-2xl"
            >
-              <div className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-1">Target Peak</div>
+              <div className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-1">Ciljni Pik</div>
               <div className="text-4xl font-bold text-white tracking-tight">99.92%</div>
-              <div className="text-xs text-neutral-400 mt-1">Retention Time: 4.2m</div>
+              <div className="text-xs text-neutral-400 mt-1">Vreme Zadržavanja: 4.2m</div>
            </motion.div>
 
            {/* Bottom Text */}
@@ -125,23 +125,23 @@ export const About = () => {
                  <div className="text-white">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 backdrop-blur-md border border-blue-500/30 mb-4">
                         <Activity size={12} className="text-blue-400" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300">Performance Metrics</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300">Metrika Performansi</span>
                     </div>
-                    <h3 className="text-4xl font-bold tracking-tight mb-2">Our Results</h3>
+                    <h3 className="text-4xl font-bold tracking-tight mb-2">Naši Rezultati</h3>
                     <p className="text-white/60 font-mono text-sm max-w-lg leading-relaxed">
-                      Every batch is quantified. We maintain a statistical rejection rate of 12% to ensure only the highest purity compounds reach your laboratory.
+                      Svaka serija se kvantifikuje. Održavamo statističku stopu odbijanja od 12% kako bismo osigurali da samo jedinjenja najviše čistoće stignu do vaše laboratorije.
                     </p>
                  </div>
                  
                  <div className="flex gap-8">
                     <div className="text-right">
                         <div className="text-3xl font-bold text-white font-mono">0.05%</div>
-                        <div className="text-[10px] text-white/40 uppercase tracking-widest">Max Impurity</div>
+                        <div className="text-[10px] text-white/40 uppercase tracking-widest">Max Nečistoća</div>
                     </div>
                     <div className="w-[1px] h-12 bg-white/20"></div>
                     <div className="text-right">
                         <div className="text-3xl font-bold text-white font-mono">&lt;24h</div>
-                        <div className="text-[10px] text-white/40 uppercase tracking-widest">Analysis Time</div>
+                        <div className="text-[10px] text-white/40 uppercase tracking-widest">Vreme Analize</div>
                     </div>
                  </div>
               </div>
@@ -151,29 +151,29 @@ export const About = () => {
         {/* THE PILLARS (3-Column Grid) */}
         <section className="mb-40">
            <div className="flex flex-col md:flex-row justify-between items-end mb-16 px-4">
-              <h2 className="text-4xl font-bold tracking-tighter">The Octolab Standard</h2>
+              <h2 className="text-4xl font-bold tracking-tighter">Octolab Standard</h2>
               <p className="text-neutral-500 max-w-sm text-right hidden md:block">
-                 Built on three immutable principles of biochemical engineering.
+                 Izgrađen na tri nepromenljiva principa biohemijskog inženjeringa.
               </p>
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
              {[
                { 
-                 title: "Radical Transparency", 
-                 desc: "We publish raw spectral data for every batch. Not just a pass/fail certificate, but the full chromatogram.", 
+                 title: "Radikalna Transparentnost", 
+                 desc: "Objavljujemo sirove spektralne podatke za svaku seriju. Ne samo sertifikat prolaz/pad, već kompletan hromatogram.", 
                  icon: <FileJson size={24}/>,
                  color: "bg-blue-50 text-blue-600"
                },
                { 
-                 title: "Cold Chain Logic", 
-                 desc: "From synthesis to your doorstep, our inventory is temperature-controlled to prevent degradation.", 
+                 title: "Logika Hladnog Lanca", 
+                 desc: "Od sinteze do vašeg praga, naš inventar je pod kontrolisanom temperaturom kako bi se sprečila degradacija.", 
                  icon: <Activity size={24}/>,
                  color: "bg-purple-50 text-purple-600"
                },
                { 
-                 title: "Academic Pricing", 
-                 desc: "Direct partnerships with universities allow us to offer institutional rates without compromising quality.", 
+                 title: "Akademske Cene", 
+                 desc: "Direktna partnerstva sa univerzitetima nam omogućavaju da ponudimo institucionalne stope bez kompromisa u kvalitetu.", 
                  icon: <Award size={24}/>,
                  color: "bg-orange-50 text-orange-600"
                }
@@ -205,10 +205,10 @@ export const About = () => {
 
            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
               {[
-                { label: "Active Citations", value: "450+" },
-                { label: "Labs Supplied", value: "1,200" },
-                { label: "Purity Avg", value: "99.8%" },
-                { label: "Years Active", value: "04" },
+                { label: "Aktivnih Citata", value: "450+" },
+                { label: "Snabdevenih Lab.", value: "1,200" },
+                { label: "Prosek Čistoće", value: "99.8%" },
+                { label: "Godina Rada", value: "04" },
               ].map((stat, i) => (
                 <div key={i}>
                    <div className="text-5xl md:text-7xl font-bold tracking-tighter text-black mb-2">{stat.value}</div>
@@ -226,18 +226,18 @@ export const About = () => {
             <div>
                 <div className="flex items-center gap-2 mb-6 text-neutral-400">
                     <Globe size={16} />
-                    <span className="text-xs font-bold uppercase tracking-widest">Our Identity</span>
+                    <span className="text-xs font-bold uppercase tracking-widest">Naš Identitet</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-black mb-8 leading-[0.9]">
-                    The Architects <br/>
-                    <span className="text-neutral-400">of Consistency.</span>
+                    Arhitekte <br/>
+                    <span className="text-neutral-400">Doslednosti.</span>
                 </h2>
                 <div className="text-lg md:text-xl text-neutral-600 font-light leading-relaxed space-y-6">
                     <p>
-                        Octolab is a specialized collective of biochemists and data engineers founded on a single premise: that the reproducibility of scientific research should never be compromised by the quality of its inputs.
+                        Octolab je specijalizovani kolektiv biohemičara i inženjera podataka osnovan na jednoj premisi: da ponovljivost naučnog istraživanja nikada ne sme biti ugrožena kvalitetom njegovih inputa.
                     </p>
                     <p>
-                        We emerged from the frustration of academic research, where "batch variance" was a constant, silent variable ruining months of work. We decided to build the supplier we wished we had—one that treats reagents not as commodities, but as critical data points. We are the firewall between dirty synthesis and your discovery.
+                        Nastali smo iz frustracije akademskim istraživanjem, gde je "varijansa serije" bila konstantna, tiha promenljiva koja je uništavala mesece rada. Odlučili smo da izgradimo dobavljača kakvog smo želeli da imamo — onog koji ne tretira reagense kao robu, već kao kritične tačke podataka. Mi smo zaštitni zid između prljave sinteze i vašeg otkrića.
                     </p>
                 </div>
             </div>
@@ -259,21 +259,21 @@ export const About = () => {
 
                 <div className="relative z-10">
                    <h3 className="text-3xl md:text-4xl font-bold mb-10 text-white tracking-tight">
-                      The Octolab <br/>
+                      Octolab <br/>
                       <motion.span 
                          className="inline-block bg-[linear-gradient(110deg,#ffffff_20%,#38bdf8_30%,#c084fc_40%,#ffffff_50%)] bg-[length:200%_100%] bg-clip-text text-transparent"
                          animate={{ backgroundPosition: ["100% 0", "-100% 0"] }}
                          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                       >
-                        Advantage.
+                        Prednost.
                       </motion.span>
                    </h3>
                    
                    <div className="space-y-10">
                       {[
-                          { title: "Verification, not Trust", desc: "We don't ask for blind faith. We provide raw HPLC & MS data for every batch, empowering you to verify purity independently." },
-                          { title: "Domestic Integrity", desc: "Zero drop-shipping. Zero mystery origins. Every vial is synthesized, tested, and dispatched from our US facility." },
-                          { title: "The 1% Difference", desc: "Industry standard is 98%. We reject anything under 99.5%. In sensitive metabolic research, that 1.5% gap is the difference between data and noise." }
+                          { title: "Verifikacija, ne Poverenje", desc: "Ne tražimo slepo poverenje. Pružamo sirove HPLC i MS podatke za svaku seriju, omogućavajući vam da nezavisno verifikujete čistoću." },
+                          { title: "Domaći Integritet", desc: "Nula drop-shippinga. Nula misterioznog porekla. Svaka bočica se sintetiše, testira i šalje iz našeg postrojenja." },
+                          { title: "Razlika od 1%", desc: "Industrijski standard je 98%. Mi odbijamo sve ispod 99.5%. U osetljivim metaboličkim istraživanjima, taj jaz od 1.5% je razlika između podataka i šuma." }
                       ].map((item, i) => (
                           <div key={i} className="group">
                              <div className="flex items-baseline gap-4 mb-3">

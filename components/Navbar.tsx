@@ -13,11 +13,11 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Home', page: PageView.HOME },
-    { label: 'About Us', page: PageView.ABOUT },
-    { label: 'Catalog', page: PageView.SHOP },
-    { label: 'Info', page: PageView.INFO },
-    { label: 'Contact Us', page: PageView.CONTACT },
+    { label: 'Početna', page: PageView.HOME },
+    { label: 'O Nama', page: PageView.ABOUT },
+    { label: 'Katalog', page: PageView.SHOP },
+    { label: 'Baza Znanja', page: PageView.INFO },
+    { label: 'Kontakt', page: PageView.CONTACT },
   ];
 
   const handleMobileNavigate = (page: PageView) => {
@@ -123,8 +123,8 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
                 transition={{ delay: 0.4 }}
                 className="absolute bottom-12 left-0 right-0 flex justify-center gap-6 text-xs text-neutral-400 font-bold uppercase tracking-widest"
             >
-                <button>Login</button>
-                <button>Support</button>
+                <button>Prijava</button>
+                <button>Podrška</button>
             </motion.div>
           </motion.div>
         )}
