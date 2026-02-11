@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { Button } from '../components/Button';
-import { ArrowRight, ShieldCheck, Zap, Box, Activity, FlaskConical, Dna, Atom, Filter, ScanSearch, Microscope, Search, Terminal, AlertTriangle } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Box, Activity, FlaskConical, Dna, Atom, Filter, ScanSearch, Microscope, Search, Terminal, AlertTriangle, Plus, Minus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 
@@ -15,6 +15,81 @@ const DisclaimerBar = () => (
       </div>
   </div>
 );
+
+const FAQ = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const questions = [
+    {
+      question: "Da li su proizvodi namenjeni za ljudsku upotrebu?",
+      answer: "Ne. Svi OCTOLAB proizvodi su striktno definisani kao hemijski reagensi za laboratorijsko istraživanje i razvoj. Nisu odobreni, niti namenjeni za ljudsku ili veterinarsku upotrebu, dijagnostiku ili lečenje."
+    },
+    {
+      question: "Kako garantujete čistoću serije?",
+      answer: "Svaka serija prolazi kroz dvostruku verifikaciju. Prvo interno, a zatim putem nezavisnih laboratorija treće strane. HPLC (čistoća) i MS (identitet) izveštaji su dostupni za svaku seriju na zahtev."
+    },
+    {
+      question: "Kakav je protokol isporuke (Hladni Lanac)?",
+      answer: "Liofilizovani peptidi su stabilni na sobnoj temperaturi do 3 meseca. Ipak, mi koristimo termalno pakovanje za sve pošiljke kako bismo eliminisali rizik od ekstremnih temperaturnih fluktuacija tokom transporta."
+    },
+    {
+      question: "Koje je vreme isporuke za Srbiju?",
+      answer: "Sve porudžbine primljene do 15h šalju se istog dana putem Post Express kurirske službe sa opcijom 'Danas za Sutra'. Očekivano vreme isporuke je 24h radnim danima."
+    },
+    {
+      question: "Kako treba skladištiti peptide?",
+      answer: "Liofilizovani prah treba čuvati na -20°C (zamrzivač) gde ostaje stabilan godinama. Nakon rekonstitucije sa bakteriostatskom vodom, obavezno čuvati na +4°C (frižider) i iskoristiti u roku od 3-4 nedelje."
+    }
+  ];
+
+  return (
+    <section className="py-24 md:py-32 bg-white relative z-20 border-t border-neutral-100">
+      <div className="max-w-[900px] mx-auto px-6">
+        <div className="mb-16 text-center">
+            <span className="text-xs font-bold uppercase tracking-widest text-neutral-600 mb-4 block">Centar za Podršku</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0B0B0C] tracking-tight mb-6">Često Postavljana Pitanja</h2>
+            <p className="text-neutral-600 text-lg font-medium max-w-2xl mx-auto">
+                Odgovori na ključna pitanja o rukovanju, logistici i usklađenosti.
+            </p>
+        </div>
+        
+        <div className="flex flex-col gap-4">
+            {questions.map((q, i) => (
+                <div 
+                    key={i}
+                    onClick={() => setActiveIndex(activeIndex === i ? null : i)}
+                    className={`group border rounded-[2rem] p-6 md:p-8 cursor-pointer transition-all duration-300 ${activeIndex === i ? 'bg-neutral-50 border-neutral-300 shadow-sm' : 'bg-white border-neutral-200 hover:border-neutral-300 hover:bg-[#F9F9FB]'}`}
+                >
+                    <div className="flex justify-between items-center gap-4">
+                        <h3 className={`text-lg md:text-xl font-bold transition-colors leading-tight ${activeIndex === i ? 'text-black' : 'text-neutral-700'}`}>
+                            {q.question}
+                        </h3>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${activeIndex === i ? 'bg-black text-white rotate-180' : 'bg-neutral-100 text-neutral-500 group-hover:bg-neutral-200'}`}>
+                            {activeIndex === i ? <Minus size={18} /> : <Plus size={18} />}
+                        </div>
+                    </div>
+                    <AnimatePresence>
+                        {activeIndex === i && (
+                            <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                                className="overflow-hidden"
+                            >
+                                <p className="pt-4 text-neutral-600 leading-relaxed font-medium text-base md:text-lg max-w-[90%]">
+                                    {q.answer}
+                                </p>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const ResearchInterface = () => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -343,6 +418,9 @@ export const Home: React.FC = () => {
 
          </div>
       </section>
+
+      {/* NEW INTERACTIVE FAQ SECTION */}
+      <FAQ />
 
     </div>
   );
