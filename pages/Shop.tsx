@@ -49,17 +49,17 @@ export const Shop: React.FC<ShopProps> = () => {
            className="flex flex-col items-center text-center max-w-5xl mx-auto"
         >
            {/* Minimal Badge */}
-           <span className="mb-8 px-5 py-2 rounded-full border border-neutral-200 bg-white/50 backdrop-blur-md text-xs font-mono font-medium uppercase tracking-widest text-neutral-500 shadow-sm">
+           <span className="mb-8 px-5 py-2 rounded-full border border-neutral-200 bg-white/50 backdrop-blur-md text-xs font-mono font-medium uppercase tracking-widest text-neutral-700 shadow-sm">
               Kolekcija Peptidi Srbija
            </span>
 
            {/* Massive Editorial Title */}
            <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85]">
              Istraživačka <br/>
-             <span className="text-neutral-300">Biblioteka.</span>
+             <span className="text-neutral-500">Biblioteka.</span>
            </h1>
            
-           <p className="text-lg md:text-2xl text-neutral-500 font-light max-w-xl leading-relaxed mt-4">
+           <p className="text-lg md:text-2xl text-neutral-600 font-light max-w-xl leading-relaxed mt-4">
              Precizno inženjerska jedinjenja. <br/>
              Verifikovana za biološku doslednost.
            </p>
@@ -100,7 +100,7 @@ export const Shop: React.FC<ShopProps> = () => {
 
                          {/* Minimal Floating Category Tag */}
                          <div className="absolute top-6 left-6 md:top-10 md:left-10">
-                            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400">
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-600">
                                {product.category} Serija
                             </span>
                          </div>
@@ -112,14 +112,14 @@ export const Shop: React.FC<ShopProps> = () => {
                       
                       {/* Status Line */}
                       <div className="flex items-center gap-3 mb-6 md:mb-8">
-                        <div className={`px-3 py-1 rounded-full border ${product.inStock ? 'border-green-200 bg-green-50 text-green-700' : 'border-neutral-200 bg-neutral-50 text-neutral-500'} flex items-center gap-2`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${product.inStock ? 'bg-green-600 animate-pulse' : 'bg-neutral-400'}`} />
+                        <div className={`px-3 py-1 rounded-full border ${product.inStock ? 'border-green-200 bg-green-50 text-green-700' : 'border-neutral-200 bg-neutral-50 text-neutral-600'} flex items-center gap-2`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${product.inStock ? 'bg-green-600 animate-pulse' : 'bg-neutral-500'}`} />
                             <span className="text-[10px] font-bold uppercase tracking-widest">
                                 {product.inStock ? 'Na Stanju' : 'Rasprodato'}
                             </span>
                         </div>
                         {product.coaAvailable && (
-                            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700">
                                 <Sparkles size={12} />
                                 <span>COA Verifikovano</span>
                             </div>
@@ -135,31 +135,31 @@ export const Shop: React.FC<ShopProps> = () => {
                       </h2>
                       
                       {/* Subtitle / Chem Name */}
-                      <p className="text-lg md:text-xl font-mono text-neutral-400 mb-6 md:mb-8 tracking-tight">
+                      <p className="text-lg md:text-xl font-mono text-neutral-600 mb-6 md:mb-8 tracking-tight">
                         {product.subtitle}
                       </p>
                       
                       {/* Description */}
-                      <p className="text-base md:text-lg text-neutral-600 leading-relaxed max-w-md mb-8 md:mb-12 font-medium">
+                      <p className="text-base md:text-lg text-neutral-700 leading-relaxed max-w-md mb-8 md:mb-12 font-medium">
                         {product.description}
                       </p>
 
                       {/* Specs Grid - Minimalist */}
                       <div className="grid grid-cols-2 gap-y-6 gap-x-8 md:gap-y-8 md:gap-x-12 mb-10 md:mb-14 w-full max-w-md border-t border-neutral-100 pt-8">
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Zapremina</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Zapremina</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">{product.volume}</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Čistoća (HPLC)</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Čistoća (HPLC)</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">&gt;99.9%</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Doza</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Doza</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">{product.dosage}</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Temp</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Temp</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">-20°C</span>
                          </div>
                       </div>
@@ -167,7 +167,7 @@ export const Shop: React.FC<ShopProps> = () => {
                       {/* Action Area - Beautiful Price + Button */}
                       <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8 w-full">
                          <div className="flex flex-col">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-1">Cena</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600 mb-1">Cena</span>
                             <span className="text-4xl md:text-5xl font-light tracking-tight text-[#0B0B0C]">
                                 ${product.price.toFixed(2)}
                             </span>

@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                     className={`text-[13px] font-semibold tracking-wide uppercase transition-all duration-300 ${
                     isActive(link.path)
                         ? 'text-black' 
-                        : 'text-neutral-500 hover:text-black hover:tracking-wider'
+                        : 'text-neutral-600 hover:text-black hover:tracking-wider'
                     }`}
                 >
                     {link.label}
@@ -64,9 +64,10 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
             <div className="flex items-center gap-2 shrink-0">
                 <button 
                     onClick={onOpenCart}
+                    aria-label="Open cart"
                     className="relative group bg-neutral-100/50 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 transition-all p-2.5 rounded-full active:scale-95"
                 >
-                    <ShoppingBag size={18} strokeWidth={1.5} className="text-neutral-700 group-hover:text-black transition-colors" />
+                    <ShoppingBag size={18} strokeWidth={1.5} className="text-neutral-800 group-hover:text-black transition-colors" />
                     {cartCount > 0 && (
                         <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] text-white font-bold ring-2 ring-white">
                         {cartCount}
@@ -76,6 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                 <button 
                     className="md:hidden text-[#1C1C1E] p-2.5 bg-neutral-100/50 rounded-full active:scale-95 transition-transform"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 >
                     {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
@@ -98,14 +100,12 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                   key={link.label}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  // Using motion component for animation inside link would require converting Link to motion.a or similar, 
-                  // but keeping it simple with inline styles for now or wrapping
                 >
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 + (i * 0.05) }}
-                        className={`text-4xl font-light tracking-tight block ${isActive(link.path) ? 'text-black font-medium' : 'text-neutral-500'}`}
+                        className={`text-4xl font-light tracking-tight block ${isActive(link.path) ? 'text-black font-medium' : 'text-neutral-600'}`}
                     >
                         {link.label}
                     </motion.span>
@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="absolute bottom-12 left-0 right-0 flex justify-center gap-6 text-xs text-neutral-400 font-bold uppercase tracking-widest"
+                className="absolute bottom-12 left-0 right-0 flex justify-center gap-6 text-xs text-neutral-600 font-bold uppercase tracking-widest"
             >
                 <button>Prijava</button>
                 <button>Podrška</button>

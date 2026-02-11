@@ -126,6 +126,7 @@ const AppContent: React.FC = () => {
                 </div>
                 <button 
                    onClick={() => setIsCartOpen(false)} 
+                   aria-label="Close cart"
                    className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-600 hover:text-black transition-colors"
                 >
                    <X size={20} />
@@ -166,6 +167,7 @@ const AppContent: React.FC = () => {
                            <div className="flex items-center gap-3 bg-neutral-50 rounded-full p-1 border border-neutral-100">
                               <button 
                                  onClick={() => updateQuantity(item.id, -1)}
+                                 aria-label="Decrease quantity"
                                  className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center text-neutral-600 hover:text-black disabled:opacity-50"
                                  disabled={item.quantity <= 1}
                               >
@@ -174,6 +176,7 @@ const AppContent: React.FC = () => {
                               <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
                               <button 
                                  onClick={() => updateQuantity(item.id, 1)}
+                                 aria-label="Increase quantity"
                                  className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center text-neutral-600 hover:text-black"
                               >
                                  <Plus size={12} />

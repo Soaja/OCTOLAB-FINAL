@@ -7,7 +7,7 @@ import { SEO } from '../components/SEO';
 
 const DisclaimerBar = () => (
   <div className="w-full bg-amber-50/60 border-y border-amber-100/50 py-3 flex justify-center items-center relative z-30 backdrop-blur-md">
-      <div className="flex items-center gap-2 text-amber-900/70 px-4 text-center">
+      <div className="flex items-center gap-2 text-amber-900/80 px-4 text-center">
           <AlertTriangle size={12} className="stroke-2" />
           <span className="text-[10px] font-bold uppercase tracking-[0.15em]">
             Samo Za Istraživačke Svrhe
@@ -81,13 +81,13 @@ const ResearchInterface = () => {
         <motion.div style={!isMobile ? { transform: "translateZ(30px)" } : {}} className="absolute inset-0 pointer-events-none z-20">
            <div className="absolute top-8 right-8">
               <div className="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-neutral-100 shadow-sm text-center">
-                 <div className="text-[8px] font-bold text-neutral-400 uppercase tracking-wider">HPLC</div>
+                 <div className="text-[8px] font-bold text-neutral-600 uppercase tracking-wider">HPLC</div>
                  <div className="text-xs font-bold text-neutral-900 font-mono">99.8%</div>
               </div>
            </div>
            <div className="absolute bottom-20 left-8">
               <div className="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-neutral-100 shadow-sm text-left">
-                 <div className="text-[8px] font-bold text-neutral-400 uppercase tracking-wider">Sekvenca</div>
+                 <div className="text-[8px] font-bold text-neutral-600 uppercase tracking-wider">Sekvenca</div>
                  <div className="text-xs font-bold text-neutral-900 font-mono">Gly-His-Lys</div>
               </div>
            </div>
@@ -104,9 +104,9 @@ const ResearchInterface = () => {
         <div className="absolute bottom-0 left-0 right-0 h-14 bg-white/80 backdrop-blur-md border-t border-neutral-100 flex items-center justify-between px-6 z-10">
             <div className="flex items-center gap-2">
                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-               <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-500">System Ready</span>
+               <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-600">System Ready</span>
             </div>
-            <Activity size={14} className="text-neutral-400" />
+            <Activity size={14} className="text-neutral-500" />
         </div>
       </motion.div>
     </div>
@@ -145,21 +145,21 @@ export const Home: React.FC = () => {
           >
              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100/80 border border-neutral-200 backdrop-blur-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-600">Precizni Peptidi</span>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-700">Precizni Peptidi</span>
              </span>
           </motion.div>
 
           <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.95] md:leading-[0.9] mb-8 max-w-4xl mx-auto">
             JASNOĆA<br/>
             U SVAKOM<br/>
-            <span className="text-neutral-300">MOLEKULU.</span>
+            <span className="text-neutral-500">MOLEKULU.</span>
           </h1>
           
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-neutral-500 max-w-xl leading-relaxed mb-10 font-medium"
+            className="text-lg md:text-xl text-neutral-600 max-w-xl leading-relaxed mb-10 font-medium"
           >
             Istraživačka jedinjenja sintetizovana za apsolutnu čistoću.
             Verifikovana HPLC analizom. Dizajnirana za nauku.
@@ -215,9 +215,9 @@ export const Home: React.FC = () => {
             <div className="text-center max-w-3xl mx-auto mb-20">
                 <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.95] mb-6">
                   Definisana čistoća. <br />
-                  <span className="text-neutral-300">Molekul po molekul.</span>
+                  <span className="text-neutral-600">Molekul po molekul.</span>
                 </h2>
-                <p className="text-neutral-500">
+                <p className="text-neutral-600">
                   Standardizovana jedinjenja za dosledne biološke ishode.
                 </p>
             </div>
@@ -252,7 +252,7 @@ export const Home: React.FC = () => {
                    className="group relative bg-[#F5F5F7] rounded-[2.5rem] overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-neutral-200/50 transition-all duration-300"
                  >
                     <div className="absolute top-8 left-8 right-8 flex justify-between items-start z-30">
-                        <span className="px-3 py-1 bg-white/60 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/20 text-neutral-600">
+                        <span className="px-3 py-1 bg-white/60 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/20 text-neutral-700">
                             {item.category}
                         </span>
                     </div>
@@ -270,7 +270,7 @@ export const Home: React.FC = () => {
                         <div className="flex justify-between items-center w-full">
                             <div>
                                 <h3 className="text-2xl font-bold text-[#0B0B0C] tracking-tight mb-1">{item.name}</h3>
-                                <p className="text-xs text-neutral-500 font-mono">{item.format}</p>
+                                <p className="text-xs text-neutral-600 font-mono">{item.format}</p>
                             </div>
                             
                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-black group-hover:text-white transition-colors duration-300">
@@ -311,10 +311,10 @@ export const Home: React.FC = () => {
                 <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-[#1d1d1f] mb-8 leading-[0.9]">
                   Analiziraj.<br/>
                   Optimizuj.<br/>
-                  <span className="text-neutral-400">Sintetiši.</span>
+                  <span className="text-neutral-600">Sintetiši.</span>
                 </h2>
 
-                <p className="text-lg md:text-xl text-neutral-500 font-light mb-12 max-w-md leading-relaxed">
+                <p className="text-lg md:text-xl text-neutral-600 font-light mb-12 max-w-md leading-relaxed">
                   Pristupite našoj kompletnoj spektralnoj bazi podataka i verifikujte doslednost serije u realnom vremenu.
                 </p>
 
@@ -327,11 +327,11 @@ export const Home: React.FC = () => {
                          <Search size={20} />
                       </div>
                       <div className="flex flex-col items-start flex-1">
-                         <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">Pretraga Baze</span>
+                         <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest">Pretraga Baze</span>
                          <span className="text-neutral-900 font-medium text-sm md:text-base">Pronađi jedinjenje po CAS...</span>
                       </div>
                       <div className="pr-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
-                         <ArrowRight size={20} className="text-neutral-400" />
+                         <ArrowRight size={20} className="text-neutral-600" />
                       </div>
                    </div>
                 </div>

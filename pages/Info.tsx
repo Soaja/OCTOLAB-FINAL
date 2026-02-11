@@ -217,7 +217,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
          </motion.div>
          <motion.span 
             layoutId={`category-${article.id}`}
-            className="px-3 py-1 bg-white/50 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-neutral-500 border border-neutral-200"
+            className="px-3 py-1 bg-white/50 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-neutral-600 border border-neutral-200"
          >
             {article.category}
          </motion.span>
@@ -233,7 +233,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
          </motion.h3>
          <motion.p 
            layoutId={`summary-${article.id}`}
-           className="text-sm text-neutral-500 leading-relaxed line-clamp-2 mb-6 group-hover:text-neutral-600 transition-colors"
+           className="text-sm text-neutral-600 leading-relaxed line-clamp-2 mb-6 group-hover:text-neutral-700 transition-colors"
          >
            {article.summary}
          </motion.p>
@@ -241,7 +241,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
 
       {/* Footer */}
       <div className="flex items-center justify-between mt-auto pt-6 border-t border-neutral-200/50 relative z-10">
-         <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{article.readTime}</span>
+         <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">{article.readTime}</span>
          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-neutral-900 shadow-sm opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300">
             <ArrowRight size={14} />
          </div>
@@ -273,6 +273,7 @@ const ExpandedArticle: React.FC<ExpandedArticleProps> = ({ article, onClose }) =
            {/* Close Button */}
            <button 
              onClick={(e) => { e.stopPropagation(); onClose(); }}
+             aria-label="Close article"
              className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-neutral-100/80 backdrop-blur-md flex items-center justify-center text-neutral-600 hover:bg-black hover:text-white transition-colors"
            >
              <X size={20} />
@@ -292,11 +293,11 @@ const ExpandedArticle: React.FC<ExpandedArticleProps> = ({ article, onClose }) =
               <div className="flex items-center gap-3 mb-4 relative z-10">
                 <motion.span 
                    layoutId={`category-${article.id}`}
-                   className="px-3 py-1 bg-white rounded-full text-[10px] font-bold uppercase tracking-widest text-neutral-500 shadow-sm"
+                   className="px-3 py-1 bg-white rounded-full text-[10px] font-bold uppercase tracking-widest text-neutral-600 shadow-sm"
                 >
                    {article.category}
                 </motion.span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">• {article.readTime}</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">• {article.readTime}</span>
               </div>
 
               <motion.h2 
@@ -324,7 +325,7 @@ const ExpandedArticle: React.FC<ExpandedArticleProps> = ({ article, onClose }) =
                  transition={{ delay: 0.4 }}
                  className="mt-16 pt-8 border-t border-neutral-100 flex justify-center"
               >
-                 <button onClick={onClose} className="text-sm font-bold uppercase tracking-widest text-neutral-400 hover:text-black transition-colors">
+                 <button onClick={onClose} className="text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors">
                     Zatvori Članak
                  </button>
               </motion.div>
@@ -370,9 +371,9 @@ export const Info: React.FC = () => {
               Baza Znanja
            </span>
            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-[#0B0B0C] mb-6">
-             Istraživački <span className="text-neutral-300">Uvidi.</span>
+             Istraživački <span className="text-neutral-500">Uvidi.</span>
            </h1>
-           <p className="text-xl text-neutral-500 font-light leading-relaxed">
+           <p className="text-xl text-neutral-600 font-light leading-relaxed">
              Osnovna dokumentacija, naučna metodologija i protokoli za modernu laboratoriju.
            </p>
         </motion.div>

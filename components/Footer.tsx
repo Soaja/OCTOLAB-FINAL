@@ -156,7 +156,7 @@ export const Footer: React.FC = () => {
                                 placeholder="unesite_email_adresu" 
                                 className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-8 pr-12 text-sm font-mono text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/30 transition-all"
                             />
-                            <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-neutral-500 hover:text-white transition-colors">
+                            <button aria-label="Subscribe" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-neutral-500 hover:text-white transition-colors">
                                 <Send size={16} />
                             </button>
                         </div>

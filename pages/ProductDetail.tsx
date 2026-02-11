@@ -98,7 +98,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
       <div className="max-w-[1400px] mx-auto px-6 mb-8">
          <button 
            onClick={() => navigate('/peptidi-srbija')}
-           className="group flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors"
+           className="group flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-widest text-neutral-600 hover:text-black transition-colors"
          >
            <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center group-hover:border-black transition-colors bg-white">
              <ChevronLeft size={14} />
@@ -111,7 +111,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
         <div className="min-h-[50vh] flex items-center justify-center">
             <div className="flex flex-col items-center gap-4">
                 <div className="w-8 h-8 border-2 border-neutral-200 border-t-black rounded-full animate-spin"></div>
-                <span className="text-xl font-medium text-neutral-400">Učitavanje...</span>
+                <span className="text-xl font-medium text-neutral-600">Učitavanje...</span>
             </div>
         </div>
       ) : (
@@ -151,7 +151,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                 <div className="grid grid-cols-3 gap-4 mt-4">
                 {[1,2,3].map((_, i) => (
                     <div key={i} className={`h-24 rounded-2xl border ${i === 0 ? 'border-black bg-neutral-50' : 'border-transparent bg-[#F5F5F7]'} flex items-center justify-center cursor-pointer hover:bg-neutral-100 transition-colors`}>
-                        <Dna size={20} className="text-neutral-400 opacity-50" />
+                        <Dna size={20} className="text-neutral-500 opacity-50" />
                     </div>
                 ))}
                 </div>
@@ -182,7 +182,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     <h1 className="text-5xl md:text-7xl font-bold text-[#0B0B0C] tracking-tighter mb-4 leading-[0.9]">
                     {product.name}
                     </h1>
-                    <p className="text-xl text-neutral-500 font-light mb-8 max-w-xl">
+                    <p className="text-xl text-neutral-600 font-light mb-8 max-w-xl">
                     {product.subtitle} - {product.description}
                     </p>
                 </motion.div>
@@ -201,16 +201,16 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                             <Dna size={14} />
                         </div>
                         <div className="text-left">
-                            <div className="text-xs font-bold uppercase tracking-wider">Samo Peptid</div>
-                            <div className="text-sm font-medium opacity-60">Liofilizovan</div>
+                            <div className="text-xs font-bold uppercase tracking-wider text-neutral-600">Samo Peptid</div>
+                            <div className="text-sm font-medium text-neutral-600">Liofilizovan</div>
                         </div>
                     </button>
                     
                     <button 
                         onClick={() => setIsBundleSelected(true)}
-                        className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${isBundleSelected ? 'bg-black shadow-lg text-white border-black' : 'bg-transparent text-neutral-500 border-transparent hover:bg-white/50'}`}
+                        className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${isBundleSelected ? 'bg-black shadow-lg text-white border-black' : 'bg-transparent text-neutral-600 border-transparent hover:bg-white/50'}`}
                     >
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isBundleSelected ? 'bg-white/20 text-white' : 'bg-white border border-neutral-200 text-neutral-400'}`}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isBundleSelected ? 'bg-white/20 text-white' : 'bg-white border border-neutral-200 text-neutral-500'}`}>
                             <Droplets size={14} />
                         </div>
                         <div className="text-left">
@@ -225,7 +225,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                 )}
 
                 {isBundleEligible && !isBundleSelected && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-amber-600 text-xs font-medium mb-8 bg-amber-50 px-4 py-2 rounded-lg self-start border border-amber-100">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-amber-700 text-xs font-medium mb-8 bg-amber-50 px-4 py-2 rounded-lg self-start border border-amber-100">
                     <Info size={14} />
                     <span>Napomena: Za rekonstituciju ovog peptida neophodna je Bakteriostatska voda.</span>
                     </motion.div>
@@ -239,7 +239,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                 >
                     <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="flex flex-col items-start mr-auto w-full md:w-auto">
-                        <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">
+                        <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest mb-1">
                             {isBundleSelected ? 'Cena Seta' : 'Cena po jedinici'}
                         </span>
                         <AnimatePresence mode="wait">
@@ -257,6 +257,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     <div className="flex items-center bg-[#F5F5F7] rounded-full p-1.5 h-16 w-full md:w-auto justify-between md:justify-start">
                         <button 
                             onClick={() => handleQuantity(-1)}
+                            aria-label="Decrease quantity"
                             className="w-12 h-full rounded-full bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
                         >
                             <Minus size={16} />
@@ -264,6 +265,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                         <span className="w-16 text-center font-bold text-lg font-mono">{quantity}</span>
                         <button 
                             onClick={() => handleQuantity(1)}
+                            aria-label="Increase quantity"
                             className="w-12 h-full rounded-full bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
                         >
                             <Plus size={16} />
@@ -304,8 +306,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                         { label: "CAS Br.", value: "137-00-1", icon: <FileText size={16}/> },
                     ].map((spec, i) => (
                         <div key={i} className="bg-[#F9F9FB] rounded-2xl p-4 border border-transparent hover:border-neutral-200 transition-colors">
-                        <div className="text-neutral-400 mb-2">{spec.icon}</div>
-                        <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">{spec.label}</div>
+                        <div className="text-neutral-500 mb-2">{spec.icon}</div>
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-600 mb-1">{spec.label}</div>
                         <div className="text-sm font-bold text-neutral-900">{spec.value}</div>
                         </div>
                     ))}
@@ -320,21 +322,21 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     <div className="flex items-center gap-8 border-b border-neutral-100 mb-6 overflow-x-auto no-scrollbar">
                     <button 
                         onClick={() => setActiveTab('overview')}
-                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
+                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-600 hover:text-black'}`}
                     >
                         Pregled Jedinjenja
                         {activeTab === 'overview' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                     </button>
                     <button 
                         onClick={() => setActiveTab('handling')}
-                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-400 hover:text-black'}`}
+                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-600 hover:text-black'}`}
                     >
                         Skladištenje i Protokol
                         {activeTab === 'handling' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                     </button>
                     </div>
                     
-                    <div className="min-h-[200px] text-neutral-600 leading-relaxed font-medium">
+                    <div className="min-h-[200px] text-neutral-700 leading-relaxed font-medium">
                     {activeTab === 'overview' ? (
                         <div className="space-y-4">
                         <p>
@@ -373,7 +375,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                 <div className="mt-24 border-t border-neutral-100 pt-16">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                         <div>
-                            <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-2 block">Istražite Dalje</span>
+                            <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest mb-2 block">Istražite Dalje</span>
                             <h2 className="text-3xl md:text-4xl font-bold text-[#0B0B0C] tracking-tight">Često Istraživano Zajedno</h2>
                         </div>
                         <Button variant="ghost" onClick={() => navigate('/peptidi-srbija')} className="hidden md:flex">
@@ -393,12 +395,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     <img src={item.image} alt={item.name} className="w-full h-full object-contain mix-blend-multiply relative z-10 transition-transform duration-500 group-hover:scale-110" />
                                     <div className="absolute top-6 left-6 px-3 py-1 bg-white/50 backdrop-blur-md rounded-full border border-white/20">
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">{item.category}</span>
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">{item.category}</span>
                                     </div>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold text-[#0B0B0C] mb-1 group-hover:underline decoration-1 underline-offset-4">{item.name}</h3>
-                                    <p className="text-sm text-neutral-500 font-mono">{item.subtitle}</p>
+                                    <p className="text-sm text-neutral-600 font-mono">{item.subtitle}</p>
                                     <div className="mt-3 font-medium text-neutral-900">${item.price.toFixed(2)}</div>
                                 </div>
                             </motion.div>
