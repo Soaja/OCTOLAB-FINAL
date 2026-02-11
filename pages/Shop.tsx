@@ -4,20 +4,18 @@ import { PRODUCTS } from '../constants';
 import { Button } from '../components/Button';
 import { FlaskConical, Microscope, ArrowRight, Activity, Box, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 interface ShopProps {
-  onProductClick: (product: Product) => void;
+  onProductClick?: (product: Product) => void; // Optional now as we use navigation
 }
 
-// Premium Background with slight variation for the clean look
 const ModernBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white fixed">
       <div className="absolute inset-0 bg-noise opacity-30 mix-blend-overlay" />
-      {/* Very subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:6rem_6rem]" />
-      
-      {/* Soft gradient orb */}
       <motion.div 
         animate={{ 
           opacity: [0.3, 0.5, 0.3],
@@ -30,9 +28,16 @@ const ModernBackground = () => {
   );
 };
 
-export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
+export const Shop: React.FC<ShopProps> = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="pt-24 md:pt-32 min-h-screen bg-transparent relative">
+      <SEO 
+        title="Peptidi Srbija - Katalog Istraživačkih Peptida | OCTOLAB"
+        description="Kompletan katalog research peptida u Srbiji. BPC-157, TB-500, GHK-Cu, Retatrutide, Semax. Garantovana čistoća >99% i HPLC analiza."
+      />
+
       <ModernBackground />
 
       {/* HEADER SECTION - REIMAGINED */}
@@ -45,7 +50,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
         >
            {/* Minimal Badge */}
            <span className="mb-8 px-5 py-2 rounded-full border border-neutral-200 bg-white/50 backdrop-blur-md text-xs font-mono font-medium uppercase tracking-widest text-neutral-500 shadow-sm">
-              Kolekcija
+              Kolekcija Peptidi Srbija
            </span>
 
            {/* Massive Editorial Title */}
@@ -78,7 +83,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                    
                    {/* IMAGE SIDE - Clean & Object-focused */}
                    <div 
-                     onClick={() => onProductClick(product)}
+                     onClick={() => navigate(`/${product.slug}`)}
                      className="flex-1 w-full relative cursor-pointer group-hover:scale-[1.02] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                    >
                       <div className="aspect-square relative rounded-[2.5rem] md:rounded-[3rem] bg-[#F5F5F7] overflow-hidden flex items-center justify-center p-12 md:p-16 shadow-inner">
@@ -123,7 +128,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                       
                       {/* Title - Massive & Bold */}
                       <h2 
-                        onClick={() => onProductClick(product)}
+                        onClick={() => navigate(`/${product.slug}`)}
                         className="text-5xl md:text-8xl font-bold text-[#0B0B0C] tracking-tighter mb-4 md:mb-6 cursor-pointer hover:text-neutral-700 transition-colors leading-[0.9]"
                       >
                         {product.name}
@@ -171,7 +176,7 @@ export const Shop: React.FC<ShopProps> = ({ onProductClick }) => {
                          <div className="h-px w-12 bg-neutral-200 hidden sm:block"></div>
 
                          <Button 
-                           onClick={() => onProductClick(product)}
+                           onClick={() => navigate(`/${product.slug}`)}
                            className="flex-1 bg-[#0B0B0C] text-white hover:bg-neutral-800 h-14 md:h-16 rounded-full text-lg shadow-2xl shadow-neutral-200 group relative overflow-hidden"
                          >
                            <span className="relative z-10 flex items-center gap-2">

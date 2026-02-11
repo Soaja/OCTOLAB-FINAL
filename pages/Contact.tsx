@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Building2, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '../components/Button';
+import { SEO } from '../components/SEO';
 
 // Reusing the modern background style
 const ModernBackground = () => (
@@ -22,6 +23,11 @@ const ModernBackground = () => (
 export const Contact: React.FC = () => {
   return (
     <div className="pt-32 pb-24 px-6 min-h-screen relative">
+      <SEO 
+        title="Kontakt & Podrška | OCTOLAB Srbija"
+        description="Kontaktirajte OCTOLAB za veleprodaju, tehničku podršku i informacije o porudžbinama. Radno vreme: Pon-Pet 09-17h."
+      />
+
       <ModernBackground />
       
       <div className="max-w-[1200px] mx-auto">

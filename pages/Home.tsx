@@ -1,20 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { Button } from '../components/Button';
-import { ArrowRight, ShieldCheck, Zap, Box, Activity, FlaskConical, Dna, Atom, Filter, ScanSearch, Microscope, Binary, Search, Terminal, ChevronRight, AlertTriangle } from 'lucide-react';
-import { PageView } from '../types';
+import { ArrowRight, ShieldCheck, Zap, Box, Activity, FlaskConical, Dna, Atom, Filter, ScanSearch, Microscope, Search, Terminal, AlertTriangle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
-interface HomeProps {
-  onNavigate: (page: PageView) => void;
-}
-
-// 1. MODERN GRADIENT BACKGROUND
 const ModernBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white">
       <div className="absolute inset-0 bg-noise opacity-40 mix-blend-overlay" />
-      
-      {/* Centered Blobs for new layout */}
       <motion.div 
         animate={{ 
           scale: [1, 1.2, 1],
@@ -27,7 +21,6 @@ const ModernBackground = () => {
   );
 };
 
-// DISCLAIMER BAR COMPONENT
 const DisclaimerBar = () => (
   <div className="w-full bg-amber-50/40 border-y border-amber-100/50 py-4 flex justify-center items-center relative z-30 backdrop-blur-sm">
       <motion.div 
@@ -45,23 +38,19 @@ const DisclaimerBar = () => (
   </div>
 );
 
-// 2. NEW: SMART RESEARCH INTERFACE (Replaces DigitalVial)
 const ResearchInterface = () => {
   const cardRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth physics for the tilt
+  // Remove unused mouseY or use it if needed
+  
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [15, -15]), { stiffness: 150, damping: 20 });
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-15, 15]), { stiffness: 150, damping: 20 });
   
-  // Parallax for floating elements
   const dataX = useTransform(x, [-0.5, 0.5], [-20, 20]);
   const dataY = useTransform(y, [-0.5, 0.5], [-20, 20]);
 
-  // Glare effect position
   const glareX = useTransform(x, [-0.5, 0.5], ['0%', '100%']);
   const glareY = useTransform(y, [-0.5, 0.5], ['0%', '100%']);
 
@@ -80,7 +69,7 @@ const ResearchInterface = () => {
     x.set(xPct);
     y.set(yPct);
     mouseX.set(clientX);
-    mouseY.set(clientY);
+    // mouseY.set(clientY);
   };
 
   const handleMouseLeave = () => {
@@ -97,18 +86,13 @@ const ResearchInterface = () => {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative w-full h-full bg-white rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] border border-neutral-100 overflow-hidden cursor-crosshair group"
       >
-        {/* INNER GLASS LAYER */}
         <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F8F8FA] to-[#EFF0F5] opacity-50 pointer-events-none" />
-
-        {/* SCANNING GRID BACKGROUND (Subtle) */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(circle_at_center,black,transparent_80%)]" />
 
-        {/* VIAL IMAGE (Floating in 3D) */}
         <motion.div 
            style={{ zIndex: 10, transform: "translateZ(40px)" }}
            className="absolute inset-0 flex items-center justify-center p-12"
         >
-           {/* Using the specific GHK-Cu placeholder for realism */}
            <img 
               src="https://images.unsplash.com/photo-1624638765416-faed240b9049?q=80&w=1000&auto=format&fit=crop" 
               alt="GHK-Cu Vial" 
@@ -116,10 +100,7 @@ const ResearchInterface = () => {
            />
         </motion.div>
 
-        {/* FLOATING DATA TAGS (Parallax) */}
         <motion.div style={{ x: dataX, y: dataY, transform: "translateZ(60px)" }} className="absolute inset-0 pointer-events-none z-20">
-           
-           {/* Tag 1: Purity */}
            <div className="absolute top-20 right-8 flex items-center gap-2">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
               <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/60 shadow-sm">
@@ -127,8 +108,6 @@ const ResearchInterface = () => {
                  <div className="text-sm font-bold text-neutral-900 font-mono">99.8%</div>
               </div>
            </div>
-
-           {/* Tag 2: Sequence */}
            <div className="absolute bottom-32 left-8 flex items-center gap-2">
               <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/60 shadow-sm text-right">
                  <div className="text-[9px] font-bold text-neutral-400 uppercase tracking-wider">Sekvenca</div>
@@ -136,8 +115,6 @@ const ResearchInterface = () => {
               </div>
               <div className="w-2 h-2 bg-neutral-900 rounded-full" />
            </div>
-
-           {/* Tag 3: CAS */}
            <div className="absolute bottom-12 right-12">
               <div className="bg-black/90 text-white backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg">
                  <div className="text-[9px] font-bold text-neutral-400 uppercase tracking-wider">CAS Registar</div>
@@ -146,7 +123,6 @@ const ResearchInterface = () => {
            </div>
         </motion.div>
 
-        {/* INTERACTIVE SCANNING LINE */}
         <motion.div
            className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-blue-500/50 to-transparent z-30 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
            style={{ 
@@ -155,7 +131,6 @@ const ResearchInterface = () => {
            }}
         />
         
-        {/* GLARE EFFECT */}
         <motion.div 
            style={{ 
              background: useMotionTemplate`radial-gradient(
@@ -169,7 +144,6 @@ const ResearchInterface = () => {
            className="absolute inset-0 pointer-events-none mix-blend-overlay"
         />
 
-        {/* BOTTOM UI BAR */}
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-white/50 backdrop-blur-xl border-t border-white/50 flex items-center justify-between px-6 z-10">
             <div className="flex items-center gap-2">
                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -184,10 +158,10 @@ const ResearchInterface = () => {
 };
 
 
-export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+export const Home: React.FC = () => {
+  const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   
-  // Hero Mouse Interaction Logic
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -205,8 +179,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col w-full bg-white overflow-hidden relative">
-      
-      {/* HERO SECTION - CENTERED LAYOUT */}
+      <SEO 
+        title="OCTOLAB Srbija | Precision Peptides & Research Compounds"
+        description="Premium istraživački peptidi, reagensi i laboratorijska oprema. BPC-157, GHK-Cu, TB-500 verifikovani HPLC analizom u Srbiji."
+      />
+
+      {/* HERO SECTION */}
       <section 
         className="relative min-h-[90vh] flex flex-col justify-center items-center pt-32 pb-48 overflow-hidden"
         ref={heroRef}
@@ -215,19 +193,17 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       >
         <ModernBackground />
 
-        {/* LEFT FLANK: Vertical Chromatogram Scale */}
+        {/* LEFT FLANK */}
         <div className="hidden xl:flex absolute left-12 top-1/2 -translate-y-1/2 flex-col items-center gap-6 opacity-30 select-none pointer-events-none">
           <span className="text-[10px] font-mono tracking-widest text-neutral-500 [writing-mode:vertical-rl] rotate-180">
             JEDINICE APSORPCIJE (mAU)
           </span>
           <div className="h-64 w-[1px] bg-gradient-to-b from-transparent via-neutral-400 to-transparent relative">
-            {/* Moving Scanner Line */}
             <motion.div 
               animate={{ top: ["10%", "90%", "10%"] }}
               transition={{ duration: 12, ease: "linear", repeat: Infinity }}
               className="absolute -left-1.5 w-4 h-[1px] bg-black"
             />
-            {/* Ticks */}
             {[...Array(10)].map((_, i) => (
               <div key={i} className="absolute w-1.5 h-[1px] bg-neutral-400 -left-[2px]" style={{ top: `${i * 10}%` }} />
             ))}
@@ -238,14 +214,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* RIGHT FLANK: Vertical Peptide Chain */}
+        {/* RIGHT FLANK */}
         <div className="hidden xl:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col items-center gap-6 opacity-30 select-none pointer-events-none">
           <div className="flex flex-col items-center gap-2">
             <Dna size={16} strokeWidth={1} className="text-neutral-500" />
             <span className="text-[10px] font-mono">SEQ</span>
           </div>
           <div className="h-64 w-[1px] border-l border-dashed border-neutral-400 relative flex flex-col justify-between items-center py-2">
-             {/* Nodes */}
              <div className="w-2 h-2 rounded-full border border-neutral-500 bg-white -ml-[4.5px]" />
              <div className="w-2 h-2 rounded-full border border-neutral-500 bg-white -ml-[4.5px]" />
              <div className="w-2 h-2 rounded-full border border-neutral-500 bg-white -ml-[4.5px]" />
@@ -302,14 +277,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex w-full justify-center mb-12"
           >
-             <Button onClick={() => onNavigate(PageView.SHOP)} size="lg" className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-12 h-16 text-lg rounded-full shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
+             <Button onClick={() => navigate('/peptidi-srbija')} size="lg" className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-12 h-16 text-lg rounded-full shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
                 Pogledaj Katalog
              </Button>
           </motion.div>
         </div>
 
-        {/* FLOATING TRUST DOCK (Centered at bottom) */}
-        {/* Hidden on small mobile to avoid clutter, visible on lg */}
+        {/* FLOATING TRUST DOCK */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-[95%] max-w-[1000px] hidden lg:block">
            <motion.div 
              initial={{ y: 50, opacity: 0 }}
@@ -339,11 +313,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       <DisclaimerBar />
 
-      {/* 2. FEATURED MOLECULES - 2x2 GRID (REFINED 5x BETTER) */}
+      {/* FEATURED MOLECULES */}
       <section className="py-24 bg-white relative z-20">
          <div className="max-w-[1400px] mx-auto px-6">
             
-            {/* Centered Header */}
             <div className="text-center max-w-3xl mx-auto mb-20">
               <motion.span 
                   initial={{ opacity: 0, y: 10 }}
@@ -378,11 +351,11 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 </motion.p>
             </div>
             
-            {/* The 1:1 Optimized Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                {[
                  {
                    name: "BPC-157",
+                   slug: "bpc-157-peptid-srbija",
                    category: "OPORAVAK",
                    purity: "99.8%",
                    format: "Liofilizat 5mg",
@@ -391,6 +364,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                  },
                  {
                    name: "GHK-Cu",
+                   slug: "ghk-cu-peptid-srbija",
                    category: "KOZMETIKA",
                    purity: "99.5%",
                    format: "Sirovi Prah 1g",
@@ -399,6 +373,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                  },
                  {
                    name: "TB-500",
+                   slug: "tb-500-peptid-srbija",
                    category: "MOBILNOST",
                    purity: "99.9%",
                    format: "Liofilizat 10mg",
@@ -406,12 +381,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                    img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1000&auto=format&fit=crop"
                  },
                  {
-                   name: "CJC-1295",
-                   category: "PERFORMANSE",
+                   name: "Semax",
+                   slug: "semax-peptid-srbija",
+                   category: "KOGNITIVNI",
                    purity: "99.7%",
-                   format: "Liofilizat 2mg",
-                   desc: "GHRH analog modifikovan za produženi poluživot. Idealan za metabolička i istraživanja rasta.",
-                   img: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1000&auto=format&fit=crop"
+                   format: "Sprej 10ml",
+                   desc: "Peptidni nootropik za poboljšanje memorije i neuroprotekciju.",
+                   img: "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=1000&auto=format&fit=crop"
                  }
                ].map((item, i) => (
                  <motion.div 
@@ -420,10 +396,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: i * 0.1 }}
-                   onClick={() => onNavigate(PageView.SHOP)}
+                   onClick={() => navigate(`/${item.slug}`)}
                    className="group relative bg-[#F5F5F7] rounded-[2.5rem] overflow-hidden cursor-pointer"
                  >
-                    {/* Top Row: Category & Status */}
                     <div className="absolute top-8 left-8 right-8 flex justify-between items-start z-30">
                         <span className="px-3 py-1 bg-white/60 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/20 text-neutral-600">
                             {item.category}
@@ -434,11 +409,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                         </span>
                     </div>
 
-                    {/* Image Container (1:1 Aspect Ratio) */}
                     <div className="aspect-square w-full flex items-center justify-center p-12 relative z-10">
-                        {/* Subtle background glow on hover */}
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                        
                         <img 
                             src={item.img} 
                             alt={item.name}
@@ -446,10 +418,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                         />
                     </div>
 
-                    {/* Bottom Info Panel with Glassmorphism */}
                     <div className="absolute bottom-0 left-0 right-0 p-8 pt-20 bg-gradient-to-t from-[#EAEAEC] via-[#F5F5F7]/95 to-transparent z-20 flex flex-col items-start">
-                        
-                        {/* Technical Specs Row - Visible always */}
                         <div className="flex items-center gap-4 mb-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
                             <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-neutral-600">
                                 <Microscope size={12} strokeWidth={2} />
@@ -468,7 +437,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                                 <p className="text-sm text-neutral-500 max-w-xs line-clamp-1">{item.desc}</p>
                             </div>
                             
-                            {/* Action Button */}
                             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.08)] group-hover:bg-black group-hover:text-white transition-colors duration-300 shrink-0">
                                 <ArrowRight size={20} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                             </div>
@@ -480,7 +448,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             
             <div className="mt-16 flex justify-center">
               <Button 
-                onClick={() => onNavigate(PageView.SHOP)} 
+                onClick={() => navigate('/peptidi-srbija')} 
                 variant="ghost" 
                 className="text-lg group text-neutral-900 hover:text-black hover:bg-neutral-50 px-8 h-14 rounded-full border border-neutral-200 hover:border-neutral-300 transition-all"
               >
@@ -492,14 +460,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       <DisclaimerBar />
 
-      {/* 3. HOW IT WORKS (REDESIGNED) */}
+      {/* HOW IT WORKS */}
       <section className="py-24 md:py-32 bg-white relative z-10 overflow-hidden">
-        {/* Technical Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto px-6 relative">
           
-          {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
              <motion.span 
                initial={{ opacity: 0, y: 10 }}
@@ -530,9 +496,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
              </motion.p>
           </div>
 
-          {/* The Process Flow */}
           <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
-             {/* Connecting Line (Desktop) */}
              <div className="hidden md:block absolute top-[3.25rem] left-0 w-full h-[1px] bg-neutral-100 overflow-hidden">
                 <motion.div 
                   initial={{ x: '-100%' }}
@@ -542,7 +506,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 />
              </div>
 
-             {/* Cards */}
              {[
                { 
                  step: "01",
@@ -571,12 +534,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                  transition={{ delay: i * 0.2 }}
                  className="relative bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] border border-neutral-100 group hover:border-neutral-300 transition-colors duration-500"
                >
-                 {/* Icon Bubble */}
                  <div className="w-20 h-20 bg-white rounded-full border border-neutral-100 shadow-sm flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform duration-300">
                     <div className="text-neutral-400 group-hover:text-blue-600 transition-colors duration-300">
                       {item.icon}
                     </div>
-                    {/* Tiny pulsing dot on active */}
                     <span className="absolute top-0 right-0 w-3 h-3 bg-blue-500 rounded-full border-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></span>
                  </div>
 
@@ -593,7 +554,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           
           <div className="mt-16 text-center">
-             <Button variant="outline" className="border-neutral-200" onClick={() => onNavigate(PageView.QUALITY)}>
+             <Button variant="outline" className="border-neutral-200" onClick={() => navigate('/laboratorijski-standard')}>
                Pogledaj Standarde Kvaliteta <ArrowRight className="ml-2 w-4 h-4" />
              </Button>
           </div>
@@ -603,13 +564,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       <DisclaimerBar />
 
-      {/* 4. NEW: PREMIUM RESEARCH INTERFACE (NO BOX/TETRAPAK) */}
+      {/* PREMIUM RESEARCH INTERFACE */}
       <section 
         className="relative py-24 md:py-40 bg-[#FBFBFD] overflow-hidden border-t border-neutral-100"
       >
          <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-24">
             
-            {/* TEXT SIDE (Left) */}
             <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
                 <motion.div
                    initial={{ opacity: 0, y: 20 }}
@@ -651,9 +611,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                    transition={{ delay: 0.2 }}
                    className="w-full max-w-sm"
                 >
-                   {/* Interactive Search Bar Simulation */}
                    <div 
-                      onClick={() => onNavigate(PageView.SHOP)}
+                      onClick={() => navigate('/peptidi-srbija')}
                       className="group relative w-full bg-white rounded-2xl shadow-xl shadow-neutral-200/50 border border-neutral-100 p-2 flex items-center gap-4 cursor-pointer hover:scale-[1.02] transition-transform duration-300"
                    >
                       <div className="w-12 h-12 bg-neutral-900 rounded-xl flex items-center justify-center text-white shrink-0">
@@ -673,7 +632,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 </motion.div>
             </div>
 
-            {/* INTERACTIVE INTERFACE SIDE (Right) */}
             <div className="flex-1 flex justify-center w-full">
                 <ResearchInterface />
             </div>

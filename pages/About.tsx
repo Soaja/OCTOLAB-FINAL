@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ShieldCheck, Activity, Globe, Users, Microscope, FileJson, Award, ArrowRight, Binary, FlaskConical } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const About = () => {
   const containerRef = useRef(null);
@@ -10,6 +11,11 @@ export const About = () => {
 
   return (
     <div ref={containerRef} className="pt-32 min-h-screen bg-white relative overflow-hidden">
+      <SEO 
+        title="O Nama | OCTOLAB - Precision Research Engineering"
+        description="OCTOLAB je specijalizovani kolektiv biohemičara. Saznajte više o našoj misiji, kontroli kvaliteta i HPLC verifikaciji peptida."
+      />
+      
       {/* Background elements similar to Home */}
       <div className="absolute inset-0 pointer-events-none -z-10">
          <div className="absolute inset-0 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:6rem_6rem]" />

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import { Aperture, ArrowRight, Github, Twitter, Linkedin, ShieldCheck, ArrowUp, Globe, Clock, Activity, Send } from 'lucide-react';
+import { Aperture, ArrowRight, Github, Twitter, Linkedin, ShieldCheck, ArrowUp, Globe, Clock, Activity, Send, AlertTriangle } from 'lucide-react';
 import { Button } from './Button';
 
 // --- SUB-COMPONENTS ---
@@ -130,7 +130,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* 2. NAVIGATION GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 mb-32">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 mb-24">
                 
                 {/* Brand & Newsletter (5 Cols) */}
                 <div className="md:col-span-5 flex flex-col justify-between">
@@ -187,7 +187,22 @@ export const Footer: React.FC = () => {
                 </div>
             </div>
 
-            {/* 3. SYSTEM STATUS BAR (Bottom) */}
+            {/* 3. LEGAL DISCLAIMER (NEW) */}
+            <div className="border-t border-white/10 py-12 text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-800/50 border border-white/5 mb-6">
+                     <AlertTriangle size={14} className="text-amber-500" />
+                     <span className="text-[10px] font-bold uppercase tracking-widest text-amber-500">Važno Pravno Obaveštenje</span>
+                </div>
+                <p className="text-neutral-400 text-sm font-medium max-w-4xl mx-auto leading-relaxed uppercase tracking-wide">
+                    Proizvodi su namenjeni isključivo za laboratorijska istraživanja. <br className="hidden md:block"/>
+                    Nisu za ljudsku ili veterinarsku upotrebu.
+                </p>
+                <p className="text-neutral-600 text-xs mt-4 font-mono font-medium">
+                    Products are intended strictly for laboratory research purposes only. Not for human or veterinary use.
+                </p>
+            </div>
+
+            {/* 4. SYSTEM STATUS BAR (Bottom) */}
             <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
                 
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-12">
@@ -214,7 +229,7 @@ export const Footer: React.FC = () => {
                 </div>
             </div>
 
-            {/* 4. GIANT ANCHOR TEXT (Parallax) */}
+            {/* 5. GIANT ANCHOR TEXT (Parallax) */}
             <motion.div 
                 style={{ y, opacity }}
                 className="w-full text-center mt-24 pointer-events-none select-none overflow-hidden"

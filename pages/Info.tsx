@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, FileText, Microscope, Thermometer, ShieldCheck, Activity, Database, Scale, FlaskConical } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 // --- TYPES ---
 interface Article {
@@ -350,6 +351,11 @@ export const Info: React.FC = () => {
 
   return (
     <div className="pt-32 min-h-screen bg-white relative">
+      <SEO 
+        title="Research Centar & Laboratorijski Standardi | OCTOLAB"
+        description="Baza znanja, HPLC protokoli, masena spektrometrija i vodiči za rekonstituciju. Naučni resursi za istraživače."
+      />
+
       {/* Background Noise */}
       <div className="absolute inset-0 bg-noise opacity-40 mix-blend-overlay pointer-events-none fixed" />
       

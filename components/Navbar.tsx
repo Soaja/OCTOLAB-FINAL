@@ -1,77 +1,69 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Menu, X, Circle, Aperture } from 'lucide-react';
-import { PageView } from '../types';
+import { ShoppingBag, Menu, X, Aperture } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
   cartCount: number;
-  onNavigate: (page: PageView) => void;
-  currentPage: PageView;
+  onOpenCart: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPage }) => {
+export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
-    { label: 'Početna', page: PageView.HOME },
-    { label: 'O Nama', page: PageView.ABOUT },
-    { label: 'Katalog', page: PageView.SHOP },
-    { label: 'Baza Znanja', page: PageView.INFO },
-    { label: 'Kontakt', page: PageView.CONTACT },
+    { label: 'Početna', path: '/' },
+    { label: 'O Nama', path: '/o-nama' },
+    { label: 'Katalog', path: '/peptidi-srbija' },
+    { label: 'Research Centar', path: '/research-centar' },
+    { label: 'Kontakt', path: '/kontakt' },
   ];
 
-  const handleMobileNavigate = (page: PageView) => {
-    onNavigate(page);
-    setIsMobileMenuOpen(false);
+  const isActive = (path: string) => {
+      if (path === '/' && location.pathname !== '/') return false;
+      return location.pathname.startsWith(path);
   };
 
   return (
     <>
-      {/* 
-        STATIC FLOATING HEADER 
-        Fixed position, glassmorphic background, capsule shape.
-      */}
       <div className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <nav className="pointer-events-auto w-full max-w-[1000px] bg-white/80 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between transition-all">
             
-            {/* LOGO */}
-            <button 
-                onClick={() => onNavigate(PageView.HOME)} 
+            <Link 
+                to="/" 
                 className="flex items-center gap-2.5 group shrink-0"
             >
                 <div className="relative flex items-center justify-center">
                     <Aperture className="w-6 h-6 text-neutral-900 stroke-[1.5px] group-hover:rotate-90 transition-transform duration-700 ease-in-out" />
                     <div className="absolute w-1 h-1 bg-black rounded-full" />
                 </div>
-                {/* Mobile: Hide text to save space if needed, or keep small. kept visible here for branding */}
                 <div className="flex flex-col items-start leading-none flex">
                   <span className="text-lg font-bold tracking-tight text-[#0B0B0C] font-manrope">
                     OCTOLAB
                   </span>
                 </div>
-            </button>
+            </Link>
 
-            {/* Desktop Nav - Centered & Clean */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 {navLinks.map((link) => (
-                <button
+                <Link
                     key={link.label}
-                    onClick={() => onNavigate(link.page)}
+                    to={link.path}
                     className={`text-[13px] font-semibold tracking-wide uppercase transition-all duration-300 ${
-                    currentPage === link.page 
+                    isActive(link.path)
                         ? 'text-black' 
                         : 'text-neutral-500 hover:text-black hover:tracking-wider'
                     }`}
                 >
                     {link.label}
-                </button>
+                </Link>
                 ))}
             </div>
 
-            {/* Actions */}
             <div className="flex items-center gap-2 shrink-0">
                 <button 
-                    onClick={() => onNavigate(PageView.CART)}
+                    onClick={onOpenCart}
                     className="relative group bg-neutral-100/50 hover:bg-neutral-100 border border-transparent hover:border-neutral-200 transition-all p-2.5 rounded-full active:scale-95"
                 >
                     <ShoppingBag size={18} strokeWidth={1.5} className="text-neutral-700 group-hover:text-black transition-colors" />
@@ -91,7 +83,6 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
         </nav>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -103,20 +94,25 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onNavigate, currentPa
           >
             <nav className="flex flex-col gap-6 items-center">
               {navLinks.map((link, i) => (
-                <motion.button
+                <Link
                   key={link.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + (i * 0.05) }}
-                  onClick={() => handleMobileNavigate(link.page)}
-                  className={`text-4xl font-light tracking-tight ${currentPage === link.page ? 'text-black font-medium' : 'text-neutral-500'}`}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  // Using motion component for animation inside link would require converting Link to motion.a or similar, 
+                  // but keeping it simple with inline styles for now or wrapping
                 >
-                  {link.label}
-                </motion.button>
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 + (i * 0.05) }}
+                        className={`text-4xl font-light tracking-tight block ${isActive(link.path) ? 'text-black font-medium' : 'text-neutral-500'}`}
+                    >
+                        {link.label}
+                    </motion.span>
+                </Link>
               ))}
             </nav>
             
-            {/* Mobile Footer Links */}
             <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

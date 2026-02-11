@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Product } from '../types';
+import { PRODUCTS } from '../constants';
 import { Button } from '../components/Button';
-import { ChevronLeft, FileText, Plus, Minus, ShieldCheck, Thermometer, Scale, Dna, Activity, Zap, CheckCircle2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ChevronLeft, FileText, Plus, Minus, ShieldCheck, Thermometer, Scale, Dna, Activity, Zap, CheckCircle2, ArrowRight, Droplets, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useParams } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 interface ProductDetailProps {
-  product: Product;
-  onBack: () => void;
   onAddToCart: (product: Product) => void;
+  // product is no longer passed directly, it's resolved from URL
 }
 
-// Reuse the premium background
 const ModernBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white fixed">
@@ -29,29 +30,75 @@ const ModernBackground = () => {
   );
 };
 
-export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onAddToCart }) => {
+export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => {
+  const navigate = useNavigate();
+  const { slug } = useParams<{ slug: string }>();
+  const [product, setProduct] = useState<Product | undefined>(undefined);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'overview' | 'handling'>('overview');
+  
+  // Bundle Logic State
+  const [isBundleSelected, setIsBundleSelected] = useState(false);
+
+  useEffect(() => {
+    if (slug) {
+        const found = PRODUCTS.find(p => p.slug === slug);
+        setProduct(found);
+        // Reset bundle state when product changes
+        setIsBundleSelected(false);
+    }
+  }, [slug]);
+
+  if (!product) {
+      return <div className="min-h-screen pt-32 flex items-center justify-center">Učitavanje...</div>;
+  }
+
+  // --- BUNDLE LOGIC (Specific for GHK-Cu or others requiring water) ---
+  const waterProduct = PRODUCTS.find(p => p.slug === 'bacteriostatic-water-srbija');
+  // Define which products trigger the bundle offer. Currently GHK-Cu as requested.
+  const isBundleEligible = (product.slug === 'ghk-cu-peptid-srbija' || product.slug === 'tb-500-peptid-srbija' || product.slug === 'bpc-157-peptid-srbija') && !!waterProduct;
+
+  const currentPrice = isBundleSelected && waterProduct 
+    ? product.price + waterProduct.price 
+    : product.price;
+
+  // Filter related products (exclude current, take 3)
+  const relatedProducts = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3);
 
   const handleQuantity = (delta: number) => {
     setQuantity(Math.max(1, quantity + delta));
   };
 
   const handleAddToCart = () => {
-    // In a real app, we'd pass the quantity too
     for(let i=0; i<quantity; i++) {
+        // Add main product
         onAddToCart(product);
+        
+        // Add water if bundle selected
+        if (isBundleEligible && isBundleSelected && waterProduct) {
+            onAddToCart(waterProduct);
+        }
     }
+  };
+
+  const handleRelatedClick = (slug: string) => {
+    navigate(`/${slug}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="pt-24 md:pt-28 min-h-screen bg-transparent relative">
+      <SEO 
+        title={`${product.name} Peptid - Research Grade | OCTOLAB Srbija`}
+        description={`Kupite ${product.name} (${product.subtitle}) u Srbiji. ${product.description.substring(0, 100)}... Visoka čistoća, laboratorijski testirano.`}
+      />
+
       <ModernBackground />
       
       {/* NAVIGATION HEADER */}
       <div className="max-w-[1400px] mx-auto px-6 mb-8">
          <button 
-           onClick={onBack}
+           onClick={() => navigate('/peptidi-srbija')}
            className="group flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors"
          >
            <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center group-hover:border-black transition-colors bg-white">
@@ -138,6 +185,51 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                 </p>
              </motion.div>
 
+             {/* BUNDLE SELECTOR (If Eligible) */}
+             {isBundleEligible && waterProduct && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-8 p-1 bg-[#F5F5F7] rounded-[1.5rem] inline-flex flex-col sm:flex-row gap-1 w-full md:w-auto"
+                >
+                   <button 
+                     onClick={() => setIsBundleSelected(false)}
+                     className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${!isBundleSelected ? 'bg-white shadow-lg text-black border-neutral-100' : 'bg-transparent text-neutral-500 border-transparent hover:text-black'}`}
+                   >
+                      <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center bg-[#F9F9FB]">
+                         <Dna size={14} />
+                      </div>
+                      <div className="text-left">
+                         <div className="text-xs font-bold uppercase tracking-wider">Samo Peptid</div>
+                         <div className="text-sm font-medium opacity-60">Liofilizovan</div>
+                      </div>
+                   </button>
+                   
+                   <button 
+                     onClick={() => setIsBundleSelected(true)}
+                     className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${isBundleSelected ? 'bg-black shadow-lg text-white border-black' : 'bg-transparent text-neutral-500 border-transparent hover:bg-white/50'}`}
+                   >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isBundleSelected ? 'bg-white/20 text-white' : 'bg-white border border-neutral-200 text-neutral-400'}`}>
+                         <Droplets size={14} />
+                      </div>
+                      <div className="text-left">
+                         <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                            Kompletan Set
+                            <span className="bg-green-500 text-white text-[9px] px-1.5 py-0.5 rounded-full">Preporuka</span>
+                         </div>
+                         <div className="text-sm font-medium opacity-80">+ Bakteriostatska Voda</div>
+                      </div>
+                   </button>
+                </motion.div>
+             )}
+
+             {isBundleEligible && !isBundleSelected && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-amber-600 text-xs font-medium mb-8 bg-amber-50 px-4 py-2 rounded-lg self-start border border-amber-100">
+                   <Info size={14} />
+                   <span>Napomena: Za rekonstituciju ovog peptida neophodna je Bakteriostatska voda.</span>
+                </motion.div>
+             )}
+
              {/* Controls Box */}
              <motion.div 
                initial={{ opacity: 0, y: 20 }}
@@ -147,8 +239,19 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
              >
                 <div className="flex flex-col md:flex-row items-center gap-6">
                    <div className="flex flex-col items-start mr-auto w-full md:w-auto">
-                      <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Cena po jedinici</span>
-                      <span className="text-4xl font-bold text-[#0B0B0C] tracking-tight">${product.price.toFixed(2)}</span>
+                      <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">
+                        {isBundleSelected ? 'Cena Seta' : 'Cena po jedinici'}
+                      </span>
+                      <AnimatePresence mode="wait">
+                        <motion.span 
+                            key={currentPrice}
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-4xl font-bold text-[#0B0B0C] tracking-tight"
+                        >
+                            ${currentPrice.toFixed(2)}
+                        </motion.span>
+                      </AnimatePresence>
                    </div>
 
                    {/* Quantity */}
@@ -174,9 +277,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                      className="w-full md:w-auto h-16 px-10 bg-[#0B0B0C] text-white rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3"
                      disabled={!product.inStock}
                    >
-                     <span>Dodaj u Korpu</span>
+                     <span>{isBundleSelected ? 'Dodaj Set' : 'Dodaj u Korpu'}</span>
                      <span className="w-px h-4 bg-white/20"></span>
-                     <span>${(product.price * quantity).toFixed(2)}</span>
+                     <span>${(currentPrice * quantity).toFixed(2)}</span>
                    </Button>
                 </div>
              </motion.div>
@@ -264,12 +367,55 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
                         <p>Izbegavajte ponovljene cikluse smrzavanja i odmrzavanja kako biste održali integritet peptida.</p>
                       </div>
                       <div className="p-4 bg-yellow-50 rounded-xl border border-yellow-100 mt-4 text-sm text-yellow-800">
-                         <strong>Samo Za Istraživačku Upotrebu:</strong> Ovaj proizvod je namenjen isključivo za laboratorijska istraživanja i nije odobren za ljudsku upotrebu.
+                         <strong>Važno Obaveštenje:</strong> Proizvodi su namenjeni isključivo za laboratorijska istraživanja. Nisu za ljudsku ili veterinarsku upotrebu. (Products are intended strictly for laboratory research purposes only. Not for human or veterinary use.)
                       </div>
                     </div>
                   )}
                 </div>
              </motion.div>
+
+             {/* RELATED PRODUCTS SECTION - INTERNAL LINKING */}
+             <div className="mt-24 border-t border-neutral-100 pt-16">
+                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                     <div>
+                         <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-2 block">Istražite Dalje</span>
+                         <h2 className="text-3xl md:text-4xl font-bold text-[#0B0B0C] tracking-tight">Često Istraživano Zajedno</h2>
+                     </div>
+                     <Button variant="ghost" onClick={() => navigate('/peptidi-srbija')} className="hidden md:flex">
+                         Vidi Sve <ArrowRight size={18} />
+                     </Button>
+                 </div>
+
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     {relatedProducts.map((item) => (
+                         <motion.div 
+                             key={item.id}
+                             whileHover={{ y: -5 }}
+                             onClick={() => handleRelatedClick(item.slug)}
+                             className="group cursor-pointer"
+                         >
+                             <div className="bg-[#F5F5F7] rounded-[2rem] aspect-square p-8 mb-6 flex items-center justify-center relative overflow-hidden">
+                                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                  <img src={item.image} alt={item.name} className="w-full h-full object-contain mix-blend-multiply relative z-10 transition-transform duration-500 group-hover:scale-110" />
+                                  <div className="absolute top-6 left-6 px-3 py-1 bg-white/50 backdrop-blur-md rounded-full border border-white/20">
+                                     <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">{item.category}</span>
+                                  </div>
+                             </div>
+                             <div>
+                                 <h3 className="text-xl font-bold text-[#0B0B0C] mb-1 group-hover:underline decoration-1 underline-offset-4">{item.name}</h3>
+                                 <p className="text-sm text-neutral-500 font-mono">{item.subtitle}</p>
+                                 <div className="mt-3 font-medium text-neutral-900">${item.price.toFixed(2)}</div>
+                             </div>
+                         </motion.div>
+                     ))}
+                 </div>
+                 
+                 <div className="mt-8 flex md:hidden justify-center">
+                    <Button variant="ghost" onClick={() => navigate('/peptidi-srbija')}>
+                         Vidi Sve <ArrowRight size={18} />
+                    </Button>
+                 </div>
+             </div>
 
           </div>
         </div>
