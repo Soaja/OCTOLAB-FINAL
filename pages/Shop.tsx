@@ -59,7 +59,7 @@ export const Shop: React.FC<ShopProps> = () => {
              <span className="text-neutral-500">Biblioteka.</span>
            </h1>
            
-           <p className="text-lg md:text-2xl text-neutral-600 font-light max-w-xl leading-relaxed mt-4">
+           <p className="text-lg md:text-2xl text-neutral-700 font-light max-w-xl leading-relaxed mt-4">
              Precizno inženjerska jedinjenja. <br/>
              Verifikovana za biološku doslednost.
            </p>
@@ -135,7 +135,7 @@ export const Shop: React.FC<ShopProps> = () => {
                       </h2>
                       
                       {/* Subtitle / Chem Name */}
-                      <p className="text-lg md:text-xl font-mono text-neutral-600 mb-6 md:mb-8 tracking-tight">
+                      <p className="text-lg md:text-xl font-mono text-neutral-700 mb-6 md:mb-8 tracking-tight">
                         {product.subtitle}
                       </p>
                       
@@ -147,19 +147,19 @@ export const Shop: React.FC<ShopProps> = () => {
                       {/* Specs Grid - Minimalist */}
                       <div className="grid grid-cols-2 gap-y-6 gap-x-8 md:gap-y-8 md:gap-x-12 mb-10 md:mb-14 w-full max-w-md border-t border-neutral-100 pt-8">
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Zapremina</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-700">Zapremina</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">{product.volume}</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Čistoća (HPLC)</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-700">Čistoća (HPLC)</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">&gt;99.9%</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Doza</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-700">Doza</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">{product.dosage}</span>
                          </div>
                          <div className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Temp</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-700">Temp</span>
                             <span className="text-lg md:text-xl font-medium text-neutral-900">-20°C</span>
                          </div>
                       </div>
@@ -167,7 +167,7 @@ export const Shop: React.FC<ShopProps> = () => {
                       {/* Action Area - Beautiful Price + Button */}
                       <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8 w-full">
                          <div className="flex flex-col">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600 mb-1">Cena</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-700 mb-1">Cena</span>
                             <span className="text-4xl md:text-5xl font-light tracking-tight text-[#0B0B0C]">
                                 ${product.price.toFixed(2)}
                             </span>

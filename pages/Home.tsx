@@ -7,7 +7,7 @@ import { SEO } from '../components/SEO';
 
 const DisclaimerBar = () => (
   <div className="w-full bg-amber-50/60 border-y border-amber-100/50 py-3 flex justify-center items-center relative z-30 backdrop-blur-md">
-      <div className="flex items-center gap-2 text-amber-900/80 px-4 text-center">
+      <div className="flex items-center gap-2 text-amber-900 px-4 text-center">
           <AlertTriangle size={12} className="stroke-2" />
           <span className="text-[10px] font-bold uppercase tracking-[0.15em]">
             Samo Za Istraživačke Svrhe
@@ -81,13 +81,13 @@ const ResearchInterface = () => {
         <motion.div style={!isMobile ? { transform: "translateZ(30px)" } : {}} className="absolute inset-0 pointer-events-none z-20">
            <div className="absolute top-8 right-8">
               <div className="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-neutral-100 shadow-sm text-center">
-                 <div className="text-[8px] font-bold text-neutral-600 uppercase tracking-wider">HPLC</div>
+                 <div className="text-[8px] font-bold text-neutral-700 uppercase tracking-wider">HPLC</div>
                  <div className="text-xs font-bold text-neutral-900 font-mono">99.8%</div>
               </div>
            </div>
            <div className="absolute bottom-20 left-8">
               <div className="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-neutral-100 shadow-sm text-left">
-                 <div className="text-[8px] font-bold text-neutral-600 uppercase tracking-wider">Sekvenca</div>
+                 <div className="text-[8px] font-bold text-neutral-700 uppercase tracking-wider">Sekvenca</div>
                  <div className="text-xs font-bold text-neutral-900 font-mono">Gly-His-Lys</div>
               </div>
            </div>
@@ -104,7 +104,7 @@ const ResearchInterface = () => {
         <div className="absolute bottom-0 left-0 right-0 h-14 bg-white/80 backdrop-blur-md border-t border-neutral-100 flex items-center justify-between px-6 z-10">
             <div className="flex items-center gap-2">
                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-               <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-600">System Ready</span>
+               <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-700">System Ready</span>
             </div>
             <Activity size={14} className="text-neutral-500" />
         </div>
@@ -159,7 +159,7 @@ export const Home: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-neutral-600 max-w-xl leading-relaxed mb-10 font-medium"
+            className="text-lg md:text-xl text-neutral-700 max-w-xl leading-relaxed mb-10 font-medium"
           >
             Istraživačka jedinjenja sintetizovana za apsolutnu čistoću.
             Verifikovana HPLC analizom. Dizajnirana za nauku.
@@ -190,17 +190,17 @@ export const Home: React.FC = () => {
         </div>
 
         {/* Minimal Decorative Elements (CSS/SVG only, no heavy framer-motion) */}
-        <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-20 pointer-events-none">
+        <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-40 pointer-events-none">
            <div className="flex items-center gap-4 -rotate-90">
-              <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Octolab® Srbija</span>
+              <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-neutral-600">Octolab® Srbija</span>
               <div className="w-12 h-[1px] bg-black"></div>
            </div>
         </div>
         
-        <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-20 pointer-events-none">
+        <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-40 pointer-events-none">
            <div className="flex flex-col gap-2 items-center">
               <div className="w-[1px] h-12 bg-black"></div>
-              <span className="text-[10px] font-mono tracking-widest uppercase writing-vertical-rl text-center">
+              <span className="text-[10px] font-mono tracking-widest uppercase writing-vertical-rl text-center text-neutral-600">
                  EST. 2020
               </span>
            </div>
@@ -215,9 +215,9 @@ export const Home: React.FC = () => {
             <div className="text-center max-w-3xl mx-auto mb-20">
                 <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.95] mb-6">
                   Definisana čistoća. <br />
-                  <span className="text-neutral-600">Molekul po molekul.</span>
+                  <span className="text-neutral-500">Molekul po molekul.</span>
                 </h2>
-                <p className="text-neutral-600">
+                <p className="text-neutral-700">
                   Standardizovana jedinjenja za dosledne biološke ishode.
                 </p>
             </div>
@@ -252,7 +252,7 @@ export const Home: React.FC = () => {
                    className="group relative bg-[#F5F5F7] rounded-[2.5rem] overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-neutral-200/50 transition-all duration-300"
                  >
                     <div className="absolute top-8 left-8 right-8 flex justify-between items-start z-30">
-                        <span className="px-3 py-1 bg-white/60 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/20 text-neutral-700">
+                        <span className="px-3 py-1 bg-white/60 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/20 text-neutral-800">
                             {item.category}
                         </span>
                     </div>
@@ -270,7 +270,7 @@ export const Home: React.FC = () => {
                         <div className="flex justify-between items-center w-full">
                             <div>
                                 <h3 className="text-2xl font-bold text-[#0B0B0C] tracking-tight mb-1">{item.name}</h3>
-                                <p className="text-xs text-neutral-600 font-mono">{item.format}</p>
+                                <p className="text-xs text-neutral-700 font-mono">{item.format}</p>
                             </div>
                             
                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-black group-hover:text-white transition-colors duration-300">
@@ -302,7 +302,7 @@ export const Home: React.FC = () => {
             
             <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
                 <div className="mb-8">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-100 text-neutral-600 text-[10px] font-bold tracking-widest uppercase border border-neutral-200">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-100 text-neutral-700 text-[10px] font-bold tracking-widest uppercase border border-neutral-200">
                         <Terminal size={12} />
                         <span>Laboratorijski Pristup</span>
                     </div>
@@ -311,10 +311,10 @@ export const Home: React.FC = () => {
                 <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-[#1d1d1f] mb-8 leading-[0.9]">
                   Analiziraj.<br/>
                   Optimizuj.<br/>
-                  <span className="text-neutral-600">Sintetiši.</span>
+                  <span className="text-neutral-500">Sintetiši.</span>
                 </h2>
 
-                <p className="text-lg md:text-xl text-neutral-600 font-light mb-12 max-w-md leading-relaxed">
+                <p className="text-lg md:text-xl text-neutral-700 font-light mb-12 max-w-md leading-relaxed">
                   Pristupite našoj kompletnoj spektralnoj bazi podataka i verifikujte doslednost serije u realnom vremenu.
                 </p>
 

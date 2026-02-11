@@ -50,10 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                 <Link
                     key={link.label}
                     to={link.path}
-                    className={`text-[13px] font-semibold tracking-wide uppercase transition-all duration-300 ${
+                    className={`text-[13px] font-bold tracking-wide uppercase transition-all duration-300 ${
                     isActive(link.path)
                         ? 'text-black' 
-                        : 'text-neutral-600 hover:text-black hover:tracking-wider'
+                        : 'text-neutral-700 hover:text-black hover:tracking-wider'
                     }`}
                 >
                     {link.label}

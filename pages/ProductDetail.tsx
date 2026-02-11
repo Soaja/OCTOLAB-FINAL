@@ -98,7 +98,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
       <div className="max-w-[1400px] mx-auto px-6 mb-8">
          <button 
            onClick={() => navigate('/peptidi-srbija')}
-           className="group flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-widest text-neutral-600 hover:text-black transition-colors"
+           className="group flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-widest text-neutral-700 hover:text-black transition-colors"
          >
            <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center group-hover:border-black transition-colors bg-white">
              <ChevronLeft size={14} />
@@ -144,7 +144,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     
                     <div className="absolute bottom-8 left-8 flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-white/50">
                     <ShieldCheck size={16} className="text-blue-600" />
-                    <span className="text-xs font-bold text-neutral-700 uppercase tracking-wider">Lab Verifikovano</span>
+                    <span className="text-xs font-bold text-neutral-800 uppercase tracking-wider">Lab Verifikovano</span>
                     </div>
                 </motion.div>
 
@@ -182,7 +182,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     <h1 className="text-5xl md:text-7xl font-bold text-[#0B0B0C] tracking-tighter mb-4 leading-[0.9]">
                     {product.name}
                     </h1>
-                    <p className="text-xl text-neutral-600 font-light mb-8 max-w-xl">
+                    <p className="text-xl text-neutral-700 font-light mb-8 max-w-xl">
                     {product.subtitle} - {product.description}
                     </p>
                 </motion.div>
@@ -195,7 +195,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     >
                     <button 
                         onClick={() => setIsBundleSelected(false)}
-                        className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${!isBundleSelected ? 'bg-white shadow-lg text-black border-neutral-100' : 'bg-transparent text-neutral-500 border-transparent hover:text-black'}`}
+                        className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${!isBundleSelected ? 'bg-white shadow-lg text-black border-neutral-100' : 'bg-transparent text-neutral-600 border-transparent hover:text-black'}`}
                     >
                         <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center bg-[#F9F9FB]">
                             <Dna size={14} />
@@ -239,7 +239,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                 >
                     <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="flex flex-col items-start mr-auto w-full md:w-auto">
-                        <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest mb-1">
+                        <span className="text-xs font-bold text-neutral-700 uppercase tracking-widest mb-1">
                             {isBundleSelected ? 'Cena Seta' : 'Cena po jedinici'}
                         </span>
                         <AnimatePresence mode="wait">
@@ -322,14 +322,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     <div className="flex items-center gap-8 border-b border-neutral-100 mb-6 overflow-x-auto no-scrollbar">
                     <button 
                         onClick={() => setActiveTab('overview')}
-                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-600 hover:text-black'}`}
+                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
                     >
                         Pregled Jedinjenja
                         {activeTab === 'overview' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                     </button>
                     <button 
                         onClick={() => setActiveTab('handling')}
-                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-600 hover:text-black'}`}
+                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
                     >
                         Skladištenje i Protokol
                         {activeTab === 'handling' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}

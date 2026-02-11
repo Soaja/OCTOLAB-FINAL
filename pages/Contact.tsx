@@ -36,7 +36,7 @@ export const Contact: React.FC = () => {
            <motion.span 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-block mb-6 px-3 py-1 rounded-full bg-neutral-100 text-neutral-600 text-[10px] font-bold tracking-widest uppercase"
+              className="inline-block mb-6 px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-[10px] font-bold tracking-widest uppercase"
            >
               Podrška i Upiti
            </motion.span>
@@ -53,7 +53,7 @@ export const Contact: React.FC = () => {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.2 }}
-             className="text-xl text-neutral-600 font-light max-w-xl leading-relaxed"
+             className="text-xl text-neutral-700 font-light max-w-xl leading-relaxed"
            >
              Bilo da su vam potrebni tehnički listovi, veleprodajne cene ili informacije o isporuci, naš tim je spreman da pomogne.
            </motion.p>
@@ -93,7 +93,7 @@ export const Contact: React.FC = () => {
                    </div>
                    <h3 className="text-lg font-bold text-[#0B0B0C] mb-1">{item.title}</h3>
                    <p className="text-neutral-900 font-medium mb-2">{item.email}</p>
-                   <p className="text-sm text-neutral-600">{item.desc}</p>
+                   <p className="text-sm text-neutral-700">{item.desc}</p>
                 </div>
               ))}
            </motion.div>
@@ -113,22 +113,22 @@ export const Contact: React.FC = () => {
               <form className="flex flex-col gap-6 relative z-10">
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-600 ml-2">Ime</label>
+                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-700 ml-2">Ime</label>
                        <input type="text" className="w-full bg-white rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-black/5 transition-all text-neutral-900 placeholder:text-neutral-500" placeholder="Jane" />
                     </div>
                     <div className="flex flex-col gap-2">
-                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-600 ml-2">Prezime</label>
+                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-700 ml-2">Prezime</label>
                        <input type="text" className="w-full bg-white rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-black/5 transition-all text-neutral-900 placeholder:text-neutral-500" placeholder="Doe" />
                     </div>
                  </div>
 
                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-neutral-600 ml-2">Email Adresa</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-neutral-700 ml-2">Email Adresa</label>
                     <input type="email" className="w-full bg-white rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-black/5 transition-all text-neutral-900 placeholder:text-neutral-500" placeholder="jane@institute.edu" />
                  </div>
 
                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-neutral-600 ml-2">Tema</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-neutral-700 ml-2">Tema</label>
                     <div className="relative">
                       <select className="w-full bg-white rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-black/5 transition-all text-neutral-900 appearance-none cursor-pointer">
                         <option>Opšti Upit</option>
@@ -143,7 +143,7 @@ export const Contact: React.FC = () => {
                  </div>
 
                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-neutral-600 ml-2">Poruka</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-neutral-700 ml-2">Poruka</label>
                     <textarea rows={4} className="w-full bg-white rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-black/5 transition-all text-neutral-900 placeholder:text-neutral-500 resize-none" placeholder="Kako možemo pomoći vašem istraživanju?" />
                  </div>
 

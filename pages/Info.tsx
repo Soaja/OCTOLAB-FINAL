@@ -233,7 +233,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
          </motion.h3>
          <motion.p 
            layoutId={`summary-${article.id}`}
-           className="text-sm text-neutral-600 leading-relaxed line-clamp-2 mb-6 group-hover:text-neutral-700 transition-colors"
+           className="text-sm text-neutral-700 leading-relaxed line-clamp-2 mb-6 group-hover:text-neutral-900 transition-colors"
          >
            {article.summary}
          </motion.p>
@@ -367,13 +367,13 @@ export const Info: React.FC = () => {
            transition={{ duration: 0.8 }}
            className="mb-20 text-center max-w-3xl mx-auto"
         >
-           <span className="inline-block mb-6 px-3 py-1 rounded-full bg-neutral-100 text-neutral-600 text-[10px] font-bold tracking-widest uppercase">
+           <span className="inline-block mb-6 px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-[10px] font-bold tracking-widest uppercase">
               Baza Znanja
            </span>
            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-[#0B0B0C] mb-6">
              Istraživački <span className="text-neutral-500">Uvidi.</span>
            </h1>
-           <p className="text-xl text-neutral-600 font-light leading-relaxed">
+           <p className="text-xl text-neutral-700 font-light leading-relaxed">
              Osnovna dokumentacija, naučna metodologija i protokoli za modernu laboratoriju.
            </p>
         </motion.div>
