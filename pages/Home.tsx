@@ -1,34 +1,34 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { Button } from '../components/Button';
 import { ArrowRight, ShieldCheck, Zap, Box, Activity, FlaskConical, Dna, Atom, Filter, ScanSearch, Microscope, Search, Terminal, AlertTriangle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 
-// OPTIMIZATION: Moved animation to CSS in index.html to free up JS thread
+// OPTIMIZATION: Reduced blur on mobile to improve LCP/GPU performance
 const ModernBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white">
       <div className="absolute inset-0 bg-noise opacity-40 mix-blend-overlay" />
-      {/* CSS Animation Class used here instead of Framer Motion for performance */}
-      <div className="absolute top-[20%] left-[50%] w-[60vw] h-[60vw] bg-blue-50/40 rounded-full blur-[120px] animate-blob-pulse" />
+      {/* CSS Animation Class used here. Reduced blur from 120px to 40px on mobile for performance */}
+      <div className="absolute top-[20%] left-[50%] w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] bg-blue-50/40 rounded-full blur-[40px] md:blur-[120px] animate-blob-pulse will-change-transform" />
     </div>
   );
 };
 
 const DisclaimerBar = () => (
-  <div className="w-full bg-amber-50/40 border-y border-amber-100/50 py-4 flex justify-center items-center relative z-30 backdrop-blur-sm">
+  <div className="w-full bg-amber-50/40 border-y border-amber-100/50 py-3 md:py-4 flex justify-center items-center relative z-30 backdrop-blur-sm">
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="flex items-center gap-3 text-amber-900/60 px-4 text-center"
+        className="flex items-center gap-2 md:gap-3 text-amber-900/60 px-4 text-center"
       >
-          <AlertTriangle size={12} strokeWidth={2.5} />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+          <AlertTriangle size={10} strokeWidth={2.5} className="md:w-3 md:h-3" />
+          <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.2em]">
             Samo Za Istraživačke Svrhe • Nije Za Ljudsku Upotrebu
           </span>
-          <AlertTriangle size={12} strokeWidth={2.5} />
+          <AlertTriangle size={10} strokeWidth={2.5} className="md:w-3 md:h-3" />
       </motion.div>
   </div>
 );
@@ -38,7 +38,16 @@ const ResearchInterface = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mouseX = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
+  // Disable spring physics on mobile for performance
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [15, -15]), { stiffness: 150, damping: 20 });
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-15, 15]), { stiffness: 150, damping: 20 });
   
@@ -48,7 +57,15 @@ const ResearchInterface = () => {
   const glareX = useTransform(x, [-0.5, 0.5], ['0%', '100%']);
   const glareY = useTransform(y, [-0.5, 0.5], ['0%', '100%']);
 
+  // Move useMotionTemplate outside of conditional rendering to prevent Hook Error #300
+  const glareBackground = useMotionTemplate`radial-gradient(
+    circle at ${glareX} ${glareY},
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0) 60%
+  )`;
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return; // Disable interaction on mobile
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
     
@@ -66,6 +83,7 @@ const ResearchInterface = () => {
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     x.set(0);
     y.set(0);
   };
@@ -76,24 +94,27 @@ const ResearchInterface = () => {
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative w-full h-full bg-white rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] border border-neutral-100 overflow-hidden cursor-crosshair group"
+        style={!isMobile ? { rotateX, rotateY, transformStyle: "preserve-3d" } : {}}
+        className="relative w-full h-full bg-white rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] border border-neutral-100 overflow-hidden cursor-crosshair group will-change-transform"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F8F8FA] to-[#EFF0F5] opacity-50 pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(circle_at_center,black,transparent_80%)]" />
 
         <motion.div 
-           style={{ zIndex: 10, transform: "translateZ(40px)" }}
+           style={!isMobile ? { zIndex: 10, transform: "translateZ(40px)" } : { zIndex: 10 }}
            className="absolute inset-0 flex items-center justify-center p-12"
         >
+           {/* Used standard img tag with loading="eager" for LCP optimization if this appears above fold */}
            <img 
               src="https://images.unsplash.com/photo-1624638765416-faed240b9049?q=80&w=1000&auto=format&fit=crop" 
               alt="GHK-Cu Vial" 
+              width="300"
+              height="300"
               className="w-full h-full object-contain drop-shadow-2xl mix-blend-multiply filter contrast-110"
            />
         </motion.div>
 
-        <motion.div style={{ x: dataX, y: dataY, transform: "translateZ(60px)" }} className="absolute inset-0 pointer-events-none z-20">
+        <motion.div style={!isMobile ? { x: dataX, y: dataY, transform: "translateZ(60px)" } : {}} className="absolute inset-0 pointer-events-none z-20">
            <div className="absolute top-20 right-8 flex items-center gap-2">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
               <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/60 shadow-sm">
@@ -116,26 +137,27 @@ const ResearchInterface = () => {
            </div>
         </motion.div>
 
-        <motion.div
-           className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-blue-500/50 to-transparent z-30 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
-           style={{ 
-             left: mouseX,
-             transform: "translateZ(50px)"
-           }}
-        />
-        
-        <motion.div 
-           style={{ 
-             background: useMotionTemplate`radial-gradient(
-               circle at ${glareX} ${glareY},
-               rgba(255,255,255,0.8) 0%,
-               rgba(255,255,255,0) 60%
-             )`,
-             opacity: 0.4,
-             transform: "translateZ(1px)"
-           }}
-           className="absolute inset-0 pointer-events-none mix-blend-overlay"
-        />
+        {/* Desktop Only Effects */}
+        {!isMobile && (
+            <>
+                <motion.div
+                className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-blue-500/50 to-transparent z-30 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ 
+                    left: mouseX,
+                    transform: "translateZ(50px)"
+                }}
+                />
+                
+                <motion.div 
+                style={{ 
+                    background: glareBackground,
+                    opacity: 0.4,
+                    transform: "translateZ(1px)"
+                }}
+                className="absolute inset-0 pointer-events-none mix-blend-overlay"
+                />
+            </>
+        )}
 
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-white/50 backdrop-blur-xl border-t border-white/50 flex items-center justify-between px-6 z-10">
             <div className="flex items-center gap-2">
@@ -159,6 +181,9 @@ export const Home: React.FC = () => {
   const y = useMotionValue(0);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    // Optimization: Don't calculate on mobile
+    if (window.innerWidth < 768) return; 
+
     const rect = heroRef.current?.getBoundingClientRect();
     if (!rect) return;
     x.set((e.clientX - rect.left) / rect.width - 0.5);
@@ -179,14 +204,14 @@ export const Home: React.FC = () => {
 
       {/* HERO SECTION */}
       <section 
-        className="relative min-h-[90vh] flex flex-col justify-center items-center pt-32 pb-48 overflow-hidden"
+        className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center items-center pt-24 pb-32 md:pt-32 md:pb-48 overflow-hidden"
         ref={heroRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
         <ModernBackground />
 
-        {/* LEFT FLANK */}
+        {/* LEFT FLANK - Hidden on Mobile to reduce DOM/Paint */}
         <div className="hidden xl:flex absolute left-12 top-1/2 -translate-y-1/2 flex-col items-center gap-6 opacity-30 select-none pointer-events-none">
           <span className="text-[10px] font-mono tracking-widest text-neutral-500 [writing-mode:vertical-rl] rotate-180">
             JEDINICE APSORPCIJE (mAU)
@@ -207,7 +232,7 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* RIGHT FLANK */}
+        {/* RIGHT FLANK - Hidden on Mobile */}
         <div className="hidden xl:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col items-center gap-6 opacity-30 select-none pointer-events-none">
           <div className="flex flex-col items-center gap-2">
             <Dna size={16} strokeWidth={1} className="text-neutral-500" />
@@ -233,22 +258,26 @@ export const Home: React.FC = () => {
         <div className="max-w-[1000px] mx-auto px-6 relative z-10 flex flex-col items-center text-center">
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center gap-3 mb-8"
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-6 md:mb-8"
           >
              <span className="h-[1px] w-8 md:w-12 bg-neutral-300"></span>
-             <span className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-neutral-500">Precizni Peptidi</span>
+             <span className="text-[10px] md:text-sm font-bold tracking-[0.25em] uppercase text-neutral-500">Precizni Peptidi</span>
              <span className="h-[1px] w-8 md:w-12 bg-neutral-300"></span>
           </motion.div>
 
-          {/* LCP OPTIMIZATION: Removed initial opacity:0 to let browser paint text immediately */}
+          {/* LCP OPTIMIZATION:
+              1. Reduced text size on mobile (text-4xl) to reduce paint area and shifts.
+              2. Keep opacity: 1 for immediate render.
+              3. Tighter leading on mobile.
+          */}
           <motion.h1 
             initial={{ y: 20, opacity: 1 }} 
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl sm:text-7xl lg:text-[8.5rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8"
+            className="text-4xl sm:text-7xl lg:text-[8.5rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.95] md:leading-[0.9] mb-6 md:mb-8"
           >
             JASNOĆA<br/>
             U SVAKOM<br/>
@@ -259,7 +288,7 @@ export const Home: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-2xl text-neutral-600 max-w-2xl leading-relaxed mb-12 font-medium"
+            className="text-base md:text-2xl text-neutral-600 max-w-2xl leading-relaxed mb-8 md:mb-12 font-medium px-4"
           >
             Dizajnirano za moderne istraživače. <br className="hidden md:block" />
             Laboratorijski testirana jedinjenja sintetizovana za apsolutnu čistoću.
@@ -271,13 +300,13 @@ export const Home: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex w-full justify-center mb-12"
           >
-             <Button onClick={() => navigate('/peptidi-srbija')} size="lg" className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-12 h-16 text-lg rounded-full shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
+             <Button onClick={() => navigate('/peptidi-srbija')} size="lg" className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-10 md:px-12 h-14 md:h-16 text-base md:text-lg rounded-full shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
                 Pogledaj Katalog
              </Button>
           </motion.div>
         </div>
 
-        {/* FLOATING TRUST DOCK */}
+        {/* FLOATING TRUST DOCK - Hidden on mobile to save LCP space, shown on LG */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-[95%] max-w-[1000px] hidden lg:block">
            <motion.div 
              initial={{ y: 50, opacity: 0 }}
@@ -327,7 +356,7 @@ export const Home: React.FC = () => {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: 0.1 }}
-                   className="text-5xl md:text-7xl font-semibold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-6"
+                   className="text-4xl md:text-7xl font-semibold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-6"
                 >
                   Definisana čistoća. <br />
                   <span className="text-neutral-300">Molekul po molekul.</span>
@@ -474,7 +503,7 @@ export const Home: React.FC = () => {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ delay: 0.1 }}
-               className="text-5xl md:text-7xl font-semibold tracking-tighter text-[#0B0B0C] mb-6 leading-tight"
+               className="text-4xl md:text-7xl font-semibold tracking-tighter text-[#0B0B0C] mb-6 leading-tight"
              >
                Naučna strogost, <br />
                <span className="text-neutral-400">pojednostavljena.</span>
