@@ -5,18 +5,13 @@ import { ArrowRight, ShieldCheck, Zap, Box, Activity, FlaskConical, Dna, Atom, F
 import { useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 
+// OPTIMIZATION: Moved animation to CSS in index.html to free up JS thread
 const ModernBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white">
       <div className="absolute inset-0 bg-noise opacity-40 mix-blend-overlay" />
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[60vw] h-[60vw] bg-blue-50/40 rounded-full blur-[120px]" 
-      />
+      {/* CSS Animation Class used here instead of Framer Motion for performance */}
+      <div className="absolute top-[20%] left-[50%] w-[60vw] h-[60vw] bg-blue-50/40 rounded-full blur-[120px] animate-blob-pulse" />
     </div>
   );
 };
@@ -43,7 +38,6 @@ const ResearchInterface = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mouseX = useMotionValue(0);
-  // Remove unused mouseY or use it if needed
   
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [15, -15]), { stiffness: 150, damping: 20 });
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-15, 15]), { stiffness: 150, damping: 20 });
@@ -69,7 +63,6 @@ const ResearchInterface = () => {
     x.set(xPct);
     y.set(yPct);
     mouseX.set(clientX);
-    // mouseY.set(clientY);
   };
 
   const handleMouseLeave = () => {
@@ -250,10 +243,11 @@ export const Home: React.FC = () => {
              <span className="h-[1px] w-8 md:w-12 bg-neutral-300"></span>
           </motion.div>
 
+          {/* LCP OPTIMIZATION: Removed initial opacity:0 to let browser paint text immediately */}
           <motion.h1 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            initial={{ y: 20, opacity: 1 }} 
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl sm:text-7xl lg:text-[8.5rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8"
           >
             JASNOĆA<br/>
@@ -262,9 +256,9 @@ export const Home: React.FC = () => {
           </motion.h1>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-2xl text-neutral-600 max-w-2xl leading-relaxed mb-12 font-medium"
           >
             Dizajnirano za moderne istraživače. <br className="hidden md:block" />
@@ -272,9 +266,9 @@ export const Home: React.FC = () => {
           </motion.p>
 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="flex w-full justify-center mb-12"
           >
              <Button onClick={() => navigate('/peptidi-srbija')} size="lg" className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-12 h-16 text-lg rounded-full shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
@@ -288,7 +282,7 @@ export const Home: React.FC = () => {
            <motion.div 
              initial={{ y: 50, opacity: 0 }}
              animate={{ y: 0, opacity: 1 }}
-             transition={{ delay: 0.6, duration: 0.8 }}
+             transition={{ delay: 0.4, duration: 0.8 }}
              className="bg-white/60 backdrop-blur-xl border border-white/50 shadow-sm rounded-full px-12 py-5 flex justify-between items-center"
            >
               {[
