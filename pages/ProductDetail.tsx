@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Product } from '../types';
 import { PRODUCTS } from '../constants';
 import { Button } from '../components/Button';
-import { ChevronLeft, FileText, Plus, Minus, ShieldCheck, Thermometer, Scale, Dna, Activity, Zap, CheckCircle2, ArrowRight, Droplets, Info } from 'lucide-react';
+import { ChevronLeft, FileText, Plus, Minus, ShieldCheck, Thermometer, Scale, Dna, Activity, Zap, CheckCircle2, ArrowRight, Droplets, Info, Truck, Package, AlertTriangle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SEO } from '../components/SEO';
@@ -36,7 +36,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
   // Hooks must be unconditional
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'overview' | 'handling'>('overview');
   const [isBundleSelected, setIsBundleSelected] = useState(false);
 
   useEffect(() => {
@@ -116,7 +115,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
         </div>
       ) : (
         <div className="max-w-[1400px] mx-auto px-6 pb-24">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             
             {/* LEFT: PRODUCT IMAGE & VISUALS */}
             <div className="lg:col-span-5 relative lg:sticky lg:top-32">
@@ -124,7 +123,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="aspect-square w-full rounded-[2.5rem] md:rounded-[3rem] bg-[#F5F5F7] overflow-hidden relative flex items-center justify-center p-12 shadow-inner"
+                className="aspect-square w-full rounded-[2.5rem] bg-[#F5F5F7] overflow-hidden relative flex items-center justify-center p-12 shadow-inner"
                 >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white,transparent_70%)] opacity-70" />
                     
@@ -144,129 +143,98 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                     
                     <div className="absolute bottom-8 left-8 flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-white/50">
                     <ShieldCheck size={16} className="text-blue-600" />
-                    <span className="text-xs font-bold text-neutral-800 uppercase tracking-wider">Lab Verifikovano</span>
+                    <span className="text-xs font-bold text-neutral-800 uppercase tracking-wider">HPLC Verifikovano</span>
                     </div>
                 </motion.div>
-
-                <div className="grid grid-cols-3 gap-4 mt-4">
-                {[1,2,3].map((_, i) => (
-                    <div key={i} className={`h-24 rounded-2xl border ${i === 0 ? 'border-black bg-neutral-50' : 'border-transparent bg-[#F5F5F7]'} flex items-center justify-center cursor-pointer hover:bg-neutral-100 transition-colors`}>
-                        <Dna size={20} className="text-neutral-500 opacity-50" />
-                    </div>
-                ))}
-                </div>
             </div>
 
             {/* RIGHT: DETAILS & CONTROLS */}
-            <div className="lg:col-span-7 flex flex-col pt-4">
+            <div className="lg:col-span-7 flex flex-col pt-2">
                 
+                {/* 1. Header Information */}
                 <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 >
-                    <div className="flex items-center gap-3 mb-6">
-                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold tracking-widest uppercase rounded-full border border-blue-100">
-                        {product.category} Serija
-                    </span>
-                    {product.inStock ? (
-                        <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-green-600">
-                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                            Na Stanju i Spremno
+                    <div className="flex items-center gap-3 mb-4">
+                        <span className="px-3 py-1 bg-black text-white text-[10px] font-bold tracking-widest uppercase rounded-full">
+                            {product.category}
                         </span>
-                    ) : (
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Rasprodato</span>
-                    )}
+                        {product.inStock ? (
+                            <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-green-600">
+                                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                                Dostupno odmah
+                            </span>
+                        ) : (
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Rasprodato</span>
+                        )}
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold text-[#0B0B0C] tracking-tighter mb-4 leading-[0.9]">
-                    {product.name}
+                    <h1 className="text-5xl md:text-6xl font-bold text-[#0B0B0C] tracking-tighter mb-2 leading-[0.9]">
+                        {product.name}
                     </h1>
-                    <p className="text-xl text-neutral-700 font-light mb-8 max-w-xl">
-                    {product.subtitle} - {product.description}
+                    <p className="text-lg text-neutral-500 font-medium mb-6 font-mono">
+                        {product.subtitle}
                     </p>
                 </motion.div>
 
+                {/* 2. Bundle Selector (Condensed) */}
                 {isBundleEligible && waterProduct && (
                     <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-8 p-1 bg-[#F5F5F7] rounded-[1.5rem] inline-flex flex-col sm:flex-row gap-1 w-full md:w-auto"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-8"
                     >
-                    <button 
-                        onClick={() => setIsBundleSelected(false)}
-                        className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${!isBundleSelected ? 'bg-white shadow-lg text-black border-neutral-100' : 'bg-transparent text-neutral-600 border-transparent hover:text-black'}`}
-                    >
-                        <div className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center bg-[#F9F9FB]">
-                            <Dna size={14} />
+                        <div className="grid grid-cols-2 gap-2">
+                             <button 
+                                onClick={() => setIsBundleSelected(false)}
+                                className={`flex items-center justify-center gap-2 py-3 rounded-xl border-2 transition-all ${!isBundleSelected ? 'border-black bg-neutral-50 text-black' : 'border-transparent bg-neutral-100 text-neutral-500'}`}
+                             >
+                                <span className="text-xs font-bold uppercase tracking-wider">Samo Peptid</span>
+                             </button>
+                             <button 
+                                onClick={() => setIsBundleSelected(true)}
+                                className={`flex items-center justify-center gap-2 py-3 rounded-xl border-2 transition-all ${isBundleSelected ? 'border-black bg-neutral-50 text-black' : 'border-transparent bg-neutral-100 text-neutral-500'}`}
+                             >
+                                <span className="text-xs font-bold uppercase tracking-wider">+ Bakteriostatska Voda</span>
+                             </button>
                         </div>
-                        <div className="text-left">
-                            <div className="text-xs font-bold uppercase tracking-wider text-neutral-600">Samo Peptid</div>
-                            <div className="text-sm font-medium text-neutral-600">Liofilizovan</div>
-                        </div>
-                    </button>
-                    
-                    <button 
-                        onClick={() => setIsBundleSelected(true)}
-                        className={`flex-1 flex items-center gap-3 px-6 py-4 rounded-[1.2rem] transition-all duration-300 border ${isBundleSelected ? 'bg-black shadow-lg text-white border-black' : 'bg-transparent text-neutral-600 border-transparent hover:bg-white/50'}`}
-                    >
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isBundleSelected ? 'bg-white/20 text-white' : 'bg-white border border-neutral-200 text-neutral-500'}`}>
-                            <Droplets size={14} />
-                        </div>
-                        <div className="text-left">
-                            <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                                Kompletan Set
-                                <span className="bg-green-500 text-white text-[9px] px-1.5 py-0.5 rounded-full">Preporuka</span>
-                            </div>
-                            <div className="text-sm font-medium opacity-80">+ Bakteriostatska Voda</div>
-                        </div>
-                    </button>
                     </motion.div>
                 )}
 
-                {isBundleEligible && !isBundleSelected && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-amber-700 text-xs font-medium mb-8 bg-amber-50 px-4 py-2 rounded-lg self-start border border-amber-100">
-                    <Info size={14} />
-                    <span>Napomena: Za rekonstituciju ovog peptida neophodna je Bakteriostatska voda.</span>
-                    </motion.div>
-                )}
-
+                {/* 3. Pricing & Cart Action */}
                 <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="bg-white border border-neutral-100 rounded-[2rem] p-6 shadow-xl shadow-neutral-100/50 mb-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex flex-col md:flex-row items-stretch gap-4 mb-10"
                 >
-                    <div className="flex flex-col md:flex-row items-center gap-6">
-                    <div className="flex flex-col items-start mr-auto w-full md:w-auto">
-                        <span className="text-xs font-bold text-neutral-700 uppercase tracking-widest mb-1">
-                            {isBundleSelected ? 'Cena Seta' : 'Cena po jedinici'}
-                        </span>
+                    <div className="bg-[#F5F5F7] rounded-2xl px-6 py-4 flex flex-col justify-center min-w-[140px]">
+                        <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider mb-1">Cena</span>
                         <AnimatePresence mode="wait">
                             <motion.span 
                                 key={currentPrice}
                                 initial={{ opacity: 0, y: 5 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-4xl font-bold text-[#0B0B0C] tracking-tight"
+                                className="text-3xl font-bold text-[#0B0B0C] tracking-tight"
                             >
                                 ${currentPrice.toFixed(2)}
                             </motion.span>
                         </AnimatePresence>
                     </div>
 
-                    <div className="flex items-center bg-[#F5F5F7] rounded-full p-1.5 h-16 w-full md:w-auto justify-between md:justify-start">
+                    <div className="flex items-center bg-[#F5F5F7] rounded-2xl p-2 px-4 gap-4">
                         <button 
                             onClick={() => handleQuantity(-1)}
-                            aria-label="Decrease quantity"
-                            className="w-12 h-full rounded-full bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
+                            className="w-10 h-10 rounded-xl bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
                         >
                             <Minus size={16} />
                         </button>
-                        <span className="w-16 text-center font-bold text-lg font-mono">{quantity}</span>
+                        <span className="text-xl font-bold font-mono w-6 text-center">{quantity}</span>
                         <button 
                             onClick={() => handleQuantity(1)}
-                            aria-label="Increase quantity"
-                            className="w-12 h-full rounded-full bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
+                            className="w-10 h-10 rounded-xl bg-white text-black shadow-sm flex items-center justify-center hover:scale-95 transition-transform"
                         >
                             <Plus size={16} />
                         </button>
@@ -274,143 +242,119 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
 
                     <Button 
                         onClick={handleAddToCart}
-                        className="w-full md:w-auto h-16 px-10 bg-[#0B0B0C] text-white rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3"
+                        className="flex-1 h-auto bg-[#0B0B0C] text-white rounded-2xl text-lg shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all flex items-center justify-center gap-3 py-4 md:py-0"
                         disabled={!product.inStock}
                     >
-                        <span>{isBundleSelected ? 'Dodaj Set' : 'Dodaj u Korpu'}</span>
-                        <span className="w-px h-4 bg-white/20"></span>
-                        <span>${(currentPrice * quantity).toFixed(2)}</span>
+                        <span>Dodaj u Korpu</span>
+                        <ArrowRight size={18} />
                     </Button>
-                    </div>
                 </motion.div>
 
+                {/* 4. THE "TRUST BLOCK" - Immediate Answers */}
                 <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mb-12"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="bg-white border border-neutral-100 rounded-[2rem] p-6 shadow-2xl shadow-neutral-100/50 space-y-6"
                 >
-                <h3 className="text-sm font-bold text-[#0B0B0C] uppercase tracking-widest mb-6 flex items-center gap-2">
-                    <Activity size={16} /> Tehničke Specifikacije
-                </h3>
-                
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {[
-                        { label: "Format", value: product.volume, icon: <Dna size={16}/> },
-                        { label: "Doza", value: product.dosage, icon: <Scale size={16}/> },
-                        { label: "Čistoća", value: ">99.8%", icon: <ShieldCheck size={16}/> },
-                        { label: "Skladištenje", value: "-20°C", icon: <Thermometer size={16}/> },
-                        { label: "Sekvenca", value: "15 AA", icon: <Zap size={16}/> },
-                        { label: "Molarna Masa", value: "1419 g/mol", icon: <Scale size={16}/> },
-                        { label: "Rastvorljivost", value: "Voda", icon: <Activity size={16}/> },
-                        { label: "CAS Br.", value: "137-00-1", icon: <FileText size={16}/> },
-                    ].map((spec, i) => (
-                        <div key={i} className="bg-[#F9F9FB] rounded-2xl p-4 border border-transparent hover:border-neutral-200 transition-colors">
-                        <div className="text-neutral-500 mb-2">{spec.icon}</div>
-                        <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-600 mb-1">{spec.label}</div>
-                        <div className="text-sm font-bold text-neutral-900">{spec.value}</div>
+                    {/* What do I get? */}
+                    <div className="flex items-start gap-4 pb-6 border-b border-neutral-100">
+                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                            <Package size={20} />
                         </div>
-                    ))}
-                </div>
-                </motion.div>
-
-                <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                >
-                    <div className="flex items-center gap-8 border-b border-neutral-100 mb-6 overflow-x-auto no-scrollbar">
-                    <button 
-                        onClick={() => setActiveTab('overview')}
-                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'overview' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
-                    >
-                        Pregled Jedinjenja
-                        {activeTab === 'overview' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
-                    </button>
-                    <button 
-                        onClick={() => setActiveTab('handling')}
-                        className={`pb-4 text-sm font-bold uppercase tracking-widest transition-colors relative whitespace-nowrap ${activeTab === 'handling' ? 'text-black' : 'text-neutral-700 hover:text-black'}`}
-                    >
-                        Skladištenje i Protokol
-                        {activeTab === 'handling' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
-                    </button>
-                    </div>
-                    
-                    <div className="min-h-[200px] text-neutral-700 leading-relaxed font-medium">
-                    {activeTab === 'overview' ? (
-                        <div className="space-y-4">
-                        <p>
-                            Ovo jedinjenje je sintetizovano koristeći napredne protokole sinteze peptida na čvrstoj fazi (SPPS), obezbeđujući precizno poravnanje sekvenci i minimalno formiranje nečistoća. Nakon sinteze, proizvod prolazi kroz rigorozno prečišćavanje putem preparativne Tečne Hromatografije Visokih Performansi (HPLC).
-                        </p>
-                        <p>
-                            Svaka serija se liofilizuje (suši smrzavanjem) pod kontrolisanim uslovima kako bi se maksimizirala stabilnost i rok trajanja, što rezultira kristalnim belim prahom koji je lako rastvorljiv u bakteriostatskoj vodi ili sterilnom fiziološkom rastvoru.
-                        </p>
-                        <div className="flex gap-4 pt-4 flex-wrap">
-                            <Button variant="outline" size="sm" icon={<FileText size={14}/>}>Preuzmi COA</Button>
-                            <Button variant="outline" size="sm" icon={<FileText size={14}/>}>MS Analiza</Button>
-                        </div>
-                        </div>
-                    ) : (
-                        <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                            <CheckCircle2 size={18} className="text-green-600 mt-1 shrink-0" />
-                            <p>Čuvajte liofilizovani prah na -20°C do 24 meseca.</p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                            <CheckCircle2 size={18} className="text-green-600 mt-1 shrink-0" />
-                            <p>Nakon rekonstitucije, čuvajte na 4°C i upotrebite u roku od 21 dana.</p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                            <CheckCircle2 size={18} className="text-green-600 mt-1 shrink-0" />
-                            <p>Izbegavajte ponovljene cikluse smrzavanja i odmrzavanja kako biste održali integritet peptida.</p>
-                        </div>
-                        <div className="p-4 bg-yellow-50 rounded-xl border border-yellow-100 mt-4 text-sm text-yellow-800">
-                            <strong>Važno Obaveštenje:</strong> Proizvodi su namenjeni isključivo za laboratorijska istraživanja. Nisu za ljudsku ili veterinarsku upotrebu. (Products are intended strictly for laboratory research purposes only. Not for human or veterinary use.)
-                        </div>
-                        </div>
-                    )}
-                    </div>
-                </motion.div>
-
-                <div className="mt-24 border-t border-neutral-100 pt-16">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                         <div>
-                            <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest mb-2 block">Istražite Dalje</span>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#0B0B0C] tracking-tight">Često Istraživano Zajedno</h2>
+                            <h4 className="text-sm font-bold text-black uppercase tracking-wide mb-1">Sadržaj Paketa</h4>
+                            <p className="text-neutral-600 text-sm leading-relaxed">
+                                1x {product.name} ({product.volume}) u formatu liofilizovanog praha (Cake). 
+                                {isBundleSelected && " + 1x 30mL Bakteriostatska voda (USP)."}
+                            </p>
                         </div>
-                        <Button variant="ghost" onClick={() => navigate('/peptidi-srbija')} className="hidden md:flex">
-                            Vidi Sve <ArrowRight size={18} />
-                        </Button>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {relatedProducts.map((item) => (
-                            <motion.div 
-                                key={item.id}
-                                whileHover={{ y: -5 }}
-                                onClick={() => handleRelatedClick(item.slug)}
-                                className="group cursor-pointer"
-                            >
-                                <div className="bg-[#F5F5F7] rounded-[2rem] aspect-square p-8 mb-6 flex items-center justify-center relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <img src={item.image} alt={item.name} className="w-full h-full object-contain mix-blend-multiply relative z-10 transition-transform duration-500 group-hover:scale-110" />
-                                    <div className="absolute top-6 left-6 px-3 py-1 bg-white/50 backdrop-blur-md rounded-full border border-white/20">
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">{item.category}</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-[#0B0B0C] mb-1 group-hover:underline decoration-1 underline-offset-4">{item.name}</h3>
-                                    <p className="text-sm text-neutral-600 font-mono">{item.subtitle}</p>
-                                    <div className="mt-3 font-medium text-neutral-900">${item.price.toFixed(2)}</div>
-                                </div>
-                            </motion.div>
-                        ))}
+                    {/* Purity & Analysis */}
+                    <div className="flex items-start gap-4 pb-6 border-b border-neutral-100">
+                        <div className="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0">
+                            <Activity size={20} />
+                        </div>
+                        <div>
+                            <h4 className="text-sm font-bold text-black uppercase tracking-wide mb-1">Čistoća i Analiza</h4>
+                            <p className="text-neutral-600 text-sm leading-relaxed">
+                                Garantovana čistoća {'>'}99% verifikovana HPLC metodom. <br/>
+                                <span className="underline decoration-neutral-300 underline-offset-4 cursor-pointer hover:text-black transition-colors">Pogledaj COA (Sertifikat Analize)</span>
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div className="mt-8 flex md:hidden justify-center">
-                        <Button variant="ghost" onClick={() => navigate('/peptidi-srbija')}>
-                            Vidi Sve <ArrowRight size={18} />
-                        </Button>
+
+                    {/* Delivery & Packing */}
+                    <div className="flex items-start gap-4 pb-6 border-b border-neutral-100">
+                        <div className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-800 flex items-center justify-center shrink-0">
+                            <Truck size={20} />
+                        </div>
+                        <div>
+                            <h4 className="text-sm font-bold text-black uppercase tracking-wide mb-1">Isporuka Srbija (24h)</h4>
+                            <p className="text-neutral-600 text-sm leading-relaxed">
+                                Šaljemo Post Express-om (Danas za Sutra).
+                                Pakovano u diskretnu termo-izolovanu ambalažu (Hladni Lanac) radi očuvanja stabilnosti.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Disclaimer */}
+                    <div className="flex items-start gap-3 bg-amber-50 p-4 rounded-xl border border-amber-100">
+                        <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
+                        <p className="text-xs font-medium text-amber-800 leading-relaxed">
+                            <span className="font-bold uppercase">Samo za Istraživačke Svrhe.</span><br/>
+                            Ovaj proizvod nije namenjen za ljudsku upotrebu, dijagnostiku ili lečenje. Kupovinom potvrđujete da ste istraživačka institucija ili kvalifikovani pojedinac.
+                        </p>
+                    </div>
+                </motion.div>
+
+                {/* 5. Minimal Specs List (Secondary Info) */}
+                <div className="mt-12 grid grid-cols-2 gap-4 opacity-70 hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#F9F9FB]">
+                        <Dna size={16} className="text-neutral-500"/>
+                        <div>
+                            <div className="text-[9px] uppercase font-bold text-neutral-500">Sekvenca</div>
+                            <div className="text-xs font-bold">15 Aminokiselina</div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#F9F9FB]">
+                        <Thermometer size={16} className="text-neutral-500"/>
+                        <div>
+                            <div className="text-[9px] uppercase font-bold text-neutral-500">Skladištenje</div>
+                            <div className="text-xs font-bold">-20°C (Dugoročno)</div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#F9F9FB]">
+                        <Scale size={16} className="text-neutral-500"/>
+                        <div>
+                            <div className="text-[9px] uppercase font-bold text-neutral-500">Molarna Masa</div>
+                            <div className="text-xs font-bold">1419 g/mol</div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#F9F9FB]">
+                        <FileText size={16} className="text-neutral-500"/>
+                        <div>
+                            <div className="text-[9px] uppercase font-bold text-neutral-500">CAS Broj</div>
+                            <div className="text-xs font-bold">137-00-1</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* RELATED PRODUCTS (Simplified for brevity) */}
+                <div className="mt-16 pt-8 border-t border-neutral-100">
+                    <h3 className="text-sm font-bold text-neutral-900 uppercase tracking-widest mb-6">Često Istraživano Zajedno</h3>
+                    <div className="grid grid-cols-3 gap-4">
+                        {relatedProducts.map((item) => (
+                            <div 
+                                key={item.id}
+                                onClick={() => handleRelatedClick(item.slug)}
+                                className="group cursor-pointer bg-[#F5F5F7] rounded-2xl p-4 text-center hover:bg-neutral-200 transition-colors"
+                            >
+                                <img src={item.image} alt={item.name} className="w-12 h-12 mx-auto mb-2 object-contain mix-blend-multiply" />
+                                <div className="text-xs font-bold text-black">{item.name}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
