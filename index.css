@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Optimized Noise - Lower opacity, simple filter */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* GPU Accelerated Animations */
+@keyframes blob-pulse {
+  0% { transform: translate3d(-50%, 0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate3d(-50%, 0, 0) scale(1.1); opacity: 0.5; }
+  100% { transform: translate3d(-50%, 0, 0) scale(1); opacity: 0.3; }
+}
+
+.animate-blob-pulse {
+  animation: blob-pulse 8s infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+/* Performance Optimized Gradient (No Blur Filter) */
+.hero-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+}
