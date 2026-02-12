@@ -14,12 +14,12 @@ const ModernDisclaimer = () => (
       {/* Subtle diagonal pattern for technical feel - tinted amber */}
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(45deg,#F59E0B_25%,transparent_25%,transparent_50%,#F59E0B_50%,#F59E0B_75%,transparent_75%,transparent)] bg-[size:8px_8px] pointer-events-none" />
       
-      <div className="flex items-center gap-3 px-4 relative z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-          <AlertTriangle size={11} className="stroke-2 text-amber-600" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-900">
+      <div className="flex items-center gap-2 md:gap-3 px-4 relative z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+          <AlertTriangle size={11} className="stroke-2 text-amber-600 shrink-0" />
+          <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.2em] text-amber-900 text-center leading-tight">
             ROU • Nije za ljudsku i veterinarsku upotrebu
           </span>
-          <AlertTriangle size={11} className="stroke-2 text-amber-600" />
+          <AlertTriangle size={11} className="stroke-2 text-amber-600 shrink-0" />
       </div>
   </div>
 );
@@ -50,7 +50,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="mb-8"
+                    className="mb-6 md:mb-8"
                 >
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100/80 border border-neutral-200 backdrop-blur-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
@@ -58,8 +58,8 @@ const Hero = () => {
                     </span>
                 </motion.div>
 
-                {/* Updated Typography to Match 'TITANI' Section */}
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 max-w-6xl mx-auto">
+                {/* Updated Typography: Responsive sizes for mobile */}
+                <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-6 md:mb-8 max-w-6xl mx-auto break-words">
                     JASNOĆA<br/>
                     U SVAKOM<br/>
                     <span className="text-neutral-500">MOLEKULU.</span>
@@ -69,7 +69,7 @@ const Hero = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-lg md:text-xl text-neutral-700 max-w-2xl leading-relaxed mb-10 font-medium"
+                    className="text-lg md:text-xl text-neutral-700 max-w-2xl leading-relaxed mb-8 md:mb-10 font-medium px-4 md:px-0"
                 >
                     Peptidi za istraživanja dostupni u Srbiji. <br className="hidden md:block" />
                     Laboratorijski testirana jedinjenja dizajnirana za savremena istraživanja.
@@ -79,12 +79,12 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+                    className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 md:px-0"
                 >
                     <Button 
                         onClick={() => navigate('/peptidi-srbija')} 
                         size="lg" 
-                        className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-10 h-14 rounded-full shadow-xl shadow-neutral-200 text-sm tracking-wide font-bold"
+                        className="bg-[#0B0B0C] text-white hover:bg-neutral-800 w-full sm:w-auto px-10 h-14 rounded-full shadow-xl shadow-neutral-200 text-sm tracking-wide font-bold"
                     >
                         Istraži Peptide
                     </Button>
@@ -92,7 +92,7 @@ const Hero = () => {
                         onClick={() => navigate('/laboratorijski-standard')} 
                         variant="outline"
                         size="lg" 
-                        className="bg-white border-neutral-200 text-neutral-900 hover:bg-neutral-50 px-10 h-14 rounded-full text-sm tracking-wide font-bold"
+                        className="bg-white border-neutral-200 text-neutral-900 hover:bg-neutral-50 w-full sm:w-auto px-10 h-14 rounded-full text-sm tracking-wide font-bold"
                     >
                         Protokoli Kvaliteta
                     </Button>
@@ -102,7 +102,7 @@ const Hero = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mt-12 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-xs sm:text-sm font-semibold text-neutral-600 tracking-wide"
+                    className="mt-12 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-xs sm:text-sm font-semibold text-neutral-600 tracking-wide px-4"
                 >
                     <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-green-600" /><span>HPLC/MS testirano</span></div>
                     <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-green-600" /><span>&gt;99% čistoća</span></div>
@@ -116,30 +116,30 @@ const Hero = () => {
 
 // 2. INTRO / SEO BLOCK (MODERNIZED & SCALED UP)
 const OctolabIntro = () => (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden border-b border-neutral-100">
+    <section className="py-20 md:py-32 bg-white relative overflow-hidden border-b border-neutral-100">
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
                 
-                {/* Left Side: Headline & Lead - NOW STICKY & LARGER */}
-                <div className="lg:col-span-5 sticky top-32 mb-12 lg:mb-0">
+                {/* Left Side: Headline & Lead - Sticky ONLY on Desktop */}
+                <div className="lg:col-span-5 lg:sticky lg:top-32 mb-8 lg:mb-0">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                         <div className="flex items-center gap-3 mb-8">
+                         <div className="flex items-center gap-3 mb-6 md:mb-8">
                             <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
                             <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">O Octolabu</span>
                          </div>
                         
-                        {/* Scaled Up Typography to Match TrustBlock */}
-                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8">
+                        {/* Scaled Up Typography */}
+                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-6 md:mb-8">
                             Peptidi za <br/> istraživanje <br/>
                             <span className="text-neutral-400">u Srbiji.</span>
                         </h2>
                         
-                        <div className="w-12 h-1 bg-black mb-8" />
+                        <div className="w-12 h-1 bg-black mb-6 md:mb-8" />
 
                         <p className="text-lg text-neutral-700 leading-relaxed font-medium">
                             OCTOLAB postavlja novi standard za nabavku laboratorijskih peptida na domaćem tržištu.
@@ -148,7 +148,7 @@ const OctolabIntro = () => (
                 </div>
 
                 {/* Right Side: Detailed Grid */}
-                <div className="lg:col-span-7 flex flex-col gap-12">
+                <div className="lg:col-span-7 flex flex-col gap-8 md:gap-12">
                     <motion.p 
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -159,7 +159,7 @@ const OctolabIntro = () => (
                          Specijalizovani smo za sintezu i distribuciju visoko-čistih jedinjenja namenjenih isključivo kvalifikovanim istraživačima i naučnim institucijama. Eliminišemo rizike uvoza i garantujemo kvalitet.
                     </motion.p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         {[
                             {
                                 title: "Lokalna Dostupnost",
@@ -269,14 +269,14 @@ const ProductGrid = () => {
     const waterProduct = PRODUCTS.find(p => p.slug === waterSlug);
 
     return (
-        <section className="py-24 bg-[#FAFAFA] relative overflow-hidden">
+        <section className="py-20 md:py-24 bg-[#FAFAFA] relative overflow-hidden">
             {/* Subtle Gradient to give depth behind the white cards */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-white to-transparent opacity-60 -z-10 pointer-events-none" />
 
             <div className="max-w-[1200px] mx-auto px-6">
                 
                 {/* --- CUSTOM HEADER FOR PRODUCT GRID --- */}
-                <div className="mb-24 relative">
+                <div className="mb-16 md:mb-24 relative">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -289,7 +289,7 @@ const ProductGrid = () => {
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-600">Visoka Potražnja</span>
                         </div>
                         
-                        <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8">
+                        <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8">
                             TITANI <br/>
                             <span className="text-neutral-400">ISTRAŽIVANJA.</span>
                         </h2>
@@ -319,7 +319,7 @@ const ProductGrid = () => {
                     ))}
                 </div>
 
-                {/* Wide Water Card - Horizontal Layout on Desktop */}
+                {/* Wide Water Card - Horizontal Layout on Desktop, Vertical on Mobile */}
                 {waterProduct && (
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
@@ -330,7 +330,7 @@ const ProductGrid = () => {
                         onClick={() => navigate(`/${waterProduct.slug}`)}
                         className="group bg-white rounded-[2.5rem] p-6 md:p-8 border border-transparent hover:border-neutral-100 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-300 cursor-pointer flex flex-col md:flex-row items-center gap-8 md:gap-12"
                     >
-                         {/* Image Left */}
+                         {/* Image Left (Top on Mobile) */}
                          <div className="w-full md:w-1/3 shrink-0">
                             <div className="aspect-[4/3] md:aspect-square bg-[#F5F5F7] rounded-[2rem] p-8 flex items-center justify-center relative overflow-hidden">
                                 <motion.img
@@ -347,18 +347,18 @@ const ProductGrid = () => {
                             </div>
                          </div>
 
-                         {/* Content Right */}
+                         {/* Content Right (Bottom on Mobile) */}
                          <div className="flex-1 text-center md:text-left">
                              <h3 className="text-2xl md:text-4xl font-bold text-[#0B0B0C] mb-2 tracking-tight">{waterProduct.name}</h3>
                              <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-4">{waterProduct.subtitle}</p>
                              
-                             <p className="text-sm md:text-base text-neutral-600 leading-relaxed mb-8 max-w-xl">
+                             <p className="text-sm md:text-base text-neutral-600 leading-relaxed mb-8 max-w-xl mx-auto md:mx-0">
                                  {waterProduct.description} Neophodna komponenta za sigurnu i sterilnu rekonstituciju liofilizovanih peptida. Sadrži 0.9% benzil alkohola.
                              </p>
 
-                             <div className="flex items-center justify-between md:justify-start gap-8 pt-6 border-t border-neutral-100/80 md:border-t-0 md:pt-0">
+                             <div className="flex flex-col md:flex-row items-center justify-between md:justify-start gap-6 md:gap-8 pt-6 border-t border-neutral-100/80 md:border-t-0 md:pt-0 w-full">
                                 <span className="text-3xl font-bold text-[#0B0B0C] tracking-tight">${waterProduct.price.toFixed(2)}</span>
-                                <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-black px-6 py-3 rounded-full group-hover:bg-neutral-800 transition-colors shadow-lg">
+                                <button className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-black px-6 py-3 rounded-full group-hover:bg-neutral-800 transition-colors shadow-lg w-full md:w-auto">
                                     Dodaj u Laboratoriju <ArrowRight size={14} />
                                 </button>
                              </div>
@@ -366,8 +366,8 @@ const ProductGrid = () => {
                     </motion.div>
                 )}
                 
-                <div className="mt-20 text-center md:hidden">
-                    <Button onClick={() => navigate('/peptidi-srbija')} variant="outline" size="lg" className="bg-white border-neutral-200 hover:bg-neutral-50 px-12">
+                <div className="mt-16 text-center md:hidden">
+                    <Button onClick={() => navigate('/peptidi-srbija')} variant="outline" size="lg" className="bg-white border-neutral-200 hover:bg-neutral-50 px-12 w-full">
                         Pregledaj Ceo Katalog
                     </Button>
                 </div>
@@ -378,31 +378,31 @@ const ProductGrid = () => {
 
 // 4. WHY US (Trust Block)
 const TrustBlock = () => (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-white relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
                 
-                {/* LEFT: Manifesto Title */}
-                <div className="lg:col-span-5 sticky top-32 mb-12 lg:mb-0">
+                {/* LEFT: Manifesto Title - Sticky ONLY on desktop */}
+                <div className="lg:col-span-5 lg:sticky lg:top-32 mb-8 lg:mb-0">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="flex items-center gap-3 mb-8">
+                        <div className="flex items-center gap-3 mb-6 md:mb-8">
                              <div className="h-px w-12 bg-black"></div>
                              <span className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">Naš Standard</span>
                         </div>
                         
                         {/* Optimized Typography for Responsive Layouts */}
-                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8 w-full">
+                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-6 md:mb-8 w-full">
                             NULA <br/>
                             <span className="text-neutral-400">KOMPROMISA.</span>
                         </h2>
 
-                        <p className="text-lg text-neutral-600 font-medium leading-relaxed mb-12 max-w-sm">
+                        <p className="text-lg text-neutral-600 font-medium leading-relaxed mb-8 md:mb-12 max-w-sm">
                             Kada je u pitanju biohemijska čistoća, "dovoljno dobro" ne postoji. Postavljamo nove granice transparentnosti na tržištu istraživačkih hemikalija.
                         </p>
 
@@ -423,28 +423,28 @@ const TrustBlock = () => (
                             title: "Laboratorijska Analiza", 
                             subtitle: "Dvostruka Verifikacija",
                             desc: "Svaka serija prolazi HPLC (Hromatografija) za čistoću i MS (Masena Spektrometrija) za potvrdu identiteta.",
-                            icon: <FileSearch size={28} />
+                            icon: <FileSearch size={24} />
                         },
                         { 
                             id: "02",
                             title: "API Grade Čistoća", 
                             subtitle: ">99% Garantovano",
                             desc: "Bez filera, bez manitola niske čistoće. Samo aktivna farmaceutska supstanca za precizno doziranje.",
-                            icon: <FlaskConical size={28} />
+                            icon: <FlaskConical size={24} />
                         },
                         { 
                             id: "03",
                             title: "Hladni Lanac", 
                             subtitle: "Termalni Integritet",
                             desc: "Skladištenje na -20°C od trenutka sinteze. Isporuka u termo-izolovanoj ambalaži za očuvanje peptidnih veza.",
-                            icon: <ThermometerSnowflake size={28} />
+                            icon: <ThermometerSnowflake size={24} />
                         },
                         { 
                             id: "04",
                             title: "Diskrecija & Sigurnost", 
                             subtitle: "Anonimna Logistika",
                             desc: "Neutralno pakovanje bez oznaka brenda. Podaci klijenata su kriptovani i nikada se ne dele.",
-                            icon: <Lock size={28} />
+                            icon: <Lock size={24} />
                         }
                     ].map((item, i) => (
                         <motion.div 
@@ -453,30 +453,25 @@ const TrustBlock = () => (
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 + (i * 0.1) }}
-                            className="group relative py-10 border-t border-neutral-100 last:border-b hover:border-black/10 transition-colors duration-500"
+                            className="group relative py-8 md:py-10 border-t border-neutral-100 last:border-b hover:border-black/10 transition-colors duration-500"
                         >
-                            <div className="flex flex-col md:flex-row gap-8 md:items-start relative z-10">
-                                {/* Number */}
-                                <span className="text-xs font-mono font-bold text-neutral-300 group-hover:text-black transition-colors pt-2">
-                                    {item.id}
-                                </span>
-
-                                {/* Icon Box */}
-                                <div className="w-16 h-16 rounded-2xl bg-[#F9F9FB] border border-transparent group-hover:border-neutral-200 group-hover:bg-white flex items-center justify-center text-neutral-400 group-hover:text-black transition-all duration-500 shrink-0">
-                                    {item.icon}
+                            <div className="flex gap-5 md:gap-8 items-start relative z-10">
+                                {/* Icon Box - Responsive Size */}
+                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-[#F9F9FB] border border-transparent group-hover:border-neutral-200 group-hover:bg-white flex items-center justify-center text-neutral-400 group-hover:text-black transition-all duration-500 shrink-0 mt-1">
+                                    {React.cloneElement(item.icon as React.ReactElement, { size: 20 })}
                                 </div>
 
                                 {/* Text Content */}
                                 <div className="flex-1">
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
-                                        <h3 className="text-2xl font-bold text-[#0B0B0C] tracking-tight group-hover:translate-x-2 transition-transform duration-500">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-2 mb-2 md:mb-3">
+                                        <h3 className="text-xl md:text-2xl font-bold text-[#0B0B0C] tracking-tight group-hover:translate-x-2 transition-transform duration-500">
                                             {item.title}
                                         </h3>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 group-hover:text-green-600 transition-colors">
+                                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-neutral-400 group-hover:text-green-600 transition-colors">
                                             {item.subtitle}
                                         </span>
                                     </div>
-                                    <p className="text-neutral-600 leading-relaxed font-medium max-w-xl group-hover:text-neutral-900 transition-colors">
+                                    <p className="text-sm md:text-base text-neutral-600 leading-relaxed font-medium max-w-xl group-hover:text-neutral-900 transition-colors">
                                         {item.desc}
                                     </p>
                                 </div>
@@ -492,7 +487,7 @@ const TrustBlock = () => (
 
 // 5. QUALITY PROCESS (Visual Flow) - NEW REDESIGN
 const ProcessFlow = () => (
-    <section className="py-32 bg-[#050505] text-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#050505] text-white relative overflow-hidden">
         {/* Abstract Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
         
@@ -500,7 +495,7 @@ const ProcessFlow = () => (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[200px] bg-green-900/10 blur-[120px] pointer-events-none rounded-full" />
 
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-            <div className="text-center mb-24">
+            <div className="text-center mb-16 md:mb-24">
                 <span className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-green-500 mb-6 backdrop-blur-md">
                     Octolab Pipeline
                 </span>
@@ -513,7 +508,7 @@ const ProcessFlow = () => (
             </div>
 
             <div className="relative">
-                {/* Connecting Line (Desktop) */}
+                {/* Connecting Line (Desktop Only) */}
                 <div className="hidden md:block absolute top-16 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
@@ -532,7 +527,7 @@ const ProcessFlow = () => (
                                 className="w-full bg-white/5 border border-white/10 p-6 md:p-8 rounded-[2rem] hover:bg-white/10 hover:border-green-500/30 transition-all duration-300 relative overflow-hidden backdrop-blur-sm"
                             >
                                 {/* Background Number */}
-                                <span className="absolute -right-4 -bottom-8 text-[8rem] font-bold text-white/5 pointer-events-none select-none font-mono">
+                                <span className="absolute -right-4 -bottom-8 text-[6rem] md:text-[8rem] font-bold text-white/5 pointer-events-none select-none font-mono">
                                     {step.id}
                                 </span>
 
@@ -592,13 +587,13 @@ const FAQ = () => {
     ];
   
     return (
-      <section className="py-32 bg-white overflow-hidden relative">
+      <section className="py-24 md:py-32 bg-white overflow-hidden relative">
         {/* Subtle Background Blob */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[40vw] h-[40vw] bg-neutral-100 rounded-full blur-[120px] -z-10 pointer-events-none opacity-60" />
 
         <div className="max-w-[1000px] mx-auto px-6 relative z-10">
             {/* Custom Header for FAQ */}
-            <div className="mb-24 text-center max-w-3xl mx-auto">
+            <div className="mb-16 md:mb-24 text-center max-w-3xl mx-auto">
                 <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -645,7 +640,7 @@ const FAQ = () => {
                         onClick={() => setActiveIndex(activeIndex === i ? null : i)}
                         className={`group cursor-pointer rounded-3xl p-6 md:p-8 transition-all duration-500 border ${activeIndex === i ? 'bg-[#F9F9FB] border-neutral-200 shadow-xl shadow-neutral-100/50' : 'bg-transparent border-transparent hover:bg-white hover:border-neutral-100'}`}
                     >
-                        <motion.div layout className="flex justify-between items-start gap-6">
+                        <motion.div layout className="flex justify-between items-start gap-4 md:gap-6">
                             <div className="flex items-start gap-4 md:gap-6">
                                 {/* Numbering */}
                                 <span className={`text-xs font-mono font-bold mt-1.5 transition-colors ${activeIndex === i ? 'text-black' : 'text-neutral-300'}`}>
@@ -653,7 +648,7 @@ const FAQ = () => {
                                 </span>
                                 
                                 {/* Question Title */}
-                                <h3 className={`text-xl md:text-2xl font-bold transition-colors leading-tight ${activeIndex === i ? 'text-black' : 'text-neutral-500 group-hover:text-black'}`}>
+                                <h3 className={`text-lg md:text-2xl font-bold transition-colors leading-tight ${activeIndex === i ? 'text-black' : 'text-neutral-500 group-hover:text-black'}`}>
                                     {q.question}
                                 </h3>
                             </div>
@@ -673,8 +668,8 @@ const FAQ = () => {
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="pt-6 pl-10 md:pl-16 pr-4 md:pr-12">
-                                        <p className="text-lg text-neutral-600 leading-relaxed font-medium">
+                                    <div className="pt-6 pl-10 md:pl-16 pr-0 md:pr-12">
+                                        <p className="text-base md:text-lg text-neutral-600 leading-relaxed font-medium">
                                             {q.answer}
                                         </p>
                                     </div>
@@ -685,7 +680,7 @@ const FAQ = () => {
                 ))}
             </div>
             
-            <div className="mt-16 text-center">
+            <div className="mt-12 md:mt-16 text-center">
                 <p className="text-neutral-500 mb-4">Niste našli odgovor?</p>
                 <button 
                     onClick={() => navigate('/kontakt')}
@@ -703,7 +698,7 @@ const FAQ = () => {
 const ResearchPreview = () => {
     const navigate = useNavigate();
     return (
-        <section className="py-32 bg-[#0B0B0C] text-white relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-[#0B0B0C] text-white relative overflow-hidden">
             {/* Background Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none" />
             
@@ -784,7 +779,7 @@ const ResearchPreview = () => {
 const FinalCTA = () => {
     const navigate = useNavigate();
     return (
-        <section className="py-32 md:py-48 bg-white relative overflow-hidden">
+        <section className="py-24 md:py-48 bg-white relative overflow-hidden">
              {/* Background Decoration */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-neutral-100 rounded-full blur-[120px] -z-10" />
              
@@ -794,10 +789,10 @@ const FinalCTA = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-6xl md:text-9xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85]">
+                    <h2 className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85]">
                         OCTOLAB
                     </h2>
-                    <p className="text-xl md:text-3xl text-neutral-500 font-light mb-12 max-w-2xl mx-auto">
+                    <p className="text-lg md:text-3xl text-neutral-500 font-light mb-12 max-w-2xl mx-auto">
                         Standard za precizna biohemijska istraživanja u Srbiji.
                     </p>
                     
@@ -805,7 +800,7 @@ const FinalCTA = () => {
                         <Button 
                             onClick={() => navigate('/peptidi-srbija')} 
                             size="lg" 
-                            className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-12 h-16 rounded-full text-lg shadow-2xl shadow-neutral-200 min-w-[200px]"
+                            className="bg-[#0B0B0C] text-white hover:bg-neutral-800 w-full sm:w-auto px-12 h-16 rounded-full text-lg shadow-2xl shadow-neutral-200 min-w-[200px]"
                         >
                             Katalog
                         </Button>
@@ -813,7 +808,7 @@ const FinalCTA = () => {
                             onClick={() => navigate('/kontakt')} 
                             variant="outline"
                             size="lg" 
-                            className="bg-white text-black border-neutral-200 hover:bg-neutral-50 px-12 h-16 rounded-full text-lg min-w-[200px]"
+                            className="bg-white text-black border-neutral-200 hover:bg-neutral-50 w-full sm:w-auto px-12 h-16 rounded-full text-lg min-w-[200px]"
                         >
                             Kontakt
                         </Button>
