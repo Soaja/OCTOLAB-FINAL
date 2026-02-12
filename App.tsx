@@ -50,7 +50,7 @@ const AppContent: React.FC = () => {
       <Navbar cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)} onOpenCart={() => setIsCartOpen(true)} />
 
       <main className="min-h-screen relative">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={
               <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
