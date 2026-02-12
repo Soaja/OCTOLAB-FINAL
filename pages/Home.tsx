@@ -9,13 +9,17 @@ import { Product } from '../types';
 
 // --- COMPONENTS ---
 
-const DisclaimerBar = () => (
-  <div className="w-full bg-amber-50/60 border-y border-amber-100/50 py-3 flex justify-center items-center relative z-30 backdrop-blur-md">
-      <div className="flex items-center gap-2 text-amber-900 px-4 text-center">
-          <AlertTriangle size={12} className="stroke-2" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.15em]">
-            Samo Za Istraživačke Svrhe
+const ModernDisclaimer = () => (
+  <div className="w-full bg-amber-50/80 border-y border-amber-100/80 py-3 flex justify-center items-center relative z-20 overflow-hidden group backdrop-blur-sm">
+      {/* Subtle diagonal pattern for technical feel - tinted amber */}
+      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(45deg,#F59E0B_25%,transparent_25%,transparent_50%,#F59E0B_50%,#F59E0B_75%,transparent_75%,transparent)] bg-[size:8px_8px] pointer-events-none" />
+      
+      <div className="flex items-center gap-3 px-4 relative z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+          <AlertTriangle size={11} className="stroke-2 text-amber-600" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-900">
+            ROU • Nije za ljudsku i veterinarsku upotrebu
           </span>
+          <AlertTriangle size={11} className="stroke-2 text-amber-600" />
       </div>
   </div>
 );
@@ -33,7 +37,7 @@ const SectionHeading = ({ title, subtitle, align = 'center' }: { title: string, 
   </div>
 );
 
-// 1. HERO SECTION (Preserved & Optimized)
+// 1. HERO SECTION (Updated Scale)
 const Hero = () => {
     const navigate = useNavigate();
     return (
@@ -54,7 +58,8 @@ const Hero = () => {
                     </span>
                 </motion.div>
 
-                <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tighter text-[#0B0B0C] leading-[0.95] md:leading-[0.9] mb-8 max-w-4xl mx-auto">
+                {/* Updated Typography to Match 'TITANI' Section */}
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 max-w-6xl mx-auto">
                     JASNOĆA<br/>
                     U SVAKOM<br/>
                     <span className="text-neutral-500">MOLEKULU.</span>
@@ -109,27 +114,28 @@ const Hero = () => {
     );
 };
 
-// 2. INTRO / SEO BLOCK (MODERNIZED)
+// 2. INTRO / SEO BLOCK (MODERNIZED & SCALED UP)
 const OctolabIntro = () => (
     <section className="py-24 md:py-32 bg-white relative overflow-hidden border-b border-neutral-100">
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
                 
-                {/* Left Side: Headline & Lead */}
-                <div className="lg:col-span-5 relative">
+                {/* Left Side: Headline & Lead - NOW STICKY & LARGER */}
+                <div className="lg:col-span-5 sticky top-32 mb-12 lg:mb-0">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                         <div className="flex items-center gap-2 mb-6">
+                         <div className="flex items-center gap-3 mb-8">
                             <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
                             <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">O Octolabu</span>
                          </div>
                         
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-[#0B0B0C] mb-6 leading-[1.05]">
-                            Peptidi za istraživanje <br/>
+                        {/* Scaled Up Typography to Match TrustBlock */}
+                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8">
+                            Peptidi za <br/> istraživanje <br/>
                             <span className="text-neutral-400">u Srbiji.</span>
                         </h2>
                         
@@ -142,13 +148,13 @@ const OctolabIntro = () => (
                 </div>
 
                 {/* Right Side: Detailed Grid */}
-                <div className="lg:col-span-7">
+                <div className="lg:col-span-7 flex flex-col gap-12">
                     <motion.p 
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-neutral-600 leading-relaxed mb-12 text-lg"
+                        className="text-neutral-600 leading-relaxed text-lg font-medium"
                     >
                          Specijalizovani smo za sintezu i distribuciju visoko-čistih jedinjenja namenjenih isključivo kvalifikovanim istraživačima i naučnim institucijama. Eliminišemo rizike uvoza i garantujemo kvalitet.
                     </motion.p>
@@ -827,13 +833,19 @@ export const Home: React.FC = () => {
       />
 
       <Hero />
-      <DisclaimerBar />
+      <ModernDisclaimer />
       <OctolabIntro />
+      <ModernDisclaimer />
       <ProductGrid />
+      <ModernDisclaimer />
       <TrustBlock />
+      <ModernDisclaimer />
       <ProcessFlow />
+      <ModernDisclaimer />
       <FAQ />
+      <ModernDisclaimer />
       <ResearchPreview />
+      <ModernDisclaimer />
       <FinalCTA />
     </div>
   );
