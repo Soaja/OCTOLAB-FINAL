@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -8,14 +8,17 @@ import { ProductDetail } from './pages/ProductDetail';
 import { Contact } from './pages/Contact';
 import { About } from './pages/About';
 import { Info } from './pages/Info';
+import { Checkout } from './pages/Checkout'; // Import Checkout
 import { CartItem, Product } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, X, Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
 
+// Wrapper component to use hooks inside Router
 const AppContent: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate(); // Used for sidebar navigation
 
   const addToCart = (product: Product) => {
     setCart(prev => {
@@ -32,6 +35,10 @@ const AppContent: React.FC = () => {
     setCart(prev => prev.filter(item => item.id !== id));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const updateQuantity = (id: string, delta: number) => {
     setCart(prev => prev.map(item => {
         if (item.id === id) {
@@ -42,11 +49,17 @@ const AppContent: React.FC = () => {
     }));
   };
 
+  const handleCheckoutClick = () => {
+    setIsCartOpen(false);
+    navigate('/checkout');
+  };
+
   const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
     <div className="bg-white min-h-screen font-sans text-neutral-900 selection:bg-neutral-900 selection:text-white">
       
+      {/* Navbar is visible on all pages, but we could hide it on checkout if desired. Keeping it for now. */}
       <Navbar cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)} onOpenCart={() => setIsCartOpen(true)} />
 
       <main className="min-h-screen relative">
@@ -87,6 +100,12 @@ const AppContent: React.FC = () => {
                  <Contact />
                </motion.div>
             } />
+            
+            <Route path="/checkout" element={
+               <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+                 <Checkout cart={cart} total={cartTotal} onClearCart={clearCart} />
+               </motion.div>
+            } />
 
             {/* Product Route - Catch all slug at root level */}
             <Route path="/:slug" element={
@@ -98,7 +117,8 @@ const AppContent: React.FC = () => {
         </AnimatePresence>
       </main>
 
-      <Footer />
+      {/* Hide Footer on Checkout for cleaner look, or keep it. Currently keeping it. */}
+      {location.pathname !== '/checkout' && <Footer />}
 
       {/* CART SIDEBAR */}
       <AnimatePresence>
@@ -218,7 +238,11 @@ const AppContent: React.FC = () => {
                     </div>
                  </div>
 
-                 <button className="w-full bg-[#0B0B0C] text-white h-16 rounded-full font-bold text-lg hover:bg-neutral-800 transition-all shadow-xl shadow-neutral-200 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 group">
+                 <button 
+                    onClick={handleCheckoutClick}
+                    disabled={cart.length === 0}
+                    className="w-full bg-[#0B0B0C] text-white h-16 rounded-full font-bold text-lg hover:bg-neutral-800 transition-all shadow-xl shadow-neutral-200 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+                 >
                     <span>Bezbedno Plaćanje</span>
                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                  </button>
