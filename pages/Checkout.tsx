@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Truck, Lock, MapPin, User, Mail, Phone, CheckCircle2, Wallet, Package, ArrowRight, Loader2, ChevronLeft } from 'lucide-react';
+import { ShieldCheck, Truck, Lock, MapPin, User, Mail, Phone, CheckCircle2, Wallet, Package, ArrowRight, Loader2, ChevronLeft, AlertCircle } from 'lucide-react';
 import { Button } from '../components/Button';
 import { SEO } from '../components/SEO';
 import { CartItem } from '../types';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../lib/supabaseClient';
 
 interface CheckoutProps {
   cart: CartItem[];
@@ -23,6 +24,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Redirect if cart is empty
   useEffect(() => {
@@ -31,17 +33,59 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
     }
   }, [cart, navigate, isSuccess]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMsg(null);
     
-    // Simulate API Call
-    setTimeout(() => {
+    const formData = new FormData(e.currentTarget);
+    
+    // Extract data
+    const orderData = {
+        customer_email: formData.get('email'),
+        customer_phone: formData.get('phone'),
+        customer_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+        shipping_address: {
+            street: formData.get('address'),
+            city: formData.get('city'),
+            zip: formData.get('zip'),
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName')
+        },
+        cart_items: cart.map(item => ({
+            id: item.id,
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            sku: item.slug
+        })),
+        total_amount: total + 5, // Including shipping
+        payment_method: 'pouzece', // Hardcoded for now based on UI
+        status: 'pending'
+    };
+
+    try {
+        const { error } = await supabase
+            .from('orders')
+            .insert([orderData]);
+
+        if (error) throw error;
+
+        // Success simulation delay for UX
+        setTimeout(() => {
+            setIsSubmitting(false);
+            setIsSuccess(true);
+            onClearCart();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1000);
+
+    } catch (error: any) {
+        console.error('Error saving order:', error);
+        // Show specific error message from Supabase if available
+        const message = error.message || 'Došlo je do greške prilikom čuvanja porudžbine. Molimo pokušajte ponovo.';
+        setErrorMsg(message);
         setIsSubmitting(false);
-        setIsSuccess(true);
-        onClearCart();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    }
   };
 
   if (isSuccess) {
@@ -111,6 +155,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
                     onSubmit={handleSubmit}
                     className="flex flex-col gap-8"
                 >
+                    {errorMsg && (
+                        <div className="bg-red-50 text-red-600 p-4 rounded-2xl flex items-center gap-3 border border-red-100">
+                            <AlertCircle size={20} />
+                            <p className="text-sm font-medium">{errorMsg}</p>
+                        </div>
+                    )}
+
                     {/* Section 1: Contact */}
                     <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-neutral-100">
                         <div className="flex items-center gap-3 mb-6">
@@ -123,11 +174,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Email</label>
-                                <input required type="email" placeholder="vas@email.com" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                                <input required name="email" type="email" placeholder="vas@email.com" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Telefon</label>
-                                <input required type="tel" placeholder="+381 6..." className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                                <input required name="phone" type="tel" placeholder="+381 6..." className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                             </div>
                         </div>
                     </div>
@@ -144,27 +195,27 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Ime</label>
-                                <input required type="text" placeholder="Vaše Ime" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                                <input required name="firstName" type="text" placeholder="Vaše Ime" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Prezime</label>
-                                <input required type="text" placeholder="Vaše Prezime" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                                <input required name="lastName" type="text" placeholder="Vaše Prezime" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                             </div>
                         </div>
 
                         <div className="space-y-2 mb-6">
                             <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Ulica i Broj</label>
-                            <input required type="text" placeholder="Bulevar..." className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                            <input required name="address" type="text" placeholder="Bulevar..." className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Poštanski Broj</label>
-                                <input required type="text" placeholder="11000" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                                <input required name="zip" type="text" placeholder="11000" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-neutral-500 ml-1">Grad</label>
-                                <input required type="text" placeholder="Beograd" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
+                                <input required name="city" type="text" placeholder="Beograd" className="w-full bg-[#F9F9FB] border-transparent focus:bg-white focus:border-neutral-200 focus:ring-4 focus:ring-neutral-100 rounded-2xl px-5 py-4 outline-none transition-all font-medium" />
                             </div>
                         </div>
                     </div>
@@ -197,7 +248,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
                         className="w-full h-20 rounded-3xl bg-[#0B0B0C] text-white shadow-2xl hover:bg-neutral-800 text-xl font-bold flex items-center justify-center gap-3 mt-4"
                     >
                         {isSubmitting ? (
-                            <>Processing <Loader2 className="animate-spin" /></>
+                            <>Procesiranje... <Loader2 className="animate-spin" /></>
                         ) : (
                             <>Potvrdite Porudžbinu <ArrowRight /></>
                         )}

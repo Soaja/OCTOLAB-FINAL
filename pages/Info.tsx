@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Transition } from 'framer-motion';
 import { X, ArrowRight, Activity, Database, Scale, FlaskConical, Share2, ChevronRight, Thermometer, Microscope } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
@@ -17,14 +17,14 @@ interface Article {
 }
 
 // --- ANIMATION CONSTANTS ---
-const SPRING_TRANSITION = {
+const SPRING_TRANSITION: Transition = {
   type: "spring",
   stiffness: 350,
   damping: 30,
   mass: 1
 };
 
-const FILTER_TRANSITION = {
+const FILTER_TRANSITION: Transition = {
   type: "spring",
   stiffness: 500,
   damping: 30
