@@ -263,7 +263,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AppContent />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
