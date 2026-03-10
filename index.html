@@ -11,7 +11,7 @@
     <!-- CANONICAL -->
     <link rel="canonical" href="https://www.octolab.rs/" />
     
-    <!-- OPEN GRAPH (Facebook, LinkedIn) -->
+    <!-- OPEN GRAPH -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="OCTOLAB | Istraživački Peptidi u Srbiji" />
     <meta property="og:description" content="Kvalitetni istraživački peptidi sa sertifikatom analize. BPC-157, TB-500, GHK-Cu i više. Dostava u Srbiji." />
@@ -27,7 +27,7 @@
     <!-- ROBOTS -->
     <meta name="robots" content="index, follow" />
     
-    <!-- FONTS & STYLES (tvoj postojeći kod) -->
+    <!-- FONTS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,9 +40,60 @@
       "@type": "Organization",
       "name": "OCTOLAB",
       "url": "https://www.octolab.rs",
-      "description": "Istraživački peptidi najvišeg kvaliteta u Srbiji",
-      "sameAs": []
+      "description": "Istraživački peptidi najvišeg kvaliteta u Srbiji"
     }
     </script>
 
-    <!-- tvoj postojeći style tag ovde -->
+    <!-- TVoj STYLE blok ostaje isti -->
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .bg-noise { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); }
+      @keyframes blob-pulse {
+        0% { transform: translate(-50%, 0) scale(1); opacity: 0.3; }
+        50% { transform: translate(-50%, 0) scale(1.2); opacity: 0.5; }
+        100% { transform: translate(-50%, 0) scale(1); opacity: 0.3; }
+      }
+      .animate-blob-pulse { animation: blob-pulse 10s infinite ease-in-out; }
+      @keyframes holo-shine {
+        0% { background-position: 200% center; opacity: 0.5; }
+        100% { background-position: -200% center; opacity: 0.5; }
+      }
+      .holo-foil {
+        background: linear-gradient(115deg, transparent 35%, rgba(255,0,0,0.3) 40%, rgba(255,255,0,0.3) 42%, rgba(0,255,0,0.3) 45%, rgba(0,255,255,0.5) 47%, rgba(255,255,255,0.6) 50%, rgba(0,0,255,0.3) 53%, rgba(255,0,255,0.3) 55%, rgba(255,0,0,0.3) 58%, transparent 65%);
+        background-size: 250% 100%;
+        animation: holo-shine 4s linear infinite;
+        mix-blend-mode: color-dodge;
+        pointer-events: none;
+      }
+    </style>
+
+    <!-- IMPORTMAP ostaje isti -->
+    <script type="importmap">
+    {
+      "imports": {
+        "vite": "https://esm.sh/vite@^7.3.1",
+        "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+        "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+        "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.96.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
