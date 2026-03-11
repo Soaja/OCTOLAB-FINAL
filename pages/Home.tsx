@@ -290,8 +290,8 @@ const ProductGrid = () => {
                         </div>
                         
                         <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8">
-                            TITANI <br/>
-                            <span className="text-neutral-400">ISTRAŽIVANJA.</span>
+                            NAJPRODAVANIJI PEPTIDI <br/>
+                            <span className="text-neutral-400">U SRBIJI.</span>
                         </h2>
 
                         <div className="w-full flex flex-col md:flex-row justify-between items-end gap-8 border-t border-neutral-200 pt-8">
