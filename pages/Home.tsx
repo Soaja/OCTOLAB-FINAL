@@ -296,7 +296,8 @@ const ProductGrid = () => {
 
                         <div className="w-full flex flex-col md:flex-row justify-between items-end gap-8 border-t border-neutral-200 pt-8">
                             <p className="text-lg text-neutral-600 max-w-lg leading-relaxed">
-                                Jedinjenja koja definišu savremene istraživačke protokole. BPC-157, GHK-Cu i kognitivni modulatori najvišeg stepena čistoće.
+                                Najpopularniji istraživački peptidi dostupni u Srbiji. BPC-157 za oporavak, GHK-Cu za kožu, Retatrutide za metabolizam i Semax za kognitivne funkcije. Svi sa HPLC sertifikatom čistoće preko 99%.
+.
                             </p>
                             <div className="hidden md:block">
                                  <Button onClick={() => navigate('/peptidi-srbija')} variant="ghost" className="hover:bg-neutral-100 rounded-full px-8">
