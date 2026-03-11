@@ -54,7 +54,7 @@ const Hero = () => {
                 >
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100/80 border border-neutral-200 backdrop-blur-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-700">Prodaja Peptida u Srbiji</span>
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-700">Peptidi za Istraživanje — Dostava u Srbiji 24h</span>
                     </span>
                 </motion.div>
 
