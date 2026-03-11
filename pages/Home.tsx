@@ -633,7 +633,8 @@ const FAQ = () => {
                      transition={{ delay: 0.2 }}
                      className="text-neutral-600 text-lg max-w-xl mx-auto leading-relaxed"
                 >
-                    Sve što treba da znate o peptidima, logistici hladnog lanca i našim standardima kvaliteta.
+                    Odgovori na najčešća pitanja o kupovini peptida u Srbiji — šta su research peptidi, kako se čuvaju, koliko traje dostava i da li imamo sertifikate analize.
+
                 </motion.p>
             </div>
           
