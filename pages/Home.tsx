@@ -60,9 +60,9 @@ const Hero = () => {
 
                 {/* Updated Typography to Match 'TITANI' Section */}
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 max-w-6xl mx-auto">
-                    JASNOĆA<br/>
-                    U SVAKOM<br/>
-                    <span className="text-neutral-500">MOLEKULU.</span>
+                    PEPTIDI ZA <br/>
+                    ISTRAŽIVANJE <br/>
+                    <span className="text-neutral-500">U SRBIJI.</span>
                 </h1>
                 
                 <motion.p 
