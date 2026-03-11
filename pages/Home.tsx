@@ -71,8 +71,8 @@ const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="text-lg md:text-xl text-neutral-700 max-w-2xl leading-relaxed mb-10 font-medium"
                 >
-                    Peptidi za istraživanja dostupni u Srbiji. <br className="hidden md:block" />
-                    Laboratorijski testirana jedinjenja dizajnirana za savremena istraživanja.
+                    Kupite kvalitetne istraživačke peptide u Srbiji — BPC-157, TB-500, GHK-Cu, Semax. <br className="hidden md:block" />
+                    Laboratorijski HPLC testirani, čistoća >99%, brza isporuka hladnim lancem
                 </motion.p>
 
                 <motion.div 
