@@ -399,12 +399,12 @@ const TrustBlock = () => (
                         
                         {/* Optimized Typography for Responsive Layouts */}
                         <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8 w-full">
-                            NULA <br/>
-                            <span className="text-neutral-400">KOMPROMISA.</span>
+                              GARANTOVANI KVALITET <br/>
+                            <span className="text-neutral-400">PEPTIDA.</span>
                         </h2>
 
                         <p className="text-lg text-neutral-600 font-medium leading-relaxed mb-12 max-w-sm">
-                            Kada je u pitanju biohemijska čistoća, "dovoljno dobro" ne postoji. Postavljamo nove granice transparentnosti na tržištu istraživačkih hemikalija.
+                            Svaki peptid koji prodajemo u Srbiji prolazi dvostruku laboratorijsku verifikaciju — HPLC hromatografiju za čistoću i masenu spektrometriju za identitet. Nula filera, nula kompromisa.
                         </p>
 
                         <div className="hidden lg:block">
@@ -622,8 +622,8 @@ const FAQ = () => {
                     transition={{ delay: 0.1 }}
                     className="text-5xl md:text-7xl font-bold tracking-tighter text-[#0B0B0C] mb-6 leading-[0.9]"
                 >
-                    Najčešća <br/>
-                    <span className="text-neutral-400">Pitanja.</span>
+                    Najčešća Pitanja o <br/>
+                    <span className="text-neutral-400">Peptidima u Srbiji.</span>
                 </motion.h2>
 
                 <motion.p
