@@ -135,7 +135,7 @@ const OctolabIntro = () => (
                         
                         {/* Scaled Up Typography to Match TrustBlock */}
                         <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8">
-                            Peptidi za <br/> istraživanje <br/>
+                            Zašto kupiti  <br/> PEPTIDE od OCTOLAB-A <br/>
                             <span className="text-neutral-400">u Srbiji.</span>
                         </h2>
                         
