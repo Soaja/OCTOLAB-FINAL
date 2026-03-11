@@ -142,7 +142,7 @@ const OctolabIntro = () => (
                         <div className="w-12 h-1 bg-black mb-8" />
 
                         <p className="text-lg text-neutral-700 leading-relaxed font-medium">
-                            OCTOLAB postavlja novi standard za nabavku laboratorijskih peptida na domaćem tržištu.
+                            OCTOLAB je vodeći dobavljač istraživačkih peptida u Srbiji. Garantujemo čistoću preko 99%, HPLC sertifikat analize i dostavu hladnim lancem na teritoriji cele Srbije.
                         </p>
                     </motion.div>
                 </div>
