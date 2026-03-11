@@ -156,7 +156,7 @@ const OctolabIntro = () => (
                         transition={{ delay: 0.2 }}
                         className="text-neutral-600 leading-relaxed text-lg font-medium"
                     >
-                         Specijalizovani smo za sintezu i distribuciju visoko-čistih jedinjenja namenjenih isključivo kvalifikovanim istraživačima i naučnim institucijama. Eliminišemo rizike uvoza i garantujemo kvalitet.
+                         Specijalizovani smo za prodaju istraživačkih peptida u Srbiji — BPC-157, TB-500, GHK-Cu, CJC-1295, Retatrutide i Semax. Bez rizika uvoza, bez carine. Naručite peptide online i primite ih sutra na kućnu adresu.
                     </motion.p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
