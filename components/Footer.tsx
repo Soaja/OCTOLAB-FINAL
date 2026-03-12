@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import { Aperture, ArrowRight, Github, Twitter, Linkedin, ShieldCheck, ArrowUp, Globe, Clock, Activity, Send, AlertTriangle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from './Button';
 
 // --- SUB-COMPONENTS ---
@@ -166,19 +167,34 @@ export const Footer: React.FC = () => {
                 {/* Links (7 Cols) */}
                 <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
                     {[
-                        { title: "Indeks", links: ["Katalog", "Novi Proizvodi", "Najprodavanije", "Oprema"] },
-                        { title: "Protokol", links: ["Kontrola Kvaliteta", "Metodologija", "Podaci o Skladištenju", "Bezbednosni Listovi"] },
-                        { title: "Mreža", links: ["O Octolabu", "Karijera", "Globalni Partneri", "Kontakt"] },
+                        { title: "Indeks", links: [
+                            { label: "Katalog", href: "/peptidi-srbija" },
+                            { label: "Novi Proizvodi", href: "/peptidi-srbija" },
+                            { label: "Najprodavanije", href: "/peptidi-srbija" },
+                            { label: "Oprema", href: "/peptidi-srbija" },
+                        ]},
+                        { title: "Protokol", links: [
+                            { label: "Kontrola Kvaliteta", href: "/laboratorijski-standard" },
+                            { label: "Metodologija", href: "/research-centar" },
+                            { label: "Podaci o Skladištenju", href: "/research-centar" },
+                            { label: "Bezbednosni Listovi", href: "/research-centar" },
+                        ]},
+                        { title: "Mreža", links: [
+                            { label: "O Octolabu", href: "/o-nama" },
+                            { label: "Karijera", href: "/kontakt" },
+                            { label: "Globalni Partneri", href: "/kontakt" },
+                            { label: "Kontakt", href: "/kontakt" },
+                        ]},
                     ].map((col, i) => (
                         <div key={i}>
                             <h4 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-6">{col.title}</h4>
                             <ul className="space-y-4">
                                 {col.links.map((link, j) => (
                                     <li key={j}>
-                                        <a href="#" className="text-sm text-neutral-300 hover:text-white transition-colors flex items-center gap-2 group">
+                                        <Link to={link.href} className="text-sm text-neutral-300 hover:text-white transition-colors flex items-center gap-2 group">
                                             <span className="w-1 h-1 bg-white/0 rounded-full group-hover:bg-white transition-colors" />
-                                            <span className="group-hover:translate-x-1 transition-transform">{link}</span>
-                                        </a>
+                                            <span className="group-hover:translate-x-1 transition-transform">{link.label}</span>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

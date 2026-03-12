@@ -281,7 +281,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
                                 <div className="flex-1 min-w-0">
                                     <div className="flex justify-between items-start">
                                         <h4 className="font-bold text-sm text-[#0B0B0C] truncate pr-2">{item.name}</h4>
-                                        <span className="font-mono text-sm font-bold">${(item.price * item.quantity).toFixed(2)}</span>
+                                        <span className="font-mono text-sm font-bold">€{(item.price * item.quantity).toFixed(2)}</span>
                                     </div>
                                     <p className="text-xs text-neutral-500 font-mono mt-0.5">Količina: {item.quantity}</p>
                                 </div>
@@ -292,15 +292,15 @@ export const Checkout: React.FC<CheckoutProps> = ({ cart, total, onClearCart }) 
                     <div className="border-t border-neutral-200 pt-6 space-y-3">
                         <div className="flex justify-between text-sm text-neutral-600">
                             <span>Međuzbir</span>
-                            <span className="font-mono">${total.toFixed(2)}</span>
+                            <span className="font-mono">€{total.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-sm text-neutral-600">
                             <span>Dostava (Hladni Lanac)</span>
-                            <span className="font-mono">$5.00</span>
+                            <span className="font-mono">€5.00</span>
                         </div>
                         <div className="flex justify-between items-end pt-4 border-t border-neutral-200 mt-4">
                             <span className="text-base font-bold text-[#0B0B0C]">Ukupno za plaćanje</span>
-                            <span className="text-3xl font-bold text-[#0B0B0C] tracking-tight">${(total + 5).toFixed(2)}</span>
+                            <span className="text-3xl font-bold text-[#0B0B0C] tracking-tight">€{(total + 5).toFixed(2)}</span>
                         </div>
                     </div>
 

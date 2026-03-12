@@ -41,6 +41,7 @@ export const About = () => {
       <SEO
         title="O Nama | OCTOLAB — Vodeći Dobavljač Peptida u Srbiji"
         description="OCTOLAB je specijalizovani dobavljač istraživačkih peptida u Srbiji. HPLC verifikacija, hladni lanac dostava, čistoća >99%."
+        canonical="https://www.octolab.rs/o-nama"
       />
       
       {/* 1. HERO SECTION - HIGH TECH LAB AESTHETIC */}

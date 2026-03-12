@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../components/Button';
 import { ArrowRight, ShieldCheck, Activity, FlaskConical, Microscope, Truck, Package, AlertTriangle, Plus, Minus, CheckCircle2, FileText, Thermometer, Zap, Droplets, FileSearch, Lock, ThermometerSnowflake, BoxSelect, ScanSearch, Factory, Snowflake, PackageCheck } from 'lucide-react';
@@ -41,11 +41,11 @@ const SectionHeading = ({ title, subtitle, align = 'center' }: { title: string, 
 const Hero = () => {
     const navigate = useNavigate();
     return (
-        <section className="relative min-h-[85vh] flex flex-col justify-center items-center pt-24 pb-20 overflow-hidden">
+        <section className="relative min-h-[85vh] flex flex-col justify-center items-center pt-20 pb-12 md:pt-24 md:pb-20 overflow-hidden">
             <div className="absolute inset-0 hero-glow -z-20 pointer-events-none" />
             <div className="absolute inset-0 bg-noise opacity-30 -z-10 pointer-events-none" />
 
-            <div className="max-w-[1200px] mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+            <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Updated Typography to Match 'TITANI' Section */}
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 max-w-6xl mx-auto">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 max-w-6xl mx-auto break-words overflow-hidden w-full">
                     PEPTIDI ZA <br/>
                     ISTRAŽIVANJE <br/>
                     <span className="text-neutral-500">U SRBIJI.</span>
@@ -117,12 +117,12 @@ const Hero = () => {
 // 2. INTRO / SEO BLOCK (MODERNIZED & SCALED UP)
 const OctolabIntro = () => (
     <section className="py-24 md:py-32 bg-white relative overflow-hidden border-b border-neutral-100">
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
                 
                 {/* Left Side: Headline & Lead - NOW STICKY & LARGER */}
-                <div className="lg:col-span-5 sticky top-32 mb-12 lg:mb-0">
-                    <motion.div 
+                <div className="lg:col-span-5 lg:sticky top-32 mb-12 lg:mb-0">
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -132,9 +132,9 @@ const OctolabIntro = () => (
                             <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
                             <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">O Octolabu</span>
                          </div>
-                        
+
                         {/* Scaled Up Typography to Match TrustBlock */}
-                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8 break-words overflow-hidden">
                             Zašto kupiti  <br/> PEPTIDE od OCTOLAB-A <br/>
                             <span className="text-neutral-400">u Srbiji.</span>
                         </h2>
@@ -240,7 +240,7 @@ const ProductCard: React.FC<{ product: Product, onClick: () => void, className?:
 
                 {/* Footer: Price and Details */}
                 <div className="mt-auto flex items-center justify-between pt-6 border-t border-neutral-100/80">
-                    <span className="text-2xl font-bold text-[#0B0B0C] tracking-tight">${product.price.toFixed(2)}</span>
+                    <span className="text-2xl font-bold text-[#0B0B0C] tracking-tight">€{product.price.toFixed(2)}</span>
                     <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0B0B0C] group-hover:text-neutral-600 transition-colors">
                         Detaljnije <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform"/>
                     </button>
@@ -273,8 +273,8 @@ const ProductGrid = () => {
             {/* Subtle Gradient to give depth behind the white cards */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-white to-transparent opacity-60 -z-10 pointer-events-none" />
 
-            <div className="max-w-[1200px] mx-auto px-6">
-                
+            <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+
                 {/* --- CUSTOM HEADER FOR PRODUCT GRID --- */}
                 <div className="mb-24 relative">
                     <motion.div 
@@ -289,7 +289,7 @@ const ProductGrid = () => {
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-600">Visoka Potražnja</span>
                         </div>
                         
-                        <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 break-words overflow-hidden">
                             NAJPRODAVANIJI <br/>
                             <span className="text-neutral-400">PEPTIDI U SRBIJI.</span>
                         </h2>
@@ -358,7 +358,7 @@ const ProductGrid = () => {
                              </p>
 
                              <div className="flex items-center justify-between md:justify-start gap-8 pt-6 border-t border-neutral-100/80 md:border-t-0 md:pt-0">
-                                <span className="text-3xl font-bold text-[#0B0B0C] tracking-tight">${waterProduct.price.toFixed(2)}</span>
+                                <span className="text-3xl font-bold text-[#0B0B0C] tracking-tight">€{waterProduct.price.toFixed(2)}</span>
                                 <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-black px-6 py-3 rounded-full group-hover:bg-neutral-800 transition-colors shadow-lg">
                                     Dodaj u Laboratoriju <ArrowRight size={14} />
                                 </button>
@@ -380,12 +380,12 @@ const ProductGrid = () => {
 // 4. WHY US (Trust Block)
 const TrustBlock = () => (
     <section className="py-24 md:py-32 bg-white relative overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-            
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10">
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-                
+
                 {/* LEFT: Manifesto Title */}
-                <div className="lg:col-span-5 sticky top-32 mb-12 lg:mb-0">
+                <div className="lg:col-span-5 lg:sticky top-32 mb-12 lg:mb-0">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -396,9 +396,9 @@ const TrustBlock = () => (
                              <div className="h-px w-12 bg-black"></div>
                              <span className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">Naš Standard</span>
                         </div>
-                        
+
                         {/* Optimized Typography for Responsive Layouts */}
-                        <h2 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8 w-full">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.9] mb-8 w-full break-words overflow-hidden">
                               GARANTOVANI KVALITET <br/>
                             <span className="text-neutral-400">PEPTIDA.</span>
                         </h2>
@@ -500,12 +500,12 @@ const ProcessFlow = () => (
         {/* Glow Orb */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[200px] bg-green-900/10 blur-[120px] pointer-events-none rounded-full" />
 
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
             <div className="text-center mb-24">
                 <span className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-green-500 mb-6 backdrop-blur-md">
                     Octolab Pipeline
                 </span>
-                <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-white mb-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4">
                     Proces Verifikacije
                 </h2>
                 <p className="text-neutral-500 max-w-xl mx-auto text-lg font-light">
@@ -517,7 +517,7 @@ const ProcessFlow = () => (
                 {/* Connecting Line (Desktop) */}
                 <div className="hidden md:block absolute top-16 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
 
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                     {[
                         { id: '01', title: 'Peptidna Sinteza', desc: 'Solid-phase automatizovana sinteza.', icon: <Factory size={20} /> },
                         { id: '02', title: 'HPLC & MS Analiza', desc: 'Dvostruka verifikacija čistoće i mase.', icon: <ScanSearch size={20} /> },
@@ -586,9 +586,17 @@ const FAQ = () => {
         question: "Koliko traje dostava u Srbiji?",
         answer: "Porudžbine kreirane radnim danima do 15h šalju se istog dana. Očekivano vreme isporuke na vašu adresu je 24 sata (sledeći radni dan)."
       },
-       {
+      {
         question: "Da li imate sertifikate analize?",
         answer: "Da, za svaku seriju posedujemo HPLC (test čistoće) i MS (masena spektrometrija) izveštaje od nezavisnih laboratorija. Ovi podaci su dostupni na zahtev ili na stranici proizvoda."
+      },
+      {
+        question: "Koliko koštaju peptidi u Srbiji?",
+        answer: "Cene istraživačkih peptida na OCTOLAB-u kreću se od 5€ za bakteriostatsku vodu do 100€ za napredna jedinjenja poput Retatrutida. Većina popularnih peptida kao BPC-157, TB-500, GHK-Cu i Semax košta 50€. Dostava je 5€ za hladni lanac transport. Plaćanje je pouzećem."
+      },
+      {
+        question: "Da li je kupovina peptida legalna u Srbiji?",
+        answer: "Da, kupovina peptida za istraživačke svrhe je legalna u Srbiji. Svi naši proizvodi su namenjeni isključivo za in-vitro laboratorijska istraživanja i nisu namenjeni za ljudsku upotrebu. OCTOLAB posluje u skladu sa svim važećim regulativama."
       }
     ];
   
@@ -597,7 +605,7 @@ const FAQ = () => {
         {/* Subtle Background Blob */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[40vw] h-[40vw] bg-neutral-100 rounded-full blur-[120px] -z-10 pointer-events-none opacity-60" />
 
-        <div className="max-w-[1000px] mx-auto px-6 relative z-10">
+        <div className="max-w-[1000px] mx-auto px-4 md:px-6 relative z-10">
             {/* Custom Header for FAQ */}
             <div className="mb-24 text-center max-w-3xl mx-auto">
                 <motion.div 
@@ -620,7 +628,7 @@ const FAQ = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl font-bold tracking-tighter text-[#0B0B0C] mb-6 leading-[0.9]"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-[#0B0B0C] mb-6 leading-[0.9]"
                 >
                     Najčešća Pitanja o <br/>
                     <span className="text-neutral-400">Peptidima u Srbiji.</span>
@@ -708,8 +716,8 @@ const ResearchPreview = () => {
         <section className="py-32 bg-[#0B0B0C] text-white relative overflow-hidden">
             {/* Background Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none" />
-            
-            <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+
+            <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10">
                 <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
                     <div>
                         <span className="text-green-500 font-mono text-xs uppercase tracking-widest mb-4 block">
@@ -790,13 +798,13 @@ const FinalCTA = () => {
              {/* Background Decoration */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-neutral-100 rounded-full blur-[120px] -z-10" />
              
-            <div className="max-w-[1200px] mx-auto px-6 text-center relative z-10">
+            <div className="max-w-[1200px] mx-auto px-4 md:px-6 text-center relative z-10">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-6xl md:text-9xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85]">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85] break-words overflow-hidden">
                         OCTOLAB
                     </h2>
                     <p className="text-xl md:text-3xl text-neutral-500 font-light mb-12 max-w-2xl mx-auto">
@@ -827,11 +835,66 @@ const FinalCTA = () => {
 };
 
 export const Home: React.FC = () => {
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Šta su research peptidi?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Research peptidi su hemijska jedinjenja namenjena isključivo za in vitro laboratorijska istraživanja. Koriste se za proučavanje bioloških mehanizama, signalnih puteva i ćelijskih reakcija. Nisu namenjeni za ljudsku upotrebu." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kako se proizvodi transportuju?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Koristimo specijalizovano termalno pakovanje (Hladni Lanac) kako bismo zaštitili peptide od temperaturnih oscilacija. Isporuka se vrši brzom kurirskom službom (Post Express) po principu 'danas za sutra'." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kako se čuvaju peptidi?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Liofilizovani prah treba čuvati u zamrzivaču na -20°C gde ostaje stabilan godinama. Nakon rekonstitucije sa bakteriostatskom vodom, obavezno čuvati u frižideru na +4°C i iskoristiti u roku od nekoliko nedelja." }
+        },
+        {
+          "@type": "Question",
+          "name": "Koliko traje dostava u Srbiji?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Porudžbine kreirane radnim danima do 15h šalju se istog dana. Očekivano vreme isporuke na vašu adresu je 24 sata (sledeći radni dan)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li imate sertifikate analize?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Da, za svaku seriju posedujemo HPLC (test čistoće) i MS (masena spektrometrija) izveštaje od nezavisnih laboratorija. Ovi podaci su dostupni na zahtev ili na stranici proizvoda." }
+        },
+        {
+          "@type": "Question",
+          "name": "Koliko koštaju peptidi u Srbiji?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cene istraživačkih peptida na OCTOLAB-u kreću se od 5€ za bakteriostatsku vodu do 100€ za napredna jedinjenja poput Retatrutida. Većina popularnih peptida kao BPC-157, TB-500, GHK-Cu i Semax košta 50€. Dostava je 5€ za hladni lanac transport. Plaćanje je pouzećem." }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li je kupovina peptida legalna u Srbiji?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Da, kupovina peptida za istraživačke svrhe je legalna u Srbiji. Svi naši proizvodi su namenjeni isključivo za in-vitro laboratorijska istraživanja i nisu namenjeni za ljudsku upotrebu. OCTOLAB posluje u skladu sa svim važećim regulativama." }
+        }
+      ]
+    };
+    const scriptId = 'faq-schema';
+    let el = document.getElementById(scriptId) as HTMLScriptElement;
+    if (!el) {
+      el = document.createElement('script');
+      el.id = scriptId;
+      el.type = 'application/ld+json';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+    return () => { document.getElementById(scriptId)?.remove(); };
+  }, []);
+
   return (
     <div className="flex flex-col w-full bg-white overflow-hidden relative">
-      <SEO 
+      <SEO
         title="OCTOLAB Srbija | Research Peptidi i Laboratorijska Oprema"
         description="Vodeći dobavljač research peptida u Srbiji. BPC-157, GHK-Cu, TB-500 visoke čistoće (>99%). HPLC sertifikovani, brza isporuka, hladni lanac."
+        canonical="https://www.octolab.rs/"
       />
 
       <Hero />

@@ -284,6 +284,7 @@ export const Info: React.FC = () => {
       <SEO
         title="Šta su Peptidi? Vodič za Istraživače | OCTOLAB Research Centar Srbija"
         description="Saznajte sve o peptidima za istraživanje — šta su peptidi, kako se čuvaju, vodič za rekonstituciju, HPLC analiza. Edukativni članci od OCTOLAB-a."
+        canonical="https://www.octolab.rs/research-centar"
       />
       <ModernBackground />
 

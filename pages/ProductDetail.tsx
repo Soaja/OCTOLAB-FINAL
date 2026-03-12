@@ -30,7 +30,7 @@ const ProductSchema: React.FC<{ product: Product }> = ({ product }) => {
       "offers": {
         "@type": "Offer",
         "url": `https://www.octolab.rs/${product.slug}`,
-        "priceCurrency": "USD",
+        "priceCurrency": "EUR",
         "price": product.price.toFixed(2),
         "availability": product.inStock 
           ? "https://schema.org/InStock" 
@@ -284,7 +284,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => 
                                 animate={{ opacity: 1, y: 0 }}
                                 className="text-3xl font-bold text-[#0B0B0C] tracking-tight"
                             >
-                                ${currentPrice.toFixed(2)}
+                                €{currentPrice.toFixed(2)}
                             </motion.span>
                         </AnimatePresence>
                     </div>

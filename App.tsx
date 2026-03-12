@@ -178,7 +178,7 @@ const AppContent: React.FC = () => {
                         <div>
                           <div className="flex justify-between items-start">
                               <h4 className="text-lg font-bold text-[#0B0B0C] leading-none mb-1">{item.name}</h4>
-                              <span className="font-bold text-[#0B0B0C]">${(item.price * item.quantity).toFixed(2)}</span>
+                              <span className="font-bold text-[#0B0B0C]">€{(item.price * item.quantity).toFixed(2)}</span>
                           </div>
                           <p className="text-xs text-neutral-500 font-mono uppercase tracking-wider">{item.volume} • {item.dosage}</p>
                         </div>
@@ -222,7 +222,7 @@ const AppContent: React.FC = () => {
                    <div className="space-y-2 mb-6">
                       <div className="flex justify-between text-sm text-neutral-500">
                          <span>Međuzbir</span>
-                         <span>${cartTotal.toFixed(2)}</span>
+                         <span>€{cartTotal.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between text-sm text-neutral-500">
                          <span>Dostava (Hladni Lanac)</span>
@@ -234,7 +234,7 @@ const AppContent: React.FC = () => {
                  <div className="flex justify-between items-end mb-6">
                     <div>
                         <span className="block text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Ukupno Procenjeno</span>
-                        <div className="text-3xl font-bold text-[#0B0B0C]">${cartTotal.toFixed(2)}</div>
+                        <div className="text-3xl font-bold text-[#0B0B0C]">€{cartTotal.toFixed(2)}</div>
                     </div>
                  </div>
 

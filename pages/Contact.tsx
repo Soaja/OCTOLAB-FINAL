@@ -68,6 +68,7 @@ export const Contact: React.FC = () => {
       <SEO
         title="Kontakt | Kupite Peptide u Srbiji — OCTOLAB Podrška"
         description="Kontaktirajte OCTOLAB za kupovinu peptida u Srbiji, veleprodaju, tehničku podršku. Email: research@octolab.rs. Pon-Pet 09-17h, Beograd."
+        canonical="https://www.octolab.rs/kontakt"
       />
 
       <ModernBackground />

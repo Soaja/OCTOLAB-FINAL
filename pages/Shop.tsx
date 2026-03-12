@@ -36,6 +36,7 @@ export const Shop: React.FC<ShopProps> = () => {
       <SEO
         title="Kupite Peptide u Srbiji | BPC-157, TB-500, GHK-Cu, Semax — OCTOLAB Katalog"
         description="Kompletna ponuda istraživačkih peptida u Srbiji. BPC-157, TB-500, GHK-Cu, CJC-1295, Retatrutide, Semax. Cene, dostupnost, HPLC sertifikati. Naručite online — dostava 24h hladnim lancem."
+        canonical="https://www.octolab.rs/peptidi-srbija"
       />
 
       <ModernBackground />
@@ -168,7 +169,7 @@ export const Shop: React.FC<ShopProps> = () => {
                          <div className="flex flex-col">
                             <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-700 mb-1">Cena</span>
                             <span className="text-4xl md:text-5xl font-light tracking-tight text-[#0B0B0C]">
-                                ${product.price.toFixed(2)}
+                                €{product.price.toFixed(2)}
                             </span>
                          </div>
                          
