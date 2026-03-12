@@ -92,9 +92,9 @@ export const Footer: React.FC = () => {
                         <span className="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">Sistem Spreman</span>
                     </motion.div>
                     
-                    <h2 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8">
-                        Opremite svoju <br/>
-                        <span className="text-neutral-500">laboratoriju.</span>
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.85] mb-8 break-words overflow-hidden">
+                        Kupite peptide<br/>
+                        <span className="text-neutral-500">u Srbiji danas.</span>
                     </h2>
                     
                     <div className="flex flex-col sm:flex-row gap-6">
@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
                             <span className="text-xl font-bold tracking-tight">OCTOLAB</span>
                         </div>
                         <p className="text-neutral-400 font-light leading-relaxed max-w-sm">
-                            Unapređenje biohemijskih istraživanja kroz apsolutnu transparentnost i precizni inženjering.
+                            OCTOLAB — vodeći dobavljač istraživačkih peptida u Srbiji. BPC-157, TB-500, GHK-Cu, Semax. Čistoća &gt;99%, dostava hladnim lancem 24h.
                         </p>
                     </div>
 

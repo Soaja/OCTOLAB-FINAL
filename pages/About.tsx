@@ -37,14 +37,14 @@ export const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white min-h-screen pt-24 md:pt-32 overflow-hidden">
-      <SEO 
-        title="O Nama | OCTOLAB - Laboratorijski Standard"
-        description="OCTOLAB je specijalizovani dobavljač research peptida u Srbiji. Fokus na HPLC verifikaciji, hladnom lancu i stabilnosti materijala."
+    <div className="bg-white min-h-screen pt-20 md:pt-32 overflow-x-hidden">
+      <SEO
+        title="O Nama | OCTOLAB — Vodeći Dobavljač Peptida u Srbiji"
+        description="OCTOLAB je specijalizovani dobavljač istraživačkih peptida u Srbiji. HPLC verifikacija, hladni lanac dostava, čistoća >99%."
       />
       
       {/* 1. HERO SECTION - HIGH TECH LAB AESTHETIC */}
-      <section className="relative py-24 md:py-32 px-6 border-b border-neutral-100 overflow-hidden">
+      <section className="relative py-16 md:py-32 px-4 md:px-6 border-b border-neutral-100 overflow-hidden">
           {/* Technical Grid Background (CSS Only - Ultra Fast) */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] -z-20" />
           
@@ -71,18 +71,17 @@ export const About = () => {
                   </div>
 
                   {/* Main Headline - Massive & Precise */}
-                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8">
-                      ARHITEKTURA <br/>
-                      <span className="text-neutral-400">ISTRAŽIVANJA.</span>
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 break-words overflow-hidden w-full">
+                      OCTOLAB<br/>
+                      <span className="text-neutral-400">PEPTIDI SRBIJA.</span>
                   </h1>
 
                   {/* Divider Line */}
                   <div className="w-24 h-px bg-neutral-200 my-4" />
 
                   {/* Description */}
-                  <p className="text-lg md:text-2xl text-neutral-700 font-light max-w-3xl leading-relaxed mt-4">
-                      OCTOLAB je specijalizovani distributer peptidnih jedinjenja visoke čistoće. <br className="hidden md:block"/>
-                      Naš fokus je isključivo na integritetu supstance i profesionalnoj podršci naučnoj zajednici u Srbiji.
+                  <p className="text-base md:text-xl text-neutral-700 font-light max-w-3xl leading-relaxed mt-4">
+                      OCTOLAB je vodeći dobavljač istraživačkih peptida u Srbiji. Prodajemo BPC-157, TB-500, GHK-Cu, Semax i druge peptide sa garantovanom čistoćom &gt;99%. Fokus na HPLC verifikaciji, hladnom lancu i brzoj dostavi.
                   </p>
 
                   {/* Technical Specs Row */}
@@ -128,13 +127,13 @@ export const About = () => {
                              </span>
                           </div>
                           
-                          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.9]">
-                              ISTINA U <br/>
-                              <span className="text-neutral-400">PODACIMA.</span>
+                          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.9] break-words overflow-hidden">
+                              KVALITET<br/>
+                              <span className="text-neutral-400">BEZ KOMPROMISA.</span>
                           </h2>
-                          
-                          <p className="text-lg text-neutral-600 font-medium leading-relaxed mb-8">
-                              Nauka ne trpi neizvesnost. Naša misija je eliminacija varijabilnosti iz vašeg istraživačkog lanca snabdevanja. Pružamo apsolutnu transparentnost sastava, jer verujemo da precizni podaci zahtevaju precizne inpute.
+
+                          <p className="text-base md:text-lg text-neutral-600 font-medium leading-relaxed mb-8">
+                              Svaki peptid koji prodajemo prolazi dvostruku verifikaciju — HPLC za čistoću i masenu spektrometriju za identitet. Naša misija je da istraživačima u Srbiji obezbedimo peptide farmaceutskog kvaliteta bez rizika uvoza.
                           </p>
                       </div>
 
@@ -433,9 +432,10 @@ export const About = () => {
 
       {/* 7. ZAVRŠNI CTA */}
       <section className="py-24 bg-white text-center">
-          <div className="max-w-2xl mx-auto px-6">
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#0B0B0C] mb-8">
-                  Spremni za istraživanje?
+          <div className="max-w-2xl mx-auto px-4 md:px-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#0B0B0C] mb-8 break-words overflow-hidden">
+                  Kupite peptide<br/>
+                  <span className="text-neutral-400">u Srbiji danas.</span>
               </h2>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button 

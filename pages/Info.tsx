@@ -281,14 +281,14 @@ export const Info: React.FC = () => {
 
   return (
     <div className="pt-24 md:pt-32 min-h-screen bg-transparent relative">
-      <SEO 
-        title="Research Centar | OCTOLAB Edukacija"
-        description="Naučna baza znanja o peptidima, protokolima rekonstitucije i HPLC analizama."
+      <SEO
+        title="Šta su Peptidi? Vodič za Istraživače | OCTOLAB Research Centar Srbija"
+        description="Saznajte sve o peptidima za istraživanje — šta su peptidi, kako se čuvaju, vodič za rekonstituciju, HPLC analiza. Edukativni članci od OCTOLAB-a."
       />
       <ModernBackground />
 
       {/* HEADER SECTION */}
-      <div className="max-w-[1000px] mx-auto px-6 mb-16 text-center relative z-10">
+      <div className="max-w-[1000px] mx-auto px-4 md:px-6 mb-16 text-center relative z-10">
           <motion.div 
              initial={{ opacity: 0, y: 10 }}
              animate={{ opacity: 1, y: 0 }}
@@ -300,22 +300,23 @@ export const Info: React.FC = () => {
               </span>
           </motion.div>
           
-          <motion.h1 
+          <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold tracking-tighter text-[#0B0B0C] mb-6 leading-[0.9]"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#0B0B0C] mb-6 leading-[0.85] break-words overflow-hidden w-full"
           >
-              Centar Znanja.
+              Baza Znanja.<br/>
+              <span className="text-neutral-400">Sve o Peptidima.</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="text-lg text-neutral-600 max-w-xl mx-auto leading-relaxed"
           >
-             Verifikovani protokoli, tehničke analize i naučna objašnjenja za istraživače koji zahtevaju preciznost.
+             Šta su peptidi, kako se koriste u istraživanju, kako se čuvaju i kako čitati HPLC sertifikat. Vodiči za istraživače u Srbiji.
           </motion.p>
       </div>
 

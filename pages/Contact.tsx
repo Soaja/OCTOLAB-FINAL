@@ -64,15 +64,15 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <div className="pt-24 md:pt-32 min-h-screen bg-transparent relative overflow-hidden">
-      <SEO 
-        title="Kontakt & Podrška | OCTOLAB Srbija"
-        description="Kontaktirajte OCTOLAB za veleprodaju, tehničku podršku i informacije o porudžbinama. Radno vreme: Pon-Pet 09-17h."
+    <div className="pt-20 md:pt-32 min-h-screen bg-transparent relative overflow-x-hidden">
+      <SEO
+        title="Kontakt | Kupite Peptide u Srbiji — OCTOLAB Podrška"
+        description="Kontaktirajte OCTOLAB za kupovinu peptida u Srbiji, veleprodaju, tehničku podršku. Email: research@octolab.rs. Pon-Pet 09-17h, Beograd."
       />
 
       <ModernBackground />
       
-      <div className="max-w-[1400px] mx-auto px-6 pb-24 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 pb-24 relative z-10">
         
         {/* HEADER SECTION */}
         <div className="max-w-4xl mb-20 md:mb-32">
@@ -87,23 +87,23 @@ export const Contact: React.FC = () => {
                </span>
            </motion.div>
            
-           <motion.h1 
+           <motion.h1
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
-             className="text-6xl md:text-8xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.9]"
+             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.9] break-words overflow-hidden w-full"
            >
-             Inicirajte <br/>
-             <span className="text-neutral-400">Komunikaciju.</span>
+             Kontakt<br/>
+             <span className="text-neutral-400">OCTOLAB Srbija.</span>
            </motion.h1>
 
-           <motion.p 
+           <motion.p
              initial={{ opacity: 0 }}
              animate={{ opacity: 1 }}
              transition={{ delay: 0.2 }}
              className="text-xl text-neutral-600 font-light max-w-2xl leading-relaxed"
            >
-             Naš tim stručnjaka je dostupan za tehnička pitanja, konsultacije o protokolima i status porudžbina.
+             Imate pitanja o peptidima, dostavi ili narudžbini? Naš tim u Beogradu je tu da vam pomogne.
            </motion.p>
         </div>
 

@@ -57,7 +57,7 @@ const AppContent: React.FC = () => {
   const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <div className="bg-white min-h-screen font-sans text-neutral-900 selection:bg-neutral-900 selection:text-white">
+    <div className="bg-white min-h-screen font-sans text-neutral-900 selection:bg-neutral-900 selection:text-white overflow-x-hidden">
       
       {/* Navbar is visible on all pages, but we could hide it on checkout if desired. Keeping it for now. */}
       <Navbar cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)} onOpenCart={() => setIsCartOpen(true)} />

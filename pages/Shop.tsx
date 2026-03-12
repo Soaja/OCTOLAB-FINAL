@@ -32,17 +32,17 @@ export const Shop: React.FC<ShopProps> = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-24 md:pt-32 min-h-screen bg-transparent relative">
-      <SEO 
-        title="Peptidi Srbija - Katalog Istraživačkih Peptida | OCTOLAB"
-        description="Kompletan katalog research peptida u Srbiji. BPC-157, TB-500, GHK-Cu, Retatrutide, Semax. Garantovana čistoća >99% i HPLC analiza."
+    <div className="pt-20 md:pt-32 min-h-screen bg-transparent relative overflow-x-hidden">
+      <SEO
+        title="Kupite Peptide u Srbiji | BPC-157, TB-500, GHK-Cu, Semax — OCTOLAB Katalog"
+        description="Kompletna ponuda istraživačkih peptida u Srbiji. BPC-157, TB-500, GHK-Cu, CJC-1295, Retatrutide, Semax. Cene, dostupnost, HPLC sertifikati. Naručite online — dostava 24h hladnim lancem."
       />
 
       <ModernBackground />
 
       {/* HEADER SECTION - REIMAGINED */}
-      <div className="max-w-[1400px] mx-auto px-6 mb-24 md:mb-40 relative z-10">
-        <motion.div 
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 mb-16 md:mb-40 relative z-10">
+        <motion.div
            initial={{ opacity: 0, y: 30 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -50,24 +50,23 @@ export const Shop: React.FC<ShopProps> = () => {
         >
            {/* Minimal Badge */}
            <span className="mb-8 px-5 py-2 rounded-full border border-neutral-200 bg-white/50 backdrop-blur-md text-xs font-mono font-medium uppercase tracking-widest text-neutral-700 shadow-sm">
-              Kolekcija Peptidi Srbija
+              Peptidi na Prodaju u Srbiji — Katalog 2026
            </span>
 
            {/* Massive Editorial Title */}
-           <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-[#0B0B0C] mb-8 leading-[0.85]">
-             Istraživačka <br/>
-             <span className="text-neutral-500">Biblioteka.</span>
+           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#0B0B0C] mb-4 leading-[0.85] break-words overflow-hidden w-full">
+             Peptidi Srbija.<br/>
+             <span className="text-neutral-400">Kupite Online.</span>
            </h1>
-           
-           <p className="text-lg md:text-2xl text-neutral-700 font-light max-w-xl leading-relaxed mt-4">
-             Precizno inženjerska jedinjenja. <br/>
-             Verifikovana za biološku doslednost.
+
+           <p className="text-base md:text-xl text-neutral-700 font-light max-w-xl leading-relaxed mt-4">
+             Svi istraživački peptidi na jednom mestu. HPLC testirana čistoća &gt;99%, dostava u Srbiji za 24h.
            </p>
         </motion.div>
       </div>
 
       {/* PRODUCT SHOWCASE - NO FILTERS, PURE CONTENT */}
-      <div className="max-w-[1400px] mx-auto px-6 pb-32 relative z-10 flex flex-col gap-32 md:gap-40">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 pb-32 relative z-10 flex flex-col gap-20 md:gap-40">
           {PRODUCTS.map((product, index) => {
              const isEven = index % 2 === 0;
              return (
@@ -79,7 +78,7 @@ export const Shop: React.FC<ShopProps> = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="group"
               >
-                <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-32 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-32 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                    
                    {/* IMAGE SIDE - Clean & Object-focused */}
                    <div 
@@ -90,10 +89,10 @@ export const Shop: React.FC<ShopProps> = () => {
                          {/* Subtle internal glow */}
                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                          
-                         <motion.img 
-                           src={product.image} 
-                           alt={product.name} 
-                           className="relative z-10 w-full h-full object-contain mix-blend-multiply drop-shadow-xl"
+                         <motion.img
+                           src={product.image}
+                           alt={`${product.name} peptid Srbija — ${product.subtitle} | OCTOLAB`}
+                           className="relative z-10 w-full h-full object-contain mix-blend-multiply drop-shadow-xl max-w-full"
                            whileHover={{ y: -10, scale: 1.05 }}
                            transition={{ duration: 0.5 }}
                          />
@@ -127,9 +126,9 @@ export const Shop: React.FC<ShopProps> = () => {
                       </div>
                       
                       {/* Title - Massive & Bold */}
-                      <h2 
+                      <h2
                         onClick={() => navigate(`/${product.slug}`)}
-                        className="text-5xl md:text-8xl font-bold text-[#0B0B0C] tracking-tighter mb-4 md:mb-6 cursor-pointer hover:text-neutral-700 transition-colors leading-[0.9]"
+                        className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-[#0B0B0C] tracking-tighter mb-4 md:mb-6 cursor-pointer hover:text-neutral-700 transition-colors leading-[0.9] break-words overflow-hidden w-full"
                       >
                         {product.name}
                       </h2>

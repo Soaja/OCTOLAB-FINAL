@@ -19,7 +19,7 @@ export const PRODUCTS: Product[] = [
     dosage: '10mg',
     category: 'Oporavak',
     image: 'https://images.unsplash.com/photo-1624638765416-faed240b9049?q=80&w=1000&auto=format&fit=crop', 
-    description: 'Sintetički peptid koji se sastoji od 15 aminokiselina. Poznat po svom potencijalu u istraživanju regeneracije tetiva, ligamenata i zdravlja creva. Formulisan za visoku stabilnost.',
+    description: 'BPC-157 je sintetički peptid od 15 aminokiselina, jedan od najpopularnijih istraživačkih peptida u Srbiji. Poznat po potencijalu u istraživanju regeneracije tetiva, ligamenata i zdravlja creva. HPLC čistoća >99%.',
     coaAvailable: true,
     inStock: true,
     tags: ['Oporavak', 'Zdravlje Creva', 'Zglobovi']
@@ -34,7 +34,7 @@ export const PRODUCTS: Product[] = [
     dosage: '5mg',
     category: 'Oporavak',
     image: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1000&auto=format&fit=crop',
-    description: 'Sintetizovani Timozin Beta-4. Često se istražuje zbog njegove uloge u ćelijskoj migraciji i potencijala da podrži popravku tkiva i smanjenje upale.',
+    description: 'TB-500 (Timozin Beta-4) je peptid za istraživanje ćelijske migracije, popravke tkiva i smanjenja upale. Jedan od najtraženijih peptida za oporavak u Srbiji. HPLC verifikovan.',
     coaAvailable: true,
     inStock: true,
     tags: ['Mobilnost', 'Upala', 'Popravka']
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     dosage: '50mg',
     category: 'Kozmetika',
     image: 'https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=1000&auto=format&fit=crop',
-    description: 'Prirodni kompleks bakra. Opsežno proučavan zbog sposobnosti da stimuliše proizvodnju kolagena i elastina u modelima istraživanja kože.',
+    description: 'GHK-Cu (Bakar Tripeptid-1) je peptid za istraživanje kože i anti-aging. Stimuliše proizvodnju kolagena i elastina. Popularan u Srbiji za kozmetičke studije. Čistoća >99%.',
     coaAvailable: true,
     inStock: true,
     tags: ['Koža', 'Kosa', 'Anti-Aging']
@@ -79,7 +79,7 @@ export const PRODUCTS: Product[] = [
     dosage: '10mg',
     category: 'Metabolizam',
     image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1000&auto=format&fit=crop',
-    description: 'Trostruki hormonski agonist (GGG) dizajniran za napredna istraživanja metaboličke efikasnosti i regulacije glukoze.',
+    description: 'Retatrutide je trostruki GLP-1/GIP/Glucagon agonist za istraživanje metabolizma i regulacije glukoze. Najnoviji peptid za istraživanje mršavljenja dostupan u Srbiji.',
     coaAvailable: true,
     inStock: true,
     tags: ['Gubitak Težine', 'Metabolizam', 'Insulin']
@@ -94,7 +94,7 @@ export const PRODUCTS: Product[] = [
     dosage: '0.1%',
     category: 'Kognitivni',
     image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=1000&auto=format&fit=crop',
-    description: 'Sintetički analog ACTH. Istražuje se zbog potencijala u poboljšanju kognitivnih funkcija, pamćenja i neuroprotekcije.',
+    description: 'Semax je nootropik peptid (ACTH analog) za istraživanje kognitivnih funkcija, pamćenja i neuroprotekcije. Razvijen u Rusiji, dostupan u Srbiji.',
     coaAvailable: true,
     inStock: true,
     tags: ['Fokus', 'Pamćenje', 'Neuro']
@@ -109,7 +109,7 @@ export const PRODUCTS: Product[] = [
     dosage: 'USP Grade',
     category: 'Oprema',
     image: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1000&auto=format&fit=crop',
-    description: 'Sterilna voda za injekcije koja sadrži 0.9% benzil alkohola kao konzervans. Neophodna za pravilnu rekonstituciju peptida.',
+    description: 'Bakteriostatska voda (USP Grade) za rekonstituciju peptida — 30mL sa 0.9% benzil alkohola. Neophodna oprema za svaki istraživački protokol. Dostupna u Srbiji.',
     coaAvailable: true,
     inStock: true,
     tags: ['Rekonstitucija', 'Sterilno', 'Oprema']
