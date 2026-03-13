@@ -47,31 +47,40 @@ const Hero = () => {
     return (
         <section
             className="relative min-h-screen flex items-center overflow-hidden"
-            style={{ background: 'linear-gradient(150deg, #edf0f8 0%, #f0f2fa 45%, #f7f8fc 100%)' }}
+            style={{ background: 'linear-gradient(160deg, #05070E 0%, #080B18 55%, #060918 100%)' }}
         >
-            {/* ── Iridescent glow line below floating navbar ── */}
+            {/* ── Subtle dot grid ── */}
             <div
-                className="absolute top-[72px] md:top-[88px] left-0 right-0 h-px z-30 pointer-events-none"
+                className="absolute inset-0 pointer-events-none"
                 style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.3) 15%, rgba(168,85,247,0.6) 35%, rgba(236,72,153,0.55) 52%, rgba(99,102,241,0.45) 72%, transparent 100%)',
-                    boxShadow: '0 0 8px rgba(168,85,247,0.25)',
+                    backgroundImage: 'radial-gradient(rgba(120,140,255,0.12) 1px, transparent 1px)',
+                    backgroundSize: '36px 36px',
                 }}
             />
 
-            {/* ── Two-column grid ── */}
-            <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-center pt-24 pb-10 md:pt-24 md:pb-10">
+            {/* ── Thin iridescent line below floating navbar ── */}
+            <div
+                className="absolute top-[68px] md:top-[84px] left-0 right-0 h-px z-30 pointer-events-none"
+                style={{
+                    background: 'linear-gradient(90deg, transparent 5%, rgba(99,102,241,0.5) 20%, rgba(168,85,247,0.9) 38%, rgba(236,72,153,0.8) 54%, rgba(99,180,255,0.7) 72%, transparent 95%)',
+                    boxShadow: '0 0 10px rgba(168,85,247,0.35), 0 0 24px rgba(168,85,247,0.12)',
+                }}
+            />
 
-                {/* ━━━ LEFT COLUMN ━━━ */}
+            {/* ── Main layout: left 45% / right 55% ── */}
+            <div className="max-w-[1280px] mx-auto px-6 md:px-12 w-full relative z-10 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-10 lg:gap-0 items-center pt-28 pb-12 md:pt-0 md:pb-0">
+
+                {/* ━━━━━━━━━━━━━ LEFT COLUMN ━━━━━━━━━━━━━ */}
                 <motion.div
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={{ opacity: 0, y: 22 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col items-start lg:pr-8"
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col items-start lg:pr-6"
                 >
-                    {/* Heading */}
+                    {/* Headline */}
                     <h1
-                        className="font-black tracking-tighter text-[#0B0F2E] leading-[0.88] mb-5"
-                        style={{ fontSize: 'clamp(52px, 6.5vw, 84px)' }}
+                        className="font-black tracking-tighter text-white leading-[0.88] mb-5"
+                        style={{ fontSize: 'clamp(48px, 5.8vw, 78px)' }}
                     >
                         PEPTIDI ZA<br />
                         ISTRAŽIVANJE<br />
@@ -79,100 +88,125 @@ const Hero = () => {
                     </h1>
 
                     {/* Subtext */}
-                    <p className="text-[15px] text-slate-500 leading-relaxed mb-8 max-w-[340px]">
+                    <p className="text-[15px] leading-relaxed mb-8 max-w-[320px]" style={{ color: 'rgba(180,190,220,0.85)' }}>
                         Kupite laboratorijski testirane peptide<br />
                         čistoće preko 99%.
                     </p>
 
-                    {/* Buttons */}
-                    <div className="flex flex-row flex-wrap gap-3 mb-8">
+                    {/* CTA buttons */}
+                    <div className="flex flex-row flex-wrap gap-3 mb-9">
+                        {/* Primary */}
                         <button
                             onClick={() => navigate('/peptidi-srbija')}
-                            className="group flex items-center gap-2 px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white bg-[#0B0F2E] hover:bg-[#131840] transition-all duration-200 shadow-lg shadow-indigo-900/20 active:scale-[0.98]"
+                            className="group flex items-center gap-2 px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white transition-all duration-200 active:scale-[0.97]"
+                            style={{
+                                background: 'linear-gradient(135deg, #0F1530 0%, #181D3A 100%)',
+                                border: '1px solid rgba(120,100,255,0.45)',
+                                boxShadow: '0 0 18px rgba(120,80,255,0.22), 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)',
+                            }}
                         >
                             Istraži Peptide
                             <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-200" />
                         </button>
+                        {/* Secondary / ghost */}
                         <button
                             onClick={() => navigate('/laboratorijski-standard')}
-                            className="px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-[#0B0F2E] border border-[#0B0F2E]/20 hover:bg-[#0B0F2E]/5 transition-all duration-200 active:scale-[0.98]"
+                            className="px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide transition-all duration-200 active:scale-[0.97] hover:bg-white/[0.05]"
+                            style={{
+                                border: '1px solid rgba(255,255,255,0.18)',
+                                color: 'rgba(210,215,240,0.9)',
+                                background: 'transparent',
+                            }}
                         >
                             Protokoli Kvaliteta
                         </button>
                     </div>
 
                     {/* Trust bullets — 2×2 grid */}
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                    <div className="grid grid-cols-2 gap-x-7 gap-y-3">
                         {trustBullets.map((bullet, i) => (
                             <div key={i} className="flex items-center gap-2">
-                                <CheckCircle2 size={14} className="text-indigo-500 shrink-0" />
-                                <span className="text-[12px] font-semibold text-slate-600">{bullet}</span>
+                                <CheckCircle2 size={13} style={{ color: 'rgba(140,160,255,0.85)' }} className="shrink-0" />
+                                <span className="text-[12px] font-semibold" style={{ color: 'rgba(190,200,230,0.85)' }}>{bullet}</span>
                             </div>
                         ))}
                     </div>
                 </motion.div>
 
-                {/* ━━━ RIGHT COLUMN ━━━ */}
+                {/* ━━━━━━━━━━━━━ RIGHT COLUMN ━━━━━━━━━━━━━ */}
                 <motion.div
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 18 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                     className="relative flex flex-col items-center justify-center"
                 >
-                    {/* Floating pill badges — single row, hidden on mobile */}
-                    <div className="hidden md:flex items-center gap-2.5 mb-5 z-20">
+                    {/* Floating pill badges — single row, desktop only */}
+                    <div className="hidden md:flex items-center gap-2 mb-4 z-20">
                         {floatingTags.map((tag, i) => (
                             <motion.span
                                 key={tag}
-                                initial={{ opacity: 0, y: -8 }}
+                                initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.45 + i * 0.08 }}
-                                className="px-3 py-[5px] rounded-full text-[10px] font-bold tracking-[0.12em] uppercase text-indigo-600 bg-white/70 border border-indigo-200/80 whitespace-nowrap"
-                                style={{ backdropFilter: 'blur(6px)' }}
+                                transition={{ delay: 0.4 + i * 0.08 }}
+                                className="px-3 py-[5px] rounded-full text-[9px] font-bold tracking-[0.14em] uppercase whitespace-nowrap"
+                                style={{
+                                    border: '1px solid rgba(160,130,255,0.35)',
+                                    background: 'rgba(100,80,220,0.12)',
+                                    color: 'rgba(210,200,255,0.9)',
+                                    backdropFilter: 'blur(8px)',
+                                    boxShadow: '0 0 10px rgba(120,90,255,0.12)',
+                                }}
                             >
                                 {tag}
                             </motion.span>
                         ))}
                     </div>
 
-                    {/* Image + glow container */}
-                    <div className="relative flex items-center justify-center">
-                        {/* Glow orb — light blue, large */}
+                    {/* Glow orb + product image */}
+                    <div className="relative flex items-center justify-center w-full">
+                        {/* Primary glow — bright blue-cyan core */}
                         <div
-                            className="absolute rounded-full pointer-events-none"
+                            className="absolute pointer-events-none"
                             style={{
-                                width: '560px',
-                                height: '560px',
-                                background: 'radial-gradient(circle, #c7d8ff 0%, rgba(199,216,255,0.35) 40%, transparent 70%)',
-                                filter: 'blur(8px)',
+                                width: '580px',
+                                height: '520px',
+                                background: 'radial-gradient(ellipse at 48% 55%, rgba(80,160,255,0.55) 0%, rgba(100,130,255,0.3) 35%, rgba(120,80,240,0.15) 58%, transparent 75%)',
+                                filter: 'blur(28px)',
                             }}
                         />
-                        {/* Glow orb — soft purple, offset */}
+                        {/* Secondary glow — soft purple, offset right-up */}
                         <div
-                            className="absolute rounded-full pointer-events-none"
+                            className="absolute pointer-events-none"
                             style={{
-                                width: '480px',
-                                height: '480px',
-                                transform: 'translate(10%, -8%)',
-                                background: 'radial-gradient(circle, #d4c5ff 0%, rgba(212,197,255,0.3) 38%, transparent 68%)',
-                                filter: 'blur(12px)',
+                                width: '440px',
+                                height: '400px',
+                                transform: 'translate(8%, -12%)',
+                                background: 'radial-gradient(ellipse at 52% 52%, rgba(160,100,255,0.38) 0%, rgba(130,80,240,0.2) 40%, transparent 68%)',
+                                filter: 'blur(22px)',
                             }}
                         />
-                        {/* Floor shimmer */}
+                        {/* Floor / bottom shimmer */}
                         <div
-                            className="absolute bottom-0 left-[10%] right-[10%] h-[50px] pointer-events-none"
+                            className="absolute pointer-events-none"
                             style={{
-                                background: 'radial-gradient(ellipse, rgba(180,210,255,0.6) 0%, transparent 70%)',
-                                filter: 'blur(10px)',
+                                bottom: '-2%',
+                                left: '5%',
+                                right: '5%',
+                                height: '70px',
+                                background: 'radial-gradient(ellipse, rgba(100,180,255,0.45) 0%, rgba(150,100,255,0.2) 45%, transparent 70%)',
+                                filter: 'blur(14px)',
                             }}
                         />
-
                         {/* Product image */}
                         <img
                             src="/images/peptidi4.png"
                             alt="OCTOLAB istraživački peptidi — 4 bočice"
-                            className="relative z-10 object-contain drop-shadow-2xl"
-                            style={{ width: '640px', maxWidth: '100%' }}
+                            className="relative z-10 object-contain"
+                            style={{
+                                width: '660px',
+                                maxWidth: '100%',
+                                filter: 'drop-shadow(0 16px 48px rgba(80,120,255,0.25))',
+                            }}
                         />
                     </div>
                 </motion.div>
