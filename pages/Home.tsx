@@ -40,74 +40,173 @@ const SectionHeading = ({ title, subtitle, align = 'center' }: { title: string, 
 // 1. HERO SECTION (Updated Scale)
 const Hero = () => {
     const navigate = useNavigate();
+
+    const floatingTags = ['RETATRUTIDE', 'BPC-157', 'GHK-CU', 'SEMAX'];
+    const trustBullets = ['HPLC/MS testirano', '>99% čistoća', 'Brza isporuka u Srbiji', 'Hladni lanac'];
+
     return (
-        <section className="relative min-h-[85vh] flex flex-col justify-center items-center pt-20 pb-12 md:pt-24 md:pb-20 overflow-hidden">
-            <div className="absolute inset-0 hero-glow -z-20 pointer-events-none" />
-            <div className="absolute inset-0 bg-noise opacity-30 -z-10 pointer-events-none" />
+        <section
+            className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+            style={{ background: 'linear-gradient(160deg, #06080F 0%, #090C1A 45%, #080C18 100%)' }}
+        >
+            {/* ── Iridescent glow line just below floating navbar ── */}
+            <div
+                className="absolute top-[72px] md:top-[88px] left-0 right-0 h-px z-30 pointer-events-none"
+                style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(100,70,220,0.4) 15%, rgba(160,90,255,0.85) 35%, rgba(230,100,190,0.9) 52%, rgba(100,170,255,0.75) 72%, rgba(80,70,200,0.3) 88%, transparent 100%)',
+                    boxShadow: '0 0 14px rgba(180,100,255,0.45), 0 0 32px rgba(180,100,255,0.15)',
+                }}
+            />
 
-            <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center">
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
+            {/* ── Subtle grid background ── */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    backgroundImage: 'linear-gradient(rgba(140,150,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(140,150,255,0.07) 1px, transparent 1px)',
+                    backgroundSize: '50px 50px',
+                }}
+            />
+
+            {/* ── Right-side ambient glow ── */}
+            <div className="absolute right-0 top-0 bottom-0 w-2/3 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute right-[-80px] top-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(100,55,240,0.22) 0%, rgba(55,95,255,0.10) 45%, transparent 70%)',
+                        filter: 'blur(24px)',
+                    }}
+                />
+                <div
+                    className="absolute right-[8%] bottom-[-8%] w-[420px] h-[240px]"
+                    style={{
+                        background: 'radial-gradient(ellipse, rgba(80,165,255,0.16) 0%, rgba(110,70,255,0.10) 45%, transparent 70%)',
+                        filter: 'blur(32px)',
+                    }}
+                />
+            </div>
+
+            {/* ── Upper-left subtle fill ── */}
+            <div
+                className="absolute left-0 top-0 w-[350px] h-[280px] pointer-events-none"
+                style={{
+                    background: 'radial-gradient(ellipse at top left, rgba(55,70,180,0.08) 0%, transparent 60%)',
+                    filter: 'blur(28px)',
+                }}
+            />
+
+            {/* ── Main two-column content ── */}
+            <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center pt-32 pb-16 md:pt-36 md:pb-20">
+
+                {/* LEFT COLUMN */}
+                <motion.div
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-8"
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col items-start"
                 >
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100/80 border border-neutral-200 backdrop-blur-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-700">Peptidi za Istraživanje — Dostava u Srbiji 24h</span>
-                    </span>
+                    <h1
+                        className="font-black tracking-tighter text-white leading-[0.87] mb-5"
+                        style={{ fontSize: 'clamp(46px, 6.5vw, 88px)' }}
+                    >
+                        PEPTIDI ZA<br />
+                        ISTRAŽIVANJE<br />
+                        U SRBIJI.
+                    </h1>
+
+                    <p className="text-[15px] md:text-[16px] text-neutral-400 leading-relaxed mb-8 max-w-[340px]">
+                        Kupite laboratorijski testirane peptide<br />
+                        čistoće preko 99%.
+                    </p>
+
+                    {/* Buttons */}
+                    <div className="flex flex-row flex-wrap gap-3 mb-8">
+                        {/* Primary */}
+                        <button
+                            onClick={() => navigate('/peptidi-srbija')}
+                            className="group flex items-center gap-2 px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white transition-all duration-300 hover:opacity-90 active:scale-[0.98]"
+                            style={{
+                                background: 'linear-gradient(135deg, #111426 0%, #1B1E38 100%)',
+                                boxShadow: '0 0 0 1px rgba(130,85,255,0.38), 0 4px 20px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.07)',
+                            }}
+                        >
+                            Istraži Peptide
+                            <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                        </button>
+                        {/* Secondary */}
+                        <button
+                            onClick={() => navigate('/laboratorijski-standard')}
+                            className="px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white/65 transition-all duration-300 hover:text-white hover:bg-white/[0.05] active:scale-[0.98]"
+                            style={{ border: '1px solid rgba(255,255,255,0.18)', background: 'transparent' }}
+                        >
+                            Protokoli Kvaliteta
+                        </button>
+                    </div>
+
+                    {/* Trust bullets */}
+                    <div className="flex flex-col gap-2.5">
+                        {trustBullets.map((bullet, i) => (
+                            <div key={i} className="flex items-center gap-2.5">
+                                <CheckCircle2 size={13} className="text-neutral-500 shrink-0" />
+                                <span className="text-[13px] font-medium text-neutral-400">{bullet}</span>
+                            </div>
+                        ))}
+                    </div>
                 </motion.div>
 
-                {/* Updated Typography to Match 'TITANI' Section */}
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#0B0B0C] leading-[0.85] mb-8 max-w-6xl mx-auto break-words overflow-hidden w-full">
-                    PEPTIDI ZA <br/>
-                    ISTRAŽIVANJE <br/>
-                    <span className="text-neutral-500">U SRBIJI.</span>
-                </h1>
-                
-                <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-lg md:text-xl text-neutral-700 max-w-2xl leading-relaxed mb-10 font-medium"
+                {/* RIGHT COLUMN */}
+                <motion.div
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative flex flex-col items-center justify-center"
                 >
-                    Kupite kvalitetne istraživačke peptide u Srbiji: BPC-157, TB-500, GHK-Cu, Semax. <br className="hidden md:block" />
-                    Laboratorijski HPLC testirani, čistoća preko 99%, brza isporuka hladnim lancem
-                </motion.p>
+                    {/* Floating tags */}
+                    <div className="flex gap-2 mb-5 flex-wrap justify-center w-full">
+                        {floatingTags.map((tag, i) => (
+                            <motion.span
+                                key={tag}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 + i * 0.09 }}
+                                className="px-3 py-[5px] rounded-full text-[10px] font-bold tracking-[0.13em] uppercase"
+                                style={{
+                                    border: '1px solid rgba(145,105,255,0.32)',
+                                    background: 'rgba(110,75,255,0.09)',
+                                    color: 'rgba(205,185,255,0.88)',
+                                    backdropFilter: 'blur(8px)',
+                                    boxShadow: '0 0 14px rgba(120,80,255,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+                                }}
+                            >
+                                {tag}
+                            </motion.span>
+                        ))}
+                    </div>
 
-                <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-                >
-                    <Button 
-                        onClick={() => navigate('/peptidi-srbija')} 
-                        size="lg" 
-                        className="bg-[#0B0B0C] text-white hover:bg-neutral-800 px-10 h-14 rounded-full shadow-xl shadow-neutral-200 text-sm tracking-wide font-bold"
-                    >
-                        Istraži Peptide
-                    </Button>
-                    <Button 
-                        onClick={() => navigate('/laboratorijski-standard')} 
-                        variant="outline"
-                        size="lg" 
-                        className="bg-white border-neutral-200 text-neutral-900 hover:bg-neutral-50 px-10 h-14 rounded-full text-sm tracking-wide font-bold"
-                    >
-                        Protokoli Kvaliteta
-                    </Button>
-                </motion.div>
-
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mt-12 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-xs sm:text-sm font-semibold text-neutral-600 tracking-wide"
-                >
-                    <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-green-600" /><span>HPLC/MS testirano</span></div>
-                    <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-green-600" /><span>&gt;99% čistoća</span></div>
-                    <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-green-600" /><span>Brza isporuka u Srbiji</span></div>
-                    <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-green-600" /><span>Hladni lanac</span></div>
+                    {/* Product image with ambient glow */}
+                    <div className="relative w-full max-w-[560px]">
+                        {/* Behind-image ambient blob */}
+                        <div
+                            className="absolute inset-[-18%] rounded-full pointer-events-none z-0"
+                            style={{
+                                background: 'radial-gradient(ellipse at center, rgba(75,115,255,0.17) 0%, rgba(105,55,240,0.11) 42%, transparent 70%)',
+                                filter: 'blur(38px)',
+                            }}
+                        />
+                        {/* Floor glow */}
+                        <div
+                            className="absolute bottom-[-3%] left-[8%] right-[8%] h-[55px] pointer-events-none z-0"
+                            style={{
+                                background: 'radial-gradient(ellipse, rgba(95,175,255,0.32) 0%, rgba(125,75,255,0.18) 45%, transparent 70%)',
+                                filter: 'blur(16px)',
+                            }}
+                        />
+                        <img
+                            src="/images/peptidi4.png"
+                            alt="OCTOLAB istraživački peptidi — 4 bočice"
+                            className="relative z-10 w-full object-contain"
+                            style={{ filter: 'drop-shadow(0 20px 55px rgba(80,105,255,0.18))' }}
+                        />
+                    </div>
                 </motion.div>
             </div>
         </section>
