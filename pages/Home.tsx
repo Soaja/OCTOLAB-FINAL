@@ -38,17 +38,20 @@ const SectionHeading = ({ title, subtitle, align = 'center' }: { title: string, 
 );
 
 // 1. HERO SECTION (Updated Scale)
+// Iridescent gradient — boje sa etikete bočice
+const IRIDESCENT = 'linear-gradient(90deg, #bfdbfe 0%, #c4b5fd 30%, #f9a8d4 58%, #fde68a 85%, #bfdbfe 100%)';
+
 const Hero = () => {
     const navigate = useNavigate();
 
-    const floatingTags = [
-        { label: 'RETATRUTIDE', y: 0 },
-        { label: 'BPC-157',     y: -12 },
-        { label: 'GHK-CU',     y: -22 },
-        { label: 'SEMAX',      y: -32 },
+    const pills = [
+        { label: 'RETATRUTIDE', dot: '#3b82f6' },
+        { label: 'BPC-157',     dot: '#ef4444' },
+        { label: 'GHK-CU',     dot: '#6b7280' },
+        { label: 'SEMAX',      dot: '#3b82f6' },
     ];
 
-    const trustBullets = [
+    const trustItems = [
         'HPLC/MS testirano',
         '>99% čistoća',
         'Brza isporuka u Srbiji',
@@ -57,91 +60,131 @@ const Hero = () => {
 
     return (
         <section
-            className="relative overflow-hidden min-h-screen"
+            className="relative overflow-hidden"
             style={{
+                minHeight: '100vh',
                 backgroundImage: "url('/images/background.jpeg')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
         >
-            {/* ── full-viewport grid ── */}
-            <div className="grid grid-cols-1 lg:grid-cols-[45fr_55fr] min-h-screen items-center">
+            {/* ── Two-column grid, full viewport height ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
 
-                {/* ━━━━━━━━━━━━━ LEFT COLUMN ━━━━━━━━━━━━━ */}
+                {/* ══════════════ LEFT COLUMN ══════════════ */}
                 <motion.div
-                    initial={{ opacity: 0, y: 22 }}
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col pl-6 md:pl-14 lg:pl-20 pr-6 lg:pr-0 py-32 lg:py-0"
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-28 pb-12 lg:pt-0 lg:pb-0"
                 >
-                    <h1 className="font-black uppercase leading-[0.9] text-[#0c1428]"
-                        style={{ fontSize: 'clamp(40px, 5.2vw, 72px)' }}>
+                    {/* Eyebrow label */}
+                    <div className="flex items-center gap-2.5 mb-7">
+                        <div
+                            className="h-[2px] w-8 rounded-full"
+                            style={{ background: IRIDESCENT }}
+                        />
+                        <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-neutral-400">
+                            Research Grade · Srbija
+                        </span>
+                    </div>
+
+                    {/* Main heading */}
+                    <h1
+                        className="font-black text-[#0c1220] leading-[0.88] tracking-tight mb-6"
+                        style={{ fontSize: 'clamp(48px, 6vw, 82px)' }}
+                    >
                         PEPTIDI ZA<br />
                         ISTRAŽIVANJE<br />
                         U SRBIJI.
                     </h1>
 
-                    <p className="mt-5 text-[15px] text-[#3a4460] leading-relaxed max-w-xs">
-                        Kupite laboratorijski testirane peptide<br />
-                        čistoće preko 99%.
+                    {/* Iridescent accent bar */}
+                    <div
+                        className="h-[3px] w-24 rounded-full mb-7"
+                        style={{ background: IRIDESCENT }}
+                    />
+
+                    {/* Subtext */}
+                    <p className="text-[15px] text-neutral-500 leading-relaxed mb-9 max-w-[340px]">
+                        Laboratorijski testirani peptidi čistoće preko 99%.<br />
+                        Brza isporuka hladnim lancem na teritoriji Srbije.
                     </p>
 
-                    <div className="mt-7 flex flex-wrap gap-3">
+                    {/* CTA buttons */}
+                    <div className="flex flex-wrap gap-3 mb-10">
                         <button
                             onClick={() => navigate('/peptidi-srbija')}
-                            className="group flex items-center gap-2 bg-[#0c1428] text-white rounded-full px-7 py-[11px] text-sm font-semibold hover:bg-[#1a2845] transition-colors active:scale-[0.97]"
+                            className="group relative flex items-center gap-2 bg-[#0c1220] text-white rounded-full px-7 py-3.5 text-[13px] font-semibold overflow-hidden hover:bg-[#1a2440] transition-colors active:scale-[0.97] shadow-lg shadow-neutral-900/10"
                         >
+                            {/* Iridescent shimmer on hover */}
+                            <span
+                                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-full"
+                                style={{ background: IRIDESCENT }}
+                            />
                             Istraži Peptide
                             <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                         </button>
+
                         <button
                             onClick={() => navigate('/laboratorijski-standard')}
-                            className="rounded-full px-7 py-[11px] text-sm font-semibold text-[#0c1428] bg-white/50 border border-[#0c1428]/25 backdrop-blur-sm hover:bg-white/70 transition-colors active:scale-[0.97]"
+                            className="flex items-center gap-2 rounded-full px-7 py-3.5 text-[13px] font-semibold text-neutral-700 bg-white/60 border border-neutral-200 backdrop-blur-sm hover:bg-white hover:border-neutral-300 transition-all active:scale-[0.97]"
                         >
                             Protokoli Kvaliteta
                         </button>
                     </div>
 
-                    <div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-2.5">
-                        {trustBullets.map((bullet, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                                <CheckCircle2 size={13} className="text-[#5b7aff] shrink-0" />
-                                <span className="text-[13px] font-medium text-[#3a4460]">{bullet}</span>
+                    {/* Trust items — horizontal row */}
+                    <div className="flex flex-wrap gap-x-5 gap-y-2.5">
+                        {trustItems.map((item, i) => (
+                            <div key={i} className="flex items-center gap-1.5">
+                                <CheckCircle2 size={13} className="text-neutral-400 shrink-0" />
+                                <span className="text-[12px] font-medium text-neutral-500">{item}</span>
                             </div>
                         ))}
                     </div>
                 </motion.div>
 
-                {/* ━━━━━━━━━━━━━ RIGHT COLUMN ━━━━━━━━━━━━━ */}
-                <div className="relative flex items-end justify-center self-stretch min-h-[420px] lg:min-h-0">
-
-                    {/* pill badges — absolute, staggered, above image */}
-                    <div className="hidden md:flex absolute bottom-[54%] left-0 right-0 items-end justify-center gap-2.5 z-20 px-4">
-                        {floatingTags.map((tag, i) => (
-                            <motion.span
-                                key={tag.label}
-                                initial={{ opacity: 0, y: -10 }}
+                {/* ══════════════ RIGHT COLUMN ══════════════ */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.9, delay: 0.1 }}
+                    className="relative flex flex-col items-center justify-end self-stretch min-h-[440px] lg:min-h-0"
+                >
+                    {/* Product name pill badges — float above image */}
+                    <div className="hidden md:flex items-end gap-2.5 mb-5 z-20 relative">
+                        {pills.map((pill, i) => (
+                            <motion.div
+                                key={pill.label}
+                                initial={{ opacity: 0, y: -14 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 + i * 0.09 }}
-                                className="rounded-full border border-white/70 bg-white/55 backdrop-blur-md px-3 py-[5px] text-[10px] font-bold uppercase tracking-widest text-[#2a3558] whitespace-nowrap shadow-sm"
-                                style={{ transform: `translateY(${tag.y}px)` }}
+                                transition={{ delay: 0.35 + i * 0.09, ease: [0.16, 1, 0.3, 1] }}
+                                style={{ transform: `translateY(${i * -8}px)` }}
+                                className="flex items-center gap-1.5 rounded-full border border-white/80 bg-white/65 backdrop-blur-md px-3.5 py-[6px] shadow-sm"
                             >
-                                {tag.label}
-                            </motion.span>
+                                <span
+                                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                                    style={{ backgroundColor: pill.dot }}
+                                />
+                                <span className="text-[9.5px] font-black uppercase tracking-[0.14em] text-[#1e2a40]">
+                                    {pill.label}
+                                </span>
+                            </motion.div>
                         ))}
                     </div>
 
-                    {/* product image — bottom-aligned so vials sit on the glow rings */}
+                    {/* Product image — bottom-aligned, sits on background glow rings */}
                     <motion.img
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         src="/images/peptidi4.png"
-                        alt="OCTOLAB istraživački peptidi — 4 bočice"
-                        className="relative z-10 object-contain object-bottom w-full"
-                        style={{ maxWidth: '720px', maxHeight: '82vh' }}
+                        alt="OCTOLAB istraživački peptidi — Retatrutide, GHK-Cu, BPC-157, Semax"
+                        className="object-contain object-bottom w-full z-10"
+                        style={{ maxWidth: '740px', maxHeight: '80vh' }}
                     />
-                </div>
+                </motion.div>
             </div>
         </section>
     );
