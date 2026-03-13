@@ -69,14 +69,14 @@ const Hero = () => {
             }}
         >
             {/* ── Two-column grid, full viewport height ── */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center">
 
                 {/* ══════════════ LEFT COLUMN ══════════════ */}
                 <motion.div
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-28 pb-12 lg:pt-0 lg:pb-0"
+                    className="flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-28 pb-12 lg:py-16"
                 >
                     {/* Eyebrow label */}
                     <div className="flex items-center gap-2.5 mb-7">
@@ -150,7 +150,7 @@ const Hero = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.9, delay: 0.1 }}
-                    className="relative flex flex-col items-center justify-end self-stretch min-h-[440px] lg:min-h-0"
+                    className="relative flex flex-col items-center justify-center min-h-[440px] lg:min-h-0 py-8 lg:py-16"
                 >
                     {/* Product name pill badges — float above image */}
                     <div className="hidden md:flex items-end gap-2.5 mb-5 z-20 relative">
