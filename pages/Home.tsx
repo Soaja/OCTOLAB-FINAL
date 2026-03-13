@@ -46,167 +46,126 @@ const Hero = () => {
 
     return (
         <section
-            className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-            style={{ background: 'linear-gradient(160deg, #06080F 0%, #090C1A 45%, #080C18 100%)' }}
+            className="relative min-h-screen flex items-center overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #eef2ff 0%, #f4f6ff 40%, #ffffff 100%)' }}
         >
-            {/* ── Iridescent glow line just below floating navbar ── */}
+            {/* ── Iridescent glow line below floating navbar ── */}
             <div
                 className="absolute top-[72px] md:top-[88px] left-0 right-0 h-px z-30 pointer-events-none"
                 style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(100,70,220,0.4) 15%, rgba(160,90,255,0.85) 35%, rgba(230,100,190,0.9) 52%, rgba(100,170,255,0.75) 72%, rgba(80,70,200,0.3) 88%, transparent 100%)',
-                    boxShadow: '0 0 14px rgba(180,100,255,0.45), 0 0 32px rgba(180,100,255,0.15)',
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.3) 15%, rgba(168,85,247,0.6) 35%, rgba(236,72,153,0.55) 52%, rgba(99,102,241,0.45) 72%, transparent 100%)',
+                    boxShadow: '0 0 8px rgba(168,85,247,0.25)',
                 }}
             />
 
-            {/* ── Subtle grid background ── */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    backgroundImage: 'linear-gradient(rgba(140,150,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(140,150,255,0.07) 1px, transparent 1px)',
-                    backgroundSize: '50px 50px',
-                }}
-            />
+            {/* ── Two-column grid ── */}
+            <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-center pt-28 pb-12 md:pt-32 md:pb-16">
 
-            {/* ── Right-side ambient glow ── */}
-            <div className="absolute right-0 top-0 bottom-0 w-2/3 pointer-events-none overflow-hidden">
-                <div
-                    className="absolute right-[-80px] top-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(100,55,240,0.22) 0%, rgba(55,95,255,0.10) 45%, transparent 70%)',
-                        filter: 'blur(24px)',
-                    }}
-                />
-                <div
-                    className="absolute right-[8%] bottom-[-8%] w-[420px] h-[240px]"
-                    style={{
-                        background: 'radial-gradient(ellipse, rgba(80,165,255,0.16) 0%, rgba(110,70,255,0.10) 45%, transparent 70%)',
-                        filter: 'blur(32px)',
-                    }}
-                />
-            </div>
-
-            {/* ── Upper-left subtle fill ── */}
-            <div
-                className="absolute left-0 top-0 w-[350px] h-[280px] pointer-events-none"
-                style={{
-                    background: 'radial-gradient(ellipse at top left, rgba(55,70,180,0.08) 0%, transparent 60%)',
-                    filter: 'blur(28px)',
-                }}
-            />
-
-            {/* ── Main two-column content ── */}
-            <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center pt-32 pb-16 md:pt-36 md:pb-20">
-
-                {/* LEFT COLUMN */}
+                {/* ━━━ LEFT COLUMN ━━━ */}
                 <motion.div
-                    initial={{ opacity: 0, y: 28 }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col items-start"
+                    transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col items-start lg:pr-8"
                 >
+                    {/* Heading */}
                     <h1
-                        className="font-black tracking-tighter text-white leading-[0.87] mb-5"
-                        style={{ fontSize: 'clamp(46px, 6.5vw, 88px)' }}
+                        className="font-black tracking-tighter text-[#0B0F2E] leading-[0.88] mb-5"
+                        style={{ fontSize: 'clamp(44px, 5.6vw, 72px)' }}
                     >
                         PEPTIDI ZA<br />
                         ISTRAŽIVANJE<br />
                         U SRBIJI.
                     </h1>
 
-                    <p className="text-[15px] md:text-[16px] text-neutral-400 leading-relaxed mb-8 max-w-[340px]">
+                    {/* Subtext */}
+                    <p className="text-[15px] text-slate-500 leading-relaxed mb-8 max-w-[340px]">
                         Kupite laboratorijski testirane peptide<br />
                         čistoće preko 99%.
                     </p>
 
                     {/* Buttons */}
                     <div className="flex flex-row flex-wrap gap-3 mb-8">
-                        {/* Primary */}
                         <button
                             onClick={() => navigate('/peptidi-srbija')}
-                            className="group flex items-center gap-2 px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white transition-all duration-300 hover:opacity-90 active:scale-[0.98]"
-                            style={{
-                                background: 'linear-gradient(135deg, #111426 0%, #1B1E38 100%)',
-                                boxShadow: '0 0 0 1px rgba(130,85,255,0.38), 0 4px 20px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.07)',
-                            }}
+                            className="group flex items-center gap-2 px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white bg-[#0B0F2E] hover:bg-[#131840] transition-all duration-200 shadow-lg shadow-indigo-900/20 active:scale-[0.98]"
                         >
                             Istraži Peptide
                             <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-200" />
                         </button>
-                        {/* Secondary */}
                         <button
                             onClick={() => navigate('/laboratorijski-standard')}
-                            className="px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-white/65 transition-all duration-300 hover:text-white hover:bg-white/[0.05] active:scale-[0.98]"
-                            style={{ border: '1px solid rgba(255,255,255,0.18)', background: 'transparent' }}
+                            className="px-6 py-[11px] rounded-full text-[13px] font-bold tracking-wide text-[#0B0F2E] border border-[#0B0F2E]/20 hover:bg-[#0B0F2E]/5 transition-all duration-200 active:scale-[0.98]"
                         >
                             Protokoli Kvaliteta
                         </button>
                     </div>
 
-                    {/* Trust bullets */}
-                    <div className="flex flex-col gap-2.5">
+                    {/* Trust bullets — 2×2 grid */}
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                         {trustBullets.map((bullet, i) => (
-                            <div key={i} className="flex items-center gap-2.5">
-                                <CheckCircle2 size={13} className="text-neutral-500 shrink-0" />
-                                <span className="text-[13px] font-medium text-neutral-400">{bullet}</span>
+                            <div key={i} className="flex items-center gap-2">
+                                <CheckCircle2 size={14} className="text-indigo-500 shrink-0" />
+                                <span className="text-[12px] font-semibold text-slate-600">{bullet}</span>
                             </div>
                         ))}
                     </div>
                 </motion.div>
 
-                {/* RIGHT COLUMN */}
+                {/* ━━━ RIGHT COLUMN ━━━ */}
                 <motion.div
-                    initial={{ opacity: 0, x: 24 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative flex flex-col items-center justify-center"
+                    transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative flex items-center justify-center min-h-[380px] md:min-h-[480px]"
                 >
-                    {/* Floating tags */}
-                    <div className="flex gap-2 mb-5 flex-wrap justify-center w-full">
+                    {/* Background: two overlapping radial gradients */}
+                    <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
+                        {/* Light blue glow — left-center */}
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                background: 'radial-gradient(ellipse at 38% 55%, rgba(147,197,253,0.55) 0%, rgba(191,219,254,0.25) 40%, transparent 68%)',
+                            }}
+                        />
+                        {/* Soft purple glow — right-center */}
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                background: 'radial-gradient(ellipse at 68% 42%, rgba(196,181,253,0.5) 0%, rgba(221,214,254,0.2) 42%, transparent 65%)',
+                            }}
+                        />
+                        {/* Floor shimmer */}
+                        <div
+                            className="absolute bottom-0 left-[15%] right-[15%] h-[80px]"
+                            style={{
+                                background: 'radial-gradient(ellipse, rgba(147,197,253,0.4) 0%, rgba(196,181,253,0.2) 50%, transparent 70%)',
+                                filter: 'blur(12px)',
+                            }}
+                        />
+                    </div>
+
+                    {/* Floating pill badges — hidden on mobile */}
+                    <div className="hidden md:flex absolute top-3 left-0 right-0 gap-2 justify-center z-20 flex-wrap px-6">
                         {floatingTags.map((tag, i) => (
                             <motion.span
                                 key={tag}
-                                initial={{ opacity: 0, y: -10 }}
+                                initial={{ opacity: 0, y: -8 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 + i * 0.09 }}
-                                className="px-3 py-[5px] rounded-full text-[10px] font-bold tracking-[0.13em] uppercase"
-                                style={{
-                                    border: '1px solid rgba(145,105,255,0.32)',
-                                    background: 'rgba(110,75,255,0.09)',
-                                    color: 'rgba(205,185,255,0.88)',
-                                    backdropFilter: 'blur(8px)',
-                                    boxShadow: '0 0 14px rgba(120,80,255,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
-                                }}
+                                transition={{ delay: 0.45 + i * 0.08 }}
+                                className="px-3 py-[5px] rounded-full text-[10px] font-bold tracking-[0.12em] uppercase text-indigo-600 bg-indigo-50 border border-indigo-200/70"
                             >
                                 {tag}
                             </motion.span>
                         ))}
                     </div>
 
-                    {/* Product image with ambient glow */}
-                    <div className="relative w-full max-w-[560px]">
-                        {/* Behind-image ambient blob */}
-                        <div
-                            className="absolute inset-[-18%] rounded-full pointer-events-none z-0"
-                            style={{
-                                background: 'radial-gradient(ellipse at center, rgba(75,115,255,0.17) 0%, rgba(105,55,240,0.11) 42%, transparent 70%)',
-                                filter: 'blur(38px)',
-                            }}
-                        />
-                        {/* Floor glow */}
-                        <div
-                            className="absolute bottom-[-3%] left-[8%] right-[8%] h-[55px] pointer-events-none z-0"
-                            style={{
-                                background: 'radial-gradient(ellipse, rgba(95,175,255,0.32) 0%, rgba(125,75,255,0.18) 45%, transparent 70%)',
-                                filter: 'blur(16px)',
-                            }}
-                        />
-                        <img
-                            src="/images/peptidi4.png"
-                            alt="OCTOLAB istraživački peptidi — 4 bočice"
-                            className="relative z-10 w-full object-contain"
-                            style={{ filter: 'drop-shadow(0 20px 55px rgba(80,105,255,0.18))' }}
-                        />
-                    </div>
+                    {/* Product image */}
+                    <img
+                        src="/images/peptidi4.png"
+                        alt="OCTOLAB istraživački peptidi — 4 bočice"
+                        className="relative z-10 w-full max-w-[520px] object-contain drop-shadow-2xl"
+                    />
                 </motion.div>
             </div>
         </section>
