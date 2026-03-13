@@ -41,12 +41,11 @@ const SectionHeading = ({ title, subtitle, align = 'center' }: { title: string, 
 const Hero = () => {
     const navigate = useNavigate();
 
-    // staggered vertical offsets: RETATRUTIDE lowest → SEMAX highest
     const floatingTags = [
         { label: 'RETATRUTIDE', y: 0 },
-        { label: 'BPC-157',     y: -10 },
-        { label: 'GHK-CU',     y: -20 },
-        { label: 'SEMAX',      y: -30 },
+        { label: 'BPC-157',     y: -12 },
+        { label: 'GHK-CU',     y: -22 },
+        { label: 'SEMAX',      y: -32 },
     ];
 
     const trustBullets = [
@@ -58,104 +57,73 @@ const Hero = () => {
 
     return (
         <section
-            className="relative overflow-hidden"
+            className="relative overflow-hidden min-h-screen"
             style={{
-                minHeight: '100vh',
-                // cool blue-grey top-left → near-white bottom-right
-                background: 'linear-gradient(135deg, #d8dff0 0%, #dfe6f2 20%, #eaeff8 45%, #f4f7fc 70%, #fafbff 100%)',
+                backgroundImage: "url('/images/background.jpeg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
             }}
         >
-            {/* full-height grid: left 45 / right 55 */}
-            <div
-                className="grid grid-cols-1 lg:grid-cols-[45fr_55fr]"
-                style={{ minHeight: '100vh' }}
-            >
+            {/* ── full-viewport grid ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-[45fr_55fr] min-h-screen items-center">
+
                 {/* ━━━━━━━━━━━━━ LEFT COLUMN ━━━━━━━━━━━━━ */}
-                <div className="flex items-center pl-6 md:pl-16 lg:pl-24 pr-6 lg:pr-0 py-28 lg:py-0">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        {/* Heading */}
-                        <h1 className="font-black uppercase text-5xl lg:text-6xl leading-tight text-[#0f1729]">
-                            PEPTIDI ZA<br />
-                            ISTRAŽIVANJE<br />
-                            U SRBIJI.
-                        </h1>
+                <motion.div
+                    initial={{ opacity: 0, y: 22 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col pl-6 md:pl-14 lg:pl-20 pr-6 lg:pr-0 py-32 lg:py-0"
+                >
+                    <h1 className="font-black uppercase leading-[0.9] text-[#0c1428]"
+                        style={{ fontSize: 'clamp(40px, 5.2vw, 72px)' }}>
+                        PEPTIDI ZA<br />
+                        ISTRAŽIVANJE<br />
+                        U SRBIJI.
+                    </h1>
 
-                        {/* Subtext */}
-                        <p className="mt-4 text-base text-gray-600 leading-relaxed">
-                            Kupite laboratorijski testirane peptide<br />
-                            čistoće preko 99%.
-                        </p>
+                    <p className="mt-5 text-[15px] text-[#3a4460] leading-relaxed max-w-xs">
+                        Kupite laboratorijski testirane peptide<br />
+                        čistoće preko 99%.
+                    </p>
 
-                        {/* Buttons */}
-                        <div className="mt-8 flex flex-wrap gap-4">
-                            <button
-                                onClick={() => navigate('/peptidi-srbija')}
-                                className="group flex items-center gap-2 bg-[#0f1729] text-white rounded-full px-7 py-3 font-medium text-sm hover:bg-[#1a2540] transition-colors active:scale-[0.97]"
-                            >
-                                Istraži Peptide
-                                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                            </button>
-                            <button
-                                onClick={() => navigate('/laboratorijski-standard')}
-                                className="border border-gray-400 text-gray-800 rounded-full px-7 py-3 font-medium text-sm bg-transparent hover:bg-gray-100/60 transition-colors active:scale-[0.97]"
-                            >
-                                Protokoli Kvaliteta
-                            </button>
-                        </div>
+                    <div className="mt-7 flex flex-wrap gap-3">
+                        <button
+                            onClick={() => navigate('/peptidi-srbija')}
+                            className="group flex items-center gap-2 bg-[#0c1428] text-white rounded-full px-7 py-[11px] text-sm font-semibold hover:bg-[#1a2845] transition-colors active:scale-[0.97]"
+                        >
+                            Istraži Peptide
+                            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                        </button>
+                        <button
+                            onClick={() => navigate('/laboratorijski-standard')}
+                            className="rounded-full px-7 py-[11px] text-sm font-semibold text-[#0c1428] bg-white/50 border border-[#0c1428]/25 backdrop-blur-sm hover:bg-white/70 transition-colors active:scale-[0.97]"
+                        >
+                            Protokoli Kvaliteta
+                        </button>
+                    </div>
 
-                        {/* Trust checklist — 2×2 grid */}
-                        <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-2">
-                            {trustBullets.map((bullet, i) => (
-                                <div key={i} className="flex items-center gap-2">
-                                    <CheckCircle2 size={14} className="text-gray-500 shrink-0" />
-                                    <span className="text-sm text-gray-700">{bullet}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
+                    <div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-2.5">
+                        {trustBullets.map((bullet, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                                <CheckCircle2 size={13} className="text-[#5b7aff] shrink-0" />
+                                <span className="text-[13px] font-medium text-[#3a4460]">{bullet}</span>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
 
                 {/* ━━━━━━━━━━━━━ RIGHT COLUMN ━━━━━━━━━━━━━ */}
-                <div
-                    className="relative flex items-end justify-center overflow-hidden"
-                    style={{ minHeight: '420px' }}
-                >
-                    {/* ── Atmospheric glow — multiple overlapping radial layers ── */}
-                    <div
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                            background: [
-                                'radial-gradient(ellipse 70% 65% at 50% 65%, rgba(184,204,255,0.80) 0%, rgba(184,204,255,0.30) 40%, transparent 68%)',
-                                'radial-gradient(ellipse 55% 55% at 38% 52%, rgba(224,200,255,0.70) 0%, rgba(200,180,255,0.25) 42%, transparent 65%)',
-                                'radial-gradient(ellipse 50% 45% at 65% 48%, rgba(160,210,255,0.60) 0%, rgba(140,190,255,0.20) 38%, transparent 62%)',
-                            ].join(', '),
-                            filter: 'blur(3px)',
-                        }}
-                    />
+                <div className="relative flex items-end justify-center self-stretch min-h-[420px] lg:min-h-0">
 
-                    {/* ── Floor reflection spotlight ── */}
-                    <div
-                        className="absolute bottom-0 left-[5%] right-[5%] pointer-events-none"
-                        style={{
-                            height: '110px',
-                            background: 'radial-gradient(ellipse at 50% 100%, rgba(160,190,255,0.40) 0%, rgba(200,160,255,0.20) 45%, transparent 70%)',
-                            filter: 'blur(10px)',
-                        }}
-                    />
-
-                    {/* ── Floating pill badges — desktop only, staggered ── */}
-                    <div className="hidden md:flex absolute top-[18%] left-0 right-0 items-end justify-center gap-3 z-20 px-4">
+                    {/* pill badges — absolute, staggered, above image */}
+                    <div className="hidden md:flex absolute bottom-[54%] left-0 right-0 items-end justify-center gap-2.5 z-20 px-4">
                         {floatingTags.map((tag, i) => (
                             <motion.span
                                 key={tag.label}
-                                initial={{ opacity: 0, y: -8 }}
+                                initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.35 + i * 0.08 }}
-                                className="rounded-full border border-gray-300 bg-white/60 backdrop-blur-sm px-3 py-1 text-xs uppercase tracking-widest text-gray-700 whitespace-nowrap"
+                                transition={{ delay: 0.3 + i * 0.09 }}
+                                className="rounded-full border border-white/70 bg-white/55 backdrop-blur-md px-3 py-[5px] text-[10px] font-bold uppercase tracking-widest text-[#2a3558] whitespace-nowrap shadow-sm"
                                 style={{ transform: `translateY(${tag.y}px)` }}
                             >
                                 {tag.label}
@@ -163,15 +131,15 @@ const Hero = () => {
                         ))}
                     </div>
 
-                    {/* ── Product image — bottom-aligned, no hard edges ── */}
+                    {/* product image — bottom-aligned so vials sit on the glow rings */}
                     <motion.img
-                        initial={{ opacity: 0, y: 16 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                         src="/images/peptidi4.png"
                         alt="OCTOLAB istraživački peptidi — 4 bočice"
-                        className="relative z-10 object-contain object-bottom"
-                        style={{ width: '680px', maxWidth: '100%', maxHeight: '88vh' }}
+                        className="relative z-10 object-contain object-bottom w-full"
+                        style={{ maxWidth: '720px', maxHeight: '82vh' }}
                     />
                 </div>
             </div>
