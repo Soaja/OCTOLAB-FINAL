@@ -76,7 +76,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-28 pb-12 lg:py-16"
+                    className="flex flex-col justify-center px-6 md:px-10 lg:px-12 pt-28 pb-12 lg:py-16"
                 >
                     {/* Eyebrow label */}
                     <div className="flex items-center gap-2.5 mb-7">
@@ -91,7 +91,7 @@ const Hero = () => {
 
                     {/* Main heading */}
                     <h1
-                        className="font-black text-[#0c1220] leading-[0.88] tracking-tight mb-6"
+                        className="font-black text-[#0c1220] leading-[1.05] tracking-tight mb-6"
                         style={{ fontSize: 'clamp(48px, 6vw, 82px)' }}
                     >
                         PEPTIDI ZA<br />
