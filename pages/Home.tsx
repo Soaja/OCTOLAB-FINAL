@@ -69,7 +69,8 @@ const Hero = () => {
             }}
         >
             {/* ── Two-column grid, full viewport height ── */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center">
+            <div className="min-h-screen flex items-center">
+            <div className="w-full max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
 
                 {/* ══════════════ LEFT COLUMN ══════════════ */}
                 <motion.div
@@ -185,6 +186,7 @@ const Hero = () => {
                         style={{ maxWidth: '740px', maxHeight: '80vh' }}
                     />
                 </motion.div>
+            </div>
             </div>
         </section>
     );
