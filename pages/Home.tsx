@@ -47,7 +47,7 @@ const Hero = () => {
     return (
         <section
             className="relative min-h-screen flex items-center overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #eef2ff 0%, #f4f6ff 40%, #ffffff 100%)' }}
+            style={{ background: 'linear-gradient(150deg, #edf0f8 0%, #f0f2fa 45%, #f7f8fc 100%)' }}
         >
             {/* ── Iridescent glow line below floating navbar ── */}
             <div
@@ -59,7 +59,7 @@ const Hero = () => {
             />
 
             {/* ── Two-column grid ── */}
-            <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-center pt-28 pb-12 md:pt-32 md:pb-16">
+            <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-center pt-24 pb-10 md:pt-24 md:pb-10">
 
                 {/* ━━━ LEFT COLUMN ━━━ */}
                 <motion.div
@@ -71,7 +71,7 @@ const Hero = () => {
                     {/* Heading */}
                     <h1
                         className="font-black tracking-tighter text-[#0B0F2E] leading-[0.88] mb-5"
-                        style={{ fontSize: 'clamp(44px, 5.6vw, 72px)' }}
+                        style={{ fontSize: 'clamp(52px, 6.5vw, 84px)' }}
                     >
                         PEPTIDI ZA<br />
                         ISTRAŽIVANJE<br />
@@ -117,55 +117,64 @@ const Hero = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative flex items-center justify-center min-h-[380px] md:min-h-[480px]"
+                    className="relative flex flex-col items-center justify-center"
                 >
-                    {/* Background: two overlapping radial gradients */}
-                    <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
-                        {/* Light blue glow — left-center */}
-                        <div
-                            className="absolute inset-0"
-                            style={{
-                                background: 'radial-gradient(ellipse at 38% 55%, rgba(147,197,253,0.55) 0%, rgba(191,219,254,0.25) 40%, transparent 68%)',
-                            }}
-                        />
-                        {/* Soft purple glow — right-center */}
-                        <div
-                            className="absolute inset-0"
-                            style={{
-                                background: 'radial-gradient(ellipse at 68% 42%, rgba(196,181,253,0.5) 0%, rgba(221,214,254,0.2) 42%, transparent 65%)',
-                            }}
-                        />
-                        {/* Floor shimmer */}
-                        <div
-                            className="absolute bottom-0 left-[15%] right-[15%] h-[80px]"
-                            style={{
-                                background: 'radial-gradient(ellipse, rgba(147,197,253,0.4) 0%, rgba(196,181,253,0.2) 50%, transparent 70%)',
-                                filter: 'blur(12px)',
-                            }}
-                        />
-                    </div>
-
-                    {/* Floating pill badges — hidden on mobile */}
-                    <div className="hidden md:flex absolute top-3 left-0 right-0 gap-2 justify-center z-20 flex-wrap px-6">
+                    {/* Floating pill badges — single row, hidden on mobile */}
+                    <div className="hidden md:flex items-center gap-2.5 mb-5 z-20">
                         {floatingTags.map((tag, i) => (
                             <motion.span
                                 key={tag}
                                 initial={{ opacity: 0, y: -8 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.45 + i * 0.08 }}
-                                className="px-3 py-[5px] rounded-full text-[10px] font-bold tracking-[0.12em] uppercase text-indigo-600 bg-indigo-50 border border-indigo-200/70"
+                                className="px-3 py-[5px] rounded-full text-[10px] font-bold tracking-[0.12em] uppercase text-indigo-600 bg-white/70 border border-indigo-200/80 whitespace-nowrap"
+                                style={{ backdropFilter: 'blur(6px)' }}
                             >
                                 {tag}
                             </motion.span>
                         ))}
                     </div>
 
-                    {/* Product image */}
-                    <img
-                        src="/images/peptidi4.png"
-                        alt="OCTOLAB istraživački peptidi — 4 bočice"
-                        className="relative z-10 w-full max-w-[520px] object-contain drop-shadow-2xl"
-                    />
+                    {/* Image + glow container */}
+                    <div className="relative flex items-center justify-center">
+                        {/* Glow orb — light blue, large */}
+                        <div
+                            className="absolute rounded-full pointer-events-none"
+                            style={{
+                                width: '560px',
+                                height: '560px',
+                                background: 'radial-gradient(circle, #c7d8ff 0%, rgba(199,216,255,0.35) 40%, transparent 70%)',
+                                filter: 'blur(8px)',
+                            }}
+                        />
+                        {/* Glow orb — soft purple, offset */}
+                        <div
+                            className="absolute rounded-full pointer-events-none"
+                            style={{
+                                width: '480px',
+                                height: '480px',
+                                transform: 'translate(10%, -8%)',
+                                background: 'radial-gradient(circle, #d4c5ff 0%, rgba(212,197,255,0.3) 38%, transparent 68%)',
+                                filter: 'blur(12px)',
+                            }}
+                        />
+                        {/* Floor shimmer */}
+                        <div
+                            className="absolute bottom-0 left-[10%] right-[10%] h-[50px] pointer-events-none"
+                            style={{
+                                background: 'radial-gradient(ellipse, rgba(180,210,255,0.6) 0%, transparent 70%)',
+                                filter: 'blur(10px)',
+                            }}
+                        />
+
+                        {/* Product image */}
+                        <img
+                            src="/images/peptidi4.png"
+                            alt="OCTOLAB istraživački peptidi — 4 bočice"
+                            className="relative z-10 object-contain drop-shadow-2xl"
+                            style={{ width: '640px', maxWidth: '100%' }}
+                        />
+                    </div>
                 </motion.div>
             </div>
         </section>
