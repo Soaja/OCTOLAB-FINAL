@@ -30,28 +30,28 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
       {/* ── Full-width fixed header ── */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/88 backdrop-blur-md">
 
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-8 md:px-16 h-20 flex items-center justify-between">
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 group shrink-0">
             <div className="relative flex items-center justify-center">
               <Aperture
-                className="w-[22px] h-[22px] text-neutral-900 stroke-[1.5px] group-hover:rotate-90 transition-transform duration-700 ease-in-out"
+                className="w-[28px] h-[28px] text-neutral-900 stroke-[1.5px] group-hover:rotate-90 transition-transform duration-700 ease-in-out"
               />
-              <div className="absolute w-[5px] h-[5px] bg-black rounded-full" />
+              <div className="absolute w-[6px] h-[6px] bg-black rounded-full" />
             </div>
-            <span className="text-[17px] font-black tracking-tight text-[#0c1220]">
+            <span className="text-[21px] font-black tracking-tight text-[#0c1220]">
               OCTOLAB
             </span>
           </Link>
 
           {/* Center nav */}
-          <nav className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden md:flex items-center gap-9 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 to={link.path}
-                className={`text-[13px] font-semibold tracking-wide transition-colors duration-200 ${
+                className={`text-[15px] font-semibold tracking-wide transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'text-[#0c1220]'
                     : 'text-neutral-400 hover:text-[#0c1220]'
@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
               className="relative group p-2.5 rounded-full hover:bg-neutral-100 transition-colors active:scale-95"
             >
               <ShoppingBag
-                size={18}
+                size={21}
                 strokeWidth={1.5}
                 className="text-neutral-600 group-hover:text-black transition-colors"
               />

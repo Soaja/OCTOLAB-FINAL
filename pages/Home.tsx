@@ -70,30 +70,30 @@ const Hero = () => {
         >
             {/* ── Two-column grid, full viewport height ── */}
             <div className="min-h-screen flex items-center">
-            <div className="w-full max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="w-full max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
 
                 {/* ══════════════ LEFT COLUMN ══════════════ */}
                 <motion.div
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col justify-center px-6 md:px-10 lg:px-12 pt-28 pb-12 lg:py-16"
+                    className="flex flex-col justify-center px-6 md:px-12 lg:px-16 pt-28 pb-12 lg:py-20"
                 >
                     {/* Eyebrow label */}
-                    <div className="flex items-center gap-2.5 mb-7">
+                    <div className="flex items-center gap-3 mb-8">
                         <div
-                            className="h-[2px] w-8 rounded-full"
+                            className="h-[2px] w-10 rounded-full"
                             style={{ background: IRIDESCENT }}
                         />
-                        <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-neutral-400">
+                        <span className="text-[12px] font-bold tracking-[0.22em] uppercase text-neutral-400">
                             Research Grade · Srbija
                         </span>
                     </div>
 
                     {/* Main heading */}
                     <h1
-                        className="font-black text-[#0c1220] leading-[1.05] tracking-tight mb-6"
-                        style={{ fontSize: 'clamp(48px, 6vw, 82px)' }}
+                        className="font-black text-[#0c1220] leading-[1.05] tracking-tight mb-7"
+                        style={{ fontSize: 'clamp(56px, 7vw, 98px)' }}
                     >
                         PEPTIDI ZA<br />
                         ISTRAŽIVANJE<br />
@@ -102,34 +102,33 @@ const Hero = () => {
 
                     {/* Iridescent accent bar */}
                     <div
-                        className="h-[3px] w-24 rounded-full mb-7"
+                        className="h-[4px] w-32 rounded-full mb-8"
                         style={{ background: IRIDESCENT }}
                     />
 
                     {/* Subtext */}
-                    <p className="text-[15px] text-neutral-500 leading-relaxed mb-9 max-w-[340px]">
+                    <p className="text-[17px] text-neutral-500 leading-relaxed mb-10 max-w-[400px]">
                         Laboratorijski testirani peptidi čistoće preko 99%.<br />
                         Brza isporuka hladnim lancem na teritoriji Srbije.
                     </p>
 
                     {/* CTA buttons */}
-                    <div className="flex flex-wrap gap-3 mb-10">
+                    <div className="flex flex-wrap gap-4 mb-11">
                         <button
                             onClick={() => navigate('/peptidi-srbija')}
-                            className="group relative flex items-center gap-2 bg-[#0c1220] text-white rounded-full px-7 py-3.5 text-[13px] font-semibold overflow-hidden hover:bg-[#1a2440] transition-colors active:scale-[0.97] shadow-lg shadow-neutral-900/10"
+                            className="group relative flex items-center gap-2.5 bg-[#0c1220] text-white rounded-full px-9 py-4 text-[15px] font-semibold overflow-hidden hover:bg-[#1a2440] transition-colors active:scale-[0.97] shadow-lg shadow-neutral-900/10"
                         >
-                            {/* Iridescent shimmer on hover */}
                             <span
                                 className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-full"
                                 style={{ background: IRIDESCENT }}
                             />
                             Istraži Peptide
-                            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                            <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                         </button>
 
                         <button
                             onClick={() => navigate('/laboratorijski-standard')}
-                            className="flex items-center gap-2 rounded-full px-7 py-3.5 text-[13px] font-semibold text-neutral-700 bg-white/60 border border-neutral-200 backdrop-blur-sm hover:bg-white hover:border-neutral-300 transition-all active:scale-[0.97]"
+                            className="flex items-center gap-2 rounded-full px-9 py-4 text-[15px] font-semibold text-neutral-700 bg-white/60 border border-neutral-200 backdrop-blur-sm hover:bg-white hover:border-neutral-300 transition-all active:scale-[0.97]"
                         >
                             Protokoli Kvaliteta
                         </button>
@@ -138,9 +137,9 @@ const Hero = () => {
                     {/* Trust items — horizontal row */}
                     <div className="flex flex-wrap gap-x-5 gap-y-2.5">
                         {trustItems.map((item, i) => (
-                            <div key={i} className="flex items-center gap-1.5">
-                                <CheckCircle2 size={13} className="text-neutral-400 shrink-0" />
-                                <span className="text-[12px] font-medium text-neutral-500">{item}</span>
+                            <div key={i} className="flex items-center gap-2">
+                                <CheckCircle2 size={15} className="text-neutral-400 shrink-0" />
+                                <span className="text-[14px] font-medium text-neutral-500">{item}</span>
                             </div>
                         ))}
                     </div>
@@ -154,7 +153,7 @@ const Hero = () => {
                     className="relative flex flex-col items-center justify-center min-h-[440px] lg:min-h-0 py-8 lg:py-16"
                 >
                     {/* Product name pill badges — float above image */}
-                    <div className="hidden md:flex items-end gap-2.5 mb-5 z-20 relative">
+                    <div className="hidden md:flex items-end gap-3 mb-6 z-20 relative">
                         {pills.map((pill, i) => (
                             <motion.div
                                 key={pill.label}
@@ -162,13 +161,13 @@ const Hero = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.35 + i * 0.09, ease: [0.16, 1, 0.3, 1] }}
                                 style={{ transform: `translateY(${i * -8}px)` }}
-                                className="flex items-center gap-1.5 rounded-full border border-white/80 bg-white/65 backdrop-blur-md px-3.5 py-[6px] shadow-sm"
+                                className="flex items-center gap-2 rounded-full border border-white/80 bg-white/65 backdrop-blur-md px-4 py-2 shadow-sm"
                             >
                                 <span
-                                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                                    className="w-2 h-2 rounded-full shrink-0"
                                     style={{ backgroundColor: pill.dot }}
                                 />
-                                <span className="text-[9.5px] font-black uppercase tracking-[0.14em] text-[#1e2a40]">
+                                <span className="text-[11px] font-black uppercase tracking-[0.14em] text-[#1e2a40]">
                                     {pill.label}
                                 </span>
                             </motion.div>
@@ -183,7 +182,7 @@ const Hero = () => {
                         src="/images/peptidi4.png"
                         alt="OCTOLAB istraživački peptidi — Retatrutide, GHK-Cu, BPC-157, Semax"
                         className="object-contain object-bottom w-full z-10"
-                        style={{ maxWidth: '740px', maxHeight: '80vh' }}
+                        style={{ maxWidth: '860px', maxHeight: '82vh' }}
                     />
                 </motion.div>
             </div>
