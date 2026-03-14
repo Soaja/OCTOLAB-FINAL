@@ -61,12 +61,7 @@ const Hero = () => {
     return (
         <section
             className="relative overflow-hidden"
-            style={{
-                minHeight: '100vh',
-                backgroundImage: "url('/images/background.jpeg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-            }}
+            style={{ minHeight: '100vh', background: '#ffffff' }}
         >
             {/* ── Two-column grid, full viewport height ── */}
             <div className="min-h-screen flex items-center">
