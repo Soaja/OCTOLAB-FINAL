@@ -82,11 +82,18 @@ const Hero = () => {
                     {/* Eyebrow label */}
                     <div className="flex items-center gap-3 mb-8">
                         <div
-                            className="h-[2px] w-10 rounded-full"
-                            style={{ background: IRIDESCENT }}
-                        />
-                        <span className="text-[12px] font-bold tracking-[0.22em] uppercase text-neutral-400">
-                            Research Grade · Srbija
+                            className="flex items-center gap-2 rounded-full px-3.5 py-1.5 border border-neutral-200 bg-white/70 backdrop-blur-sm"
+                        >
+                            <span
+                                className="w-1.5 h-1.5 rounded-full shrink-0"
+                                style={{ background: IRIDESCENT }}
+                            />
+                            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-600">
+                                Research Grade
+                            </span>
+                        </div>
+                        <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-neutral-300">
+                            · Srbija
                         </span>
                     </div>
 
@@ -107,10 +114,14 @@ const Hero = () => {
                     />
 
                     {/* Subtext */}
-                    <p className="text-[17px] text-neutral-500 leading-relaxed mb-10 max-w-[400px]">
-                        Laboratorijski testirani peptidi čistoće preko 99%.<br />
-                        Brza isporuka hladnim lancem na teritoriji Srbije.
-                    </p>
+                    <div className="mb-10 max-w-[420px]">
+                        <p className="text-[18px] font-semibold text-[#0c1220] leading-snug mb-2">
+                            Laboratorijski testirani peptidi čistoće preko 99%.
+                        </p>
+                        <p className="text-[14px] text-neutral-400 leading-relaxed">
+                            Brza isporuka hladnim lancem na teritoriji Srbije.
+                        </p>
+                    </div>
 
                     {/* CTA buttons */}
                     <div className="flex flex-wrap gap-4 mb-11">
