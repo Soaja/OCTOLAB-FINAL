@@ -236,7 +236,7 @@ const Hero = () => {
                     {/* Product image — bottom-aligned, sits on background glow rings */}
                     <motion.img
                         initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={{ opacity: 1, y: 60 }}
                         transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         src="/images/peptidi4.png"
                         alt="OCTOLAB istraživački peptidi — Retatrutide, GHK-Cu, BPC-157, Semax"
