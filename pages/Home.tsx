@@ -77,10 +77,10 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col justify-center px-6 md:px-12 lg:px-16 pt-28 pb-12 lg:py-20"
+                    className="flex flex-col justify-center px-6 md:px-12 lg:px-16 pt-24 pb-6 lg:py-20"
                 >
                     {/* Eyebrow label */}
-                    <div className="flex items-center gap-3 mb-8">
+                    <div className="flex items-center gap-3 mb-5 lg:mb-8">
                         <div
                             className="flex items-center gap-2 rounded-full px-3.5 py-1.5 border border-neutral-200 bg-white/70 backdrop-blur-sm"
                         >
@@ -100,7 +100,7 @@ const Hero = () => {
                     {/* Main heading */}
                     <h1
                         className="font-black text-[#0c1220] leading-[1.05] tracking-tight mb-7"
-                        style={{ fontSize: 'clamp(56px, 7vw, 98px)' }}
+                        style={{ fontSize: 'clamp(36px, 9vw, 98px)' }}
                     >
                         PEPTIDI ZA<br />
                         ISTRAŽIVANJE<br />
@@ -109,25 +109,25 @@ const Hero = () => {
 
                     {/* Iridescent accent bar */}
                     <div
-                        className="h-[4px] w-32 rounded-full mb-8"
+                        className="h-[4px] w-32 rounded-full mb-5 lg:mb-8"
                         style={{ background: IRIDESCENT }}
                     />
 
                     {/* Subtext */}
-                    <div className="mb-10 max-w-[420px]">
-                        <p className="text-[18px] font-semibold text-[#0c1220] leading-snug mb-3">
+                    <div className="mb-7 lg:mb-10 max-w-[420px]">
+                        <p className="text-[15px] lg:text-[18px] font-semibold text-[#0c1220] leading-snug mb-2 lg:mb-3">
                             Laboratorijski testirani peptidi čistoće preko 99%.
                         </p>
                         <div className="flex items-center gap-2.5">
                             <div className="h-px w-5 rounded-full bg-neutral-300 shrink-0" />
-                            <p className="text-[13.5px] font-medium text-neutral-400 tracking-[0.02em]">
+                            <p className="text-[12.5px] lg:text-[13.5px] font-medium text-neutral-400 tracking-[0.02em]">
                                 Brza isporuka hladnim lancem na teritoriji Srbije.
                             </p>
                         </div>
                     </div>
 
                     {/* CTA buttons */}
-                    <div className="flex flex-wrap gap-4 mb-11">
+                    <div className="flex flex-wrap gap-3 mb-7 lg:mb-11">
                         <button
                             onClick={() => navigate('/peptidi-srbija')}
                             className="group relative flex items-center gap-2.5 bg-[#0c1220] text-white rounded-full px-9 py-4 text-[15px] font-semibold overflow-hidden hover:bg-[#1a2440] transition-colors active:scale-[0.97] shadow-lg shadow-neutral-900/10"
@@ -148,23 +148,26 @@ const Hero = () => {
                         </button>
                     </div>
 
-                    {/* Trust items — pill bar */}
-                    <div className="inline-flex items-stretch rounded-full border border-neutral-200/70 bg-white/50 backdrop-blur-sm overflow-hidden self-start">
+                    {/* Trust items — desktop: single pill bar */}
+                    <div className="hidden lg:inline-flex items-stretch rounded-full border border-neutral-200/70 bg-white/50 backdrop-blur-sm overflow-hidden self-start">
                         {trustItems.map((item, i) => (
                             <React.Fragment key={i}>
-                                {i > 0 && (
-                                    <div className="w-px bg-neutral-200/80 self-stretch" />
-                                )}
+                                {i > 0 && <div className="w-px bg-neutral-200/80 self-stretch" />}
                                 <div className="flex items-center gap-2 px-4 py-2.5">
-                                    <span
-                                        className="w-1 h-1 rounded-full shrink-0"
-                                        style={{ background: IRIDESCENT }}
-                                    />
-                                    <span className="text-[11.5px] font-semibold tracking-[0.04em] text-neutral-500 whitespace-nowrap">
-                                        {item}
-                                    </span>
+                                    <span className="w-1 h-1 rounded-full shrink-0" style={{ background: IRIDESCENT }} />
+                                    <span className="text-[11.5px] font-semibold tracking-[0.04em] text-neutral-500 whitespace-nowrap">{item}</span>
                                 </div>
                             </React.Fragment>
+                        ))}
+                    </div>
+
+                    {/* Trust items — mobile: wrapping individual pills */}
+                    <div className="flex flex-wrap gap-2 lg:hidden">
+                        {trustItems.map((item, i) => (
+                            <div key={i} className="flex items-center gap-1.5 rounded-full border border-neutral-200/70 bg-white/50 backdrop-blur-sm px-3 py-2">
+                                <span className="w-1 h-1 rounded-full shrink-0" style={{ background: IRIDESCENT }} />
+                                <span className="text-[11px] font-semibold tracking-[0.04em] text-neutral-500 whitespace-nowrap">{item}</span>
+                            </div>
                         ))}
                     </div>
                 </motion.div>
@@ -174,7 +177,7 @@ const Hero = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.9, delay: 0.1 }}
-                    className="relative flex flex-col items-center justify-center min-h-[440px] lg:min-h-0 py-8 lg:py-16"
+                    className="relative flex flex-col items-center justify-center min-h-[260px] lg:min-h-0 py-2 lg:py-16"
                 >
                     {/* ── Iridescent grid mesh ── */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -249,12 +252,12 @@ const Hero = () => {
                     {/* Product image — bottom-aligned, sits on background glow rings */}
                     <motion.img
                         initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         src="/images/peptidi4.png"
                         alt="OCTOLAB istraživački peptidi — Retatrutide, GHK-Cu, BPC-157, Semax"
-                        className="object-contain object-bottom w-full z-10"
-                        style={{ maxWidth: '860px', maxHeight: '82vh' }}
+                        className="object-contain object-bottom w-full z-10 lg:translate-y-[60px]"
+                        style={{ maxWidth: '860px', maxHeight: '55vh' }}
                     />
                 </motion.div>
             </div>
