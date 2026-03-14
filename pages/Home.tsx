@@ -115,12 +115,15 @@ const Hero = () => {
 
                     {/* Subtext */}
                     <div className="mb-10 max-w-[420px]">
-                        <p className="text-[18px] font-semibold text-[#0c1220] leading-snug mb-2">
+                        <p className="text-[18px] font-semibold text-[#0c1220] leading-snug mb-3">
                             Laboratorijski testirani peptidi čistoće preko 99%.
                         </p>
-                        <p className="text-[14px] text-neutral-400 leading-relaxed">
-                            Brza isporuka hladnim lancem na teritoriji Srbije.
-                        </p>
+                        <div className="flex items-center gap-2.5">
+                            <div className="h-px w-5 rounded-full bg-neutral-300 shrink-0" />
+                            <p className="text-[13.5px] font-medium text-neutral-400 tracking-[0.02em]">
+                                Brza isporuka hladnim lancem na teritoriji Srbije.
+                            </p>
+                        </div>
                     </div>
 
                     {/* CTA buttons */}
