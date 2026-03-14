@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../components/Button';
-import { ArrowRight, ShieldCheck, Activity, FlaskConical, Microscope, Truck, Package, AlertTriangle, Plus, Minus, CheckCircle2, FileText, Thermometer, Zap, Droplets, FileSearch, Lock, ThermometerSnowflake, BoxSelect, ScanSearch, Factory, Snowflake, PackageCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Activity, FlaskConical, Microscope, Truck, Package, AlertTriangle, Plus, Minus, FileText, Thermometer, Zap, Droplets, FileSearch, Lock, ThermometerSnowflake, BoxSelect, ScanSearch, Factory, Snowflake, PackageCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { PRODUCTS } from '../constants';
@@ -145,13 +145,23 @@ const Hero = () => {
                         </button>
                     </div>
 
-                    {/* Trust items — horizontal row */}
-                    <div className="flex flex-wrap gap-x-5 gap-y-2.5">
+                    {/* Trust items — pill bar */}
+                    <div className="inline-flex items-stretch rounded-full border border-neutral-200/70 bg-white/50 backdrop-blur-sm overflow-hidden self-start">
                         {trustItems.map((item, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                                <CheckCircle2 size={15} className="text-neutral-400 shrink-0" />
-                                <span className="text-[14px] font-medium text-neutral-500">{item}</span>
-                            </div>
+                            <React.Fragment key={i}>
+                                {i > 0 && (
+                                    <div className="w-px bg-neutral-200/80 self-stretch" />
+                                )}
+                                <div className="flex items-center gap-2 px-4 py-2.5">
+                                    <span
+                                        className="w-1 h-1 rounded-full shrink-0"
+                                        style={{ background: IRIDESCENT }}
+                                    />
+                                    <span className="text-[11.5px] font-semibold tracking-[0.04em] text-neutral-500 whitespace-nowrap">
+                                        {item}
+                                    </span>
+                                </div>
+                            </React.Fragment>
                         ))}
                     </div>
                 </motion.div>
