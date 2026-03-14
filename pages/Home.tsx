@@ -179,7 +179,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        src="/images/peptides.png"
+                        src="/images/peptidi4.png"
                         alt="OCTOLAB istraživački peptidi — Retatrutide, GHK-Cu, BPC-157, Semax"
                         className="object-contain object-bottom w-full z-10"
                         style={{ maxWidth: '860px', maxHeight: '82vh' }}
