@@ -152,6 +152,54 @@ const Hero = () => {
                     transition={{ duration: 0.9, delay: 0.1 }}
                     className="relative flex flex-col items-center justify-center min-h-[440px] lg:min-h-0 py-8 lg:py-16"
                 >
+                    {/* ── Iridescent grid mesh ── */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                        {/* Grid lines — violet/pink/blue, masked right→center */}
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                backgroundImage: `
+                                    repeating-linear-gradient(90deg,  rgba(196,181,253,0.38) 0px, rgba(196,181,253,0.38) 1px, transparent 1px, transparent 48px),
+                                    repeating-linear-gradient(0deg,   rgba(249,168,212,0.28) 0px, rgba(249,168,212,0.28) 1px, transparent 1px, transparent 48px)
+                                `,
+                                maskImage:       'linear-gradient(to left, black 0%, black 25%, rgba(0,0,0,0.5) 50%, transparent 72%)',
+                                WebkitMaskImage: 'linear-gradient(to left, black 0%, black 25%, rgba(0,0,0,0.5) 50%, transparent 72%)',
+                            }}
+                        />
+                        {/* Secondary finer grid for depth */}
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                backgroundImage: `
+                                    repeating-linear-gradient(90deg, rgba(191,219,254,0.18) 0px, rgba(191,219,254,0.18) 1px, transparent 1px, transparent 16px),
+                                    repeating-linear-gradient(0deg,  rgba(253,230,138,0.15) 0px, rgba(253,230,138,0.15) 1px, transparent 1px, transparent 16px)
+                                `,
+                                maskImage:       'linear-gradient(to left, black 0%, rgba(0,0,0,0.6) 35%, transparent 60%)',
+                                WebkitMaskImage: 'linear-gradient(to left, black 0%, rgba(0,0,0,0.6) 35%, transparent 60%)',
+                            }}
+                        />
+                        {/* Soft iridescent glow — upper right */}
+                        <div
+                            className="absolute rounded-full"
+                            style={{
+                                width: '380px', height: '380px',
+                                right: '-60px', top: '5%',
+                                background: 'radial-gradient(circle at 60% 40%, rgba(196,181,253,0.22) 0%, rgba(249,168,212,0.14) 50%, transparent 75%)',
+                                filter: 'blur(40px)',
+                            }}
+                        />
+                        {/* Soft glow — lower right */}
+                        <div
+                            className="absolute rounded-full"
+                            style={{
+                                width: '260px', height: '260px',
+                                right: '0%', bottom: '10%',
+                                background: 'radial-gradient(circle at 50% 60%, rgba(191,219,254,0.20) 0%, rgba(253,230,138,0.12) 55%, transparent 80%)',
+                                filter: 'blur(50px)',
+                            }}
+                        />
+                    </div>
+
                     {/* Product name pill badges — float above image */}
                     <div className="hidden md:flex items-end gap-3 mb-6 z-20 relative">
                         {pills.map((pill, i) => (
