@@ -77,13 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
               {/* Logo */}
               <Link to="/" className="shrink-0 group">
                 <span
-                  className="text-[18px] font-semibold iridescent-line"
-                  style={{
-                    letterSpacing: '0.14em',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
+                  className="text-[18px] font-bold text-white tracking-[0.14em]"
                 >
                   OCTOLAB
                 </span>
