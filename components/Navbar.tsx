@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Menu, X, Aperture } from 'lucide-react';
+import { ShoppingBag, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -43,18 +43,12 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
       `}</style>
 
       {/* ── Full-width fixed header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0c1220]/96 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0c1220]">
 
         <div className="max-w-[1440px] mx-auto px-8 md:px-16 h-20 flex items-center justify-between">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="relative flex items-center justify-center">
-              <Aperture
-                className="w-[28px] h-[28px] text-white stroke-[1.5px] group-hover:rotate-90 transition-transform duration-700 ease-in-out"
-              />
-              <div className="absolute w-[6px] h-[6px] bg-white rounded-full" />
-            </div>
+          <Link to="/" className="flex items-center shrink-0">
             <span className="text-[21px] font-black tracking-tight text-white">
               OCTOLAB
             </span>
