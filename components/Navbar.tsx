@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative bg-[#080e1a]/90 backdrop-blur-xl border border-white/[0.07] rounded-2xl shadow-[0_4px_32px_rgba(0,0,0,0.55)] overflow-hidden"
+            className="relative bg-black/90 backdrop-blur-xl border border-white/[0.07] rounded-2xl shadow-[0_4px_32px_rgba(0,0,0,0.55)] overflow-hidden"
           >
             {/* Subtle ambient glow top edge */}
             <div
@@ -113,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                     className="text-white/60 group-hover:text-white transition-colors"
                   />
                   {cartCount > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 flex h-[16px] w-[16px] items-center justify-center rounded-full bg-white text-[8px] text-[#080e1a] font-black">
+                    <span className="absolute -top-0.5 -right-0.5 flex h-[16px] w-[16px] items-center justify-center rounded-full bg-white text-[8px] text-black font-black">
                       {cartCount}
                     </span>
                   )}
@@ -143,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="fixed inset-0 z-40 bg-[#080e1a] md:hidden flex flex-col pt-28 px-8"
+            className="fixed inset-0 z-40 bg-black md:hidden flex flex-col pt-28 px-8"
           >
             <nav className="flex flex-col">
               {navLinks.map((link, i) => (

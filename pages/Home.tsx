@@ -94,7 +94,7 @@ const Hero = () => {
 
                     {/* Main heading */}
                     <h1
-                        className="font-black text-[#0c1220] leading-[1.05] tracking-tight mb-7"
+                        className="font-black text-black leading-[1.05] tracking-tight mb-7"
                         style={{ fontSize: 'clamp(36px, 9vw, 98px)' }}
                     >
                         PEPTIDI ZA<br />
@@ -110,7 +110,7 @@ const Hero = () => {
 
                     {/* Subtext */}
                     <div className="mb-7 lg:mb-10 max-w-[420px]">
-                        <p className="text-[15px] lg:text-[18px] font-semibold text-[#0c1220] leading-snug mb-2 lg:mb-3">
+                        <p className="text-[15px] lg:text-[18px] font-semibold text-black leading-snug mb-2 lg:mb-3">
                             Laboratorijski testirani peptidi čistoće preko 99%.
                         </p>
                         <div className="flex items-center gap-2.5">
@@ -125,7 +125,7 @@ const Hero = () => {
                     <div className="flex flex-wrap gap-3 mb-7 lg:mb-11">
                         <button
                             onClick={() => navigate('/peptidi-srbija')}
-                            className="group relative flex items-center gap-2.5 bg-[#0c1220] text-white rounded-full px-9 py-4 text-[15px] font-semibold overflow-hidden hover:bg-[#1a2440] transition-colors active:scale-[0.97] shadow-lg shadow-neutral-900/10"
+                            className="group relative flex items-center gap-2.5 bg-black text-white rounded-full px-9 py-4 text-[15px] font-semibold overflow-hidden hover:bg-neutral-800 transition-colors active:scale-[0.97] shadow-lg shadow-neutral-900/10"
                         >
                             <span
                                 className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-full"
